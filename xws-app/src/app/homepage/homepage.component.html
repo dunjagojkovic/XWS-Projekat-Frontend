@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <header>
+        <mat-toolbar>
+            <h1>Stylinkt</h1>
+            <span class="example-spacer"></span>
+            <button [routerLink]="['/registration']" style="float:none"><a>Join us</a></button>
+            <button (click)="loginBox = true; textBox = false"><a>Log in</a></button>
+        </mat-toolbar>
+    </header>
+    <main>
+        <div>   
+            <div class="box1">
+                <img src="assets/work.png">
+                <div>
+                    <h1 style="font-size: 50px; color: #F29040;">Millions of jobs waiting for you!</h1>
+                    <ul *ngIf="textBox">
+                        <li>&#9656; Find a new job, coworker or classmate</li>
+                        <li>&#9656; Post your job for milions of people to see</li>
+                        <li>&#9656; Learn the skills you need to succeed</li>
+                    </ul>
+                    <div class="login-box" *ngIf="loginBox">
+                        <mat-form-field class="input-box" appearance="outline">
+                          <mat-label>Username</mat-label>
+                          <input matInput placeholder="" value="">
+                        </mat-form-field>
+                        <mat-form-field class="input-box" appearance="outline">
+                          <mat-label>Password</mat-label>
+                          <input matInput [type]="hide ? 'password' : 'text'">
+                      </mat-form-field>
+                      <p>Don't have account, <button><a>Sign up</a></button></p>
+                      <div style="display: flex; flex-direction: row">
+                        <button class="butt">Confirm</button>
+                        <button class="butt" (click)="loginBox = false; textBox = true">Close</button>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+          <h2 class="link_title">Product</h2>
+          <h4 class="link_subtitle">Our plan</h4>
+          <h4 class="link_subtitle">Free trial</h4>
+        </div>
+        <div>
+          <h2 class="link_title">About us</h2>
+          <h4 class="link_subtitle">Request demo</h4>
+          <h4 class="link_subtitle">FAQs</h4>
+        </div>
+        <div>
+          <h2 class="link_title">Support</h2>
+          <h4 class="link_subtitle">Services</h4>
+          <h4 class="link_subtitle">Contact us</h4>
+        </div>
+        <div>
+          <h2 class="link_title">Brand police</h2>
+          <h4 class="link_subtitle">Reviews</h4>
+          <h4 class="link_subtitle">Safety</h4>
+        </div>
+    </footer>
+    <p style="background-color: #d0d5cf; padding: 6px; text-align: center;">Copyright 2022. &#xae;</p>
+</body>
+</html>
