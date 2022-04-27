@@ -1,1 +1,87 @@
-<p>registration works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <header>
+        <mat-toolbar>
+            <h1>Stylinkt</h1>
+            <span class="example-spacer"></span>
+        </mat-toolbar>
+    </header>
+    
+    <main>
+        <div class="forma">
+            <h1>Registration form</h1>
+            <mat-form-field class="input-box" appearance="outline">
+                <mat-label>Email address</mat-label>
+                <input matInput placeholder="" value="">
+            </mat-form-field>
+            <mat-form-field class="input-box" appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="" value="">
+            </mat-form-field>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <mat-form-field class="input-box-small" appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="" value="">
+                </mat-form-field>
+                <mat-form-field class="input-box-small" appearance="outline">
+                    <mat-label>Surname</mat-label>
+                    <input matInput placeholder="" value="">
+                </mat-form-field>
+            </div>
+            <mat-form-field class="input-box" appearance="outline">
+                <mat-label>Phone number</mat-label>
+                <input matInput placeholder="" value="">
+            </mat-form-field>
+            <mat-form-field class="input-box" appearance="outline">
+                <mat-label>Date of birth</mat-label>
+                <input matInput placeholder="" value="">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="input-box">
+                <mat-label>Gender</mat-label>
+                <select matNativeControl required>
+                  <option value="man">Man</option>
+                  <option value="women">Woman</option>
+                  <option value="other">Other</option>
+                </select>
+              </mat-form-field>
+            <mat-form-field class="input-box" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="" value="">
+            </mat-form-field>
+            <mat-form-field class="input-box" appearance="outline">
+                <mat-label>Repeat password</mat-label>
+                <input matInput placeholder="" value="">
+            </mat-form-field>
+            <button class="butt">Register</button>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+          <h2 class="link_title">Product</h2>
+          <h4 class="link_subtitle">Our plan</h4>
+          <h4 class="link_subtitle">Free trial</h4>
+        </div>
+        <div>
+          <h2 class="link_title">About us</h2>
+          <h4 class="link_subtitle">Request demo</h4>
+          <h4 class="link_subtitle">FAQs</h4>
+        </div>
+        <div>
+          <h2 class="link_title">Support</h2>
+          <h4 class="link_subtitle">Services</h4>
+          <h4 class="link_subtitle">Contact us</h4>
+        </div>
+        <div>
+          <h2 class="link_title">Brand police</h2>
+          <h4 class="link_subtitle">Reviews</h4>
+          <h4 class="link_subtitle">Safety</h4>
+        </div>
+    </footer>
+    <p style="background-color: #d0d5cf; padding: 6px; text-align: center;">Copyright 2022. &#xae;</p>
+</body>
+</html>
