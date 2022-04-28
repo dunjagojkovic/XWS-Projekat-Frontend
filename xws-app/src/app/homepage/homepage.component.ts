@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ApiService } from '../api.service';
+import { FormBuilder, Validators} from '@angular/forms';
+import { MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-homepage',
@@ -7,13 +12,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private formBuilder : FormBuilder,
+    private service: ApiService,
+    private _snackBar: MatSnackBar
+    ) {
+      this.form = this.formBuilder.group({
+        username: ['', Validators.required],
+        password: ['', Validators.required]
+      })
+     }
 
   loginBox : boolean = false;
   textBox : boolean = true;
   hide = true;
+  form: FormGroup;
+
 
   ngOnInit(): void {
   }
+
+  onSubmit() {
+    if(this.form.valid){
+      const username = this.form.get('username')?.value;
+      const password = this.form.get('password')?.value;
+
+      let data = {
+        username: username,
+        password: password
+      }
+
+      this.service.login(data).subscribe((any: any) => {
+        localStorage.setItem('token', any.token), () => this.router.navigateByUrl("/");
+/*
+        this.service.current().subscribe((user: any) => {
+          localStorage.setItem('user', JSON.stringify(user)), () => this.router.navigate(["/home"]);
+          console.log(user);
+        }, error => {
+          this._snackBar.open('Incorrect credentials! Please try again.', 'Close', {duration: 2000})});*/
+      })
+    }
+  }
+
 
 }

@@ -23,21 +23,23 @@
                         <li>&#9656; Post your job for milions of people to see</li>
                         <li>&#9656; Learn the skills you need to succeed</li>
                     </ul>
+                    <form [formGroup]="form">
                     <div class="login-box" *ngIf="loginBox">
                         <mat-form-field class="input-box" appearance="outline">
                           <mat-label>Username</mat-label>
-                          <input matInput placeholder="" value="">
+                          <input matInput placeholder="" value="" formControlName="username">
                         </mat-form-field>
                         <mat-form-field class="input-box" appearance="outline">
                           <mat-label>Password</mat-label>
-                          <input matInput [type]="hide ? 'password' : 'text'">
+                          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
                       </mat-form-field>
                       <p>Don't have account, <button><a>Sign up</a></button></p>
                       <div style="display: flex; flex-direction: row">
-                        <button class="butt">Confirm</button>
+                        <button (click)="onSubmit()" class="butt">Confirm</button>
                         <button class="butt" (click)="loginBox = false; textBox = true">Close</button>
                       </div>
                   </div>
+                </form>
                 </div>
             </div>
         </div>
