@@ -23,13 +23,40 @@
             </mat-card>
             <mat-card class="card1">
                 <div class="imgSec">
-                    <h3>Profile photo</h3>
                     <img src="assets/coworkers.jpg">
                     <button>Change photo</button>
                 </div>
                 <div class="infoSec">
-
+                   <mat-form-field class="input-box" appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="">
+                    </mat-form-field>
+                    <mat-form-field class="input-box" appearance="outline">
+                        <mat-label>Surname</mat-label>
+                        <input matInput placeholder="">
+                    </mat-form-field>
+                    <mat-form-field class="input-box" appearance="outline">
+                        <mat-label>Birth date</mat-label>
+                        <input matInput placeholder="">
+                    </mat-form-field>
+                    <mat-form-field class="input-box" appearance="outline">
+                        <mat-label>Phone number</mat-label>
+                        <input matInput placeholder="">
+                    </mat-form-field>
+                    <mat-form-field class="input-box" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="input-box">
+                        <mat-label>Gender</mat-label>
+                        <select matNativeControl>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </mat-form-field>
                 </div>
+                <button class="save">Save</button>
             </mat-card>
         </section>
 

@@ -53,7 +53,7 @@ mat-slide-toggle {
 }
 
 section {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     margin-bottom: 3%;
 }
@@ -73,24 +73,59 @@ section {
     padding: 20px;
     width: 100%;
     background-color: #f6f8f5;
+    display: flex;
 }
 
 .imgSec {
     width: 35%;
     display: flex;
     flex-direction: column;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-top: 2%;
 }
 
 img {
     width: 300px;
     height: 310px;
     margin-bottom: 2%;
+    border: 2px solid #2A9D8F;
 }
 
 .imgSec>button {
     width: 100px;
 }
 
+.infoSec {
+    margin-top: 4%;
+    width: 60%;
+}
+
+.input-box {
+    width: 18vw;
+    color: #287271;
+    align-items: center;
+    height: 5vh;
+    margin-right: 2%;
+    margin-bottom: 6%;
+    border-radius: 15px;
+    font-weight: bold;
+  }
+
+  .save {
+      position: absolute;
+      left: 90%;
+      top: 88%;
+      background-color: #83C3B4;
+      width: 6vw;
+      text-align: center;
+      padding: 10px;
+      height: 4vh;
+      color: #e5e9e4;
+      border: none;
+      border-radius: 10%;
+      font-weight: bold;
+  }
  /* Second-card */
  .educationInfo .card2 {
     margin-top: 1%;
@@ -113,4 +148,20 @@ img {
     padding: 20px;
     width: 100%;
     background-color: #f6f8f5;
+}
+
+/* Optional */
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    font-weight: bold;
+    color: #2A9D8F!important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    font-weight: bold;
+    background-color: #e5e9e4;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: #2A9D8F!important;
+  font-weight: bold;
 }
