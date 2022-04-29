@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+mat-toolbar {
+    padding: 20px;
+    background-color: #e5e9e4;
+    height: 10vh;
+}
+
+mat-toolbar h1,span {
+    font-size: 42px;
+    margin-left: 2%;
+    color: #2A9D8F;
+    font-weight: bold;
+    font-family: 'Sansita Swashed', cursive;
+}
+
+h1 span {
+    font-size: 52px;
+    color: #287271;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+mat-toolbar>button {
+    border: none;
+    padding: 20px;
+    width: 100px;
+    background-color: #e5e9e4;
+    color: #287271;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #F29040;
+}
+
+main {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+mat-slide-toggle {
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+section {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 3%;
+}
+
+.headCard {
+    background-color: #e5e9e4;
+    font-weight: bolder;
+    color: #2A9D8F;
+    width: 40%;
+    padding: 10px;
+    padding-left: 20px;
+}
+
+/* First-Card */
+.personalInfo .card1 {
+    margin-top: 1%;
+    padding: 20px;
+    width: 100%;
+    background-color: #f6f8f5;
+}
+
+.imgSec {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    width: 300px;
+    height: 310px;
+    margin-bottom: 2%;
+}
+
+.imgSec>button {
+    width: 100px;
+}
+
+ /* Second-card */
+ .educationInfo .card2 {
+    margin-top: 1%;
+    padding: 20px;
+    width: 100%;
+    background-color: #f6f8f5;
+}
+
+/* Third-card */
+.biographyInfo .card3 {
+    margin-top: 1%;
+    padding: 20px;
+    width: 100%;
+    background-color: #f6f8f5;
+}
+
+/* Fourth-card */
+.securityInfo .card4 {
+    margin-top: 1%;
+    padding: 20px;
+    width: 100%;
+    background-color: #f6f8f5;
+}

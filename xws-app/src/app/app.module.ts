@@ -6,10 +6,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './api.service';
 
-
-import { HomepageComponent } from './homepage/homepage.component';
-import { RegistrationComponent } from './registration/registration.component';
-
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
@@ -17,6 +13,13 @@ import {FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {MatIconModule} from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatCardModule} from '@angular/material/card';
+
+import { HomepageComponent } from './homepage/homepage.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { ProfileComponent } from './profile/profile.component';
+import { UserSettingsComponent } from './profile/user-settings/user-settings.component';
 
 
 
@@ -25,7 +28,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
   declarations: [
     AppComponent,
     HomepageComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ProfileComponent,
+    UserSettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,8 +44,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     ReactiveFormsModule,
     MatIconModule,
     MatSnackBarModule,
-    MatDatepickerModule
-
+    MatDatepickerModule,
+    MatSlideToggleModule,
+    MatCardModule
 
   ],
   providers: [ApiService],

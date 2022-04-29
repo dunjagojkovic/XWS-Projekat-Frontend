@@ -11,11 +11,17 @@ mat-toolbar {
     height: 10vh;
 }
 
-mat-toolbar h1 {
-    font-size: 36px;
+mat-toolbar h1,span {
+    font-size: 42px;
     margin-left: 2%;
-    color: #264653;
+    color: #2A9D8F;
     font-weight: bold;
+    font-family: 'Sansita Swashed', cursive;
+}
+
+h1 span {
+    font-size: 52px;
+    color: #287271;
 }
 
 main {
@@ -33,7 +39,7 @@ mat-toolbar>button {
     padding: 20px;
     width: 100px;
     background-color: #e5e9e4;
-    color: #264653;
+    color: #287271;
     font-size: 16px;
     font-weight: bold;
 }
@@ -44,19 +50,18 @@ a:hover {
 
 .box1 {
     display: flex;
-    position: relative;
 }
 
 .box1>div {
-    position: absolute;
-    top: 30%;
-    left: 50%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 2%;
 }
 
 .box1 img {
     width: 45%;
     margin-left: 2%;
-    margin-top: 5%;
+    margin-top: 4%;
 }
 
 ul {
@@ -73,7 +78,7 @@ li {
     margin-bottom: 3%;
     border: none;
     box-shadow: 5px 5px #d0d5cf;
-    border-radius: 15%;
+    border-radius: 20px;
     font-size: 16px;
     padding-left: 40px;
 }

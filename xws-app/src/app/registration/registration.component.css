@@ -11,11 +11,17 @@ mat-toolbar {
     height: 10vh;
 }
 
-mat-toolbar>h1 {
-    font-size: 36px;
+mat-toolbar h1,span {
+    font-size: 42px;
     margin-left: 2%;
-    color: #264653;
+    color: #2A9D8F;
     font-weight: bold;
+    font-family: 'Sansita Swashed', cursive;
+}
+
+h1 span {
+    font-size: 52px;
+    color: #287271;
 }
 
 main {
