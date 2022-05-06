@@ -28,4 +28,16 @@ export class ApiService {
   registerUser(data: any) {
     return this.http.post(this.baseURL + "/api/users/register", data);
   }
+
+  current() {
+    return this.http.get(this.baseURL + "/api/users/current", this.getAuthoHeader());
+  }
+
+  editInfo(id: number, data: any) {
+    return this.http.put(this.baseURL + "/api/users/", data, this.getAuthoHeader());
+  }
+
+  changePassword(data: any){
+    return this.http.post(this.baseURL + "/api/users/password", data, this.getAuthoHeader());
+  }
 }

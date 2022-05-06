@@ -33,6 +33,7 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   onSubmit() {
     if(this.form.valid){
       const username = this.form.get('username')?.value;
@@ -44,16 +45,13 @@ export class HomepageComponent implements OnInit {
       }
 
       this.service.login(data).subscribe((any: any) => {
-        localStorage.setItem('token', any.token), () => this.router.navigateByUrl("/");
-/*
-        this.service.current().subscribe((user: any) => {
-          localStorage.setItem('user', JSON.stringify(user)), () => this.router.navigate(["/home"]);
-          console.log(user);
-        }, error => {
-          this._snackBar.open('Incorrect credentials! Please try again.', 'Close', {duration: 2000})});*/
-      })
+        localStorage.setItem('token', any.token)})
+        this.router.navigate(["/userSettings"]);
+
     }
   }
+
+
 
 
 }

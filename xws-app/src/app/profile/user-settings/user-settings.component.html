@@ -17,6 +17,7 @@
     </header>
     <main>
         <mat-slide-toggle>Private profile</mat-slide-toggle>
+        <form [formGroup]="form" (ngSubmit)="savePersonalInfo()">
         <section class="personalInfo">
             <mat-card class="headCard">
                 <h2>Personal informations</h2>
@@ -29,23 +30,23 @@
                 <div class="infoSec">
                    <mat-form-field class="input-box" appearance="outline">
                         <mat-label>Name</mat-label>
-                        <input matInput placeholder="">
+                        <input matInput placeholder=""  formControlName="name">
                     </mat-form-field>
                     <mat-form-field class="input-box" appearance="outline">
                         <mat-label>Surname</mat-label>
-                        <input matInput placeholder="">
+                        <input matInput placeholder="" formControlName="surname">
                     </mat-form-field>
                     <mat-form-field class="input-box" appearance="outline">
                         <mat-label>Birth date</mat-label>
-                        <input matInput placeholder="">
+                        <input matInput placeholder="" formControlName="birthDate">
                     </mat-form-field>
                     <mat-form-field class="input-box" appearance="outline">
                         <mat-label>Phone number</mat-label>
-                        <input matInput placeholder="">
+                        <input matInput placeholder="" formControlName="phoneNumber">
                     </mat-form-field>
                     <mat-form-field class="input-box" appearance="outline">
                         <mat-label>Email</mat-label>
-                        <input matInput placeholder="">
+                        <input matInput placeholder="" formControlName="email">
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="input-box">
                         <mat-label>Gender</mat-label>
@@ -68,11 +69,11 @@
                 <div>
                     <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>Education</mat-label>
-                        <textarea rows="12" matInput></textarea>
+                        <textarea rows="12" matInput formControlName="education"></textarea>
                       </mat-form-field>
                       <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>Work experience</mat-label>
-                        <textarea rows="12" matInput></textarea>
+                        <textarea rows="12" matInput formControlName="workExperience"></textarea>
                       </mat-form-field>
                 </div>
                 <button class="save">Save</button>
@@ -87,13 +88,16 @@
                 <div>
                     <mat-form-field class="example-full-widthh" appearance="outline">
                         <mat-label>Biography</mat-label>
-                        <textarea rows="12" matInput></textarea>
+                        <textarea rows="12" matInput formControlName="biography"></textarea>
                       </mat-form-field>
                 </div>
                 <button class="save">Save</button>
             </mat-card>
         </section>
+
+        </form>
         
+        <form [formGroup]="formPassword" (ngSubmit)="saveNewPassword()">
         <section class="securityInfo">
             <mat-card class="headCard">
                 <h2>Security informations</h2>
@@ -102,12 +106,16 @@
                 <div>
                     <div class="pass">
                         <mat-form-field class="input-box" appearance="outline">
-                            <mat-label>Password</mat-label>
-                            <input matInput placeholder="">
+                            <mat-label>Old password</mat-label>
+                            <input matInput placeholder="" formControlName="oldPassword">
+                        </mat-form-field>
+                        <mat-form-field class="input-box" appearance="outline">
+                            <mat-label>New password</mat-label>
+                            <input matInput placeholder="" formControlName="newPassword">
                         </mat-form-field>
                         <mat-form-field class="input-box" appearance="outline">
                             <mat-label>Password repeat</mat-label>
-                            <input matInput placeholder="">
+                            <input matInput placeholder="" formControlName="passwordRepeat">
                         </mat-form-field>
                     </div>
                     <mat-form-field class="input-box" appearance="outline" style="margin-left: 2%; margin-top: 3%;">
@@ -118,6 +126,7 @@
                 <button class="save" style="top: 76%;">Save</button>              
             </mat-card>
         </section>
+    </form>
     </main>
 
     <footer>
