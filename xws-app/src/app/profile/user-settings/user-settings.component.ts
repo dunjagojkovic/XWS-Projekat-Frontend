@@ -15,6 +15,7 @@ export class UserSettingsComponent implements OnInit {
  
   form: FormGroup;
   formPassword: FormGroup;
+  user: any;
     
   constructor(
     private formBuilder : FormBuilder,
@@ -74,12 +75,11 @@ export class UserSettingsComponent implements OnInit {
       email: email,
       username: username,
       birthDate: birthDate,
-      gender: gender,
+      gender : gender,
       education: education,
       workExperience: workExperience,
       biography: biography,     
-      phoneNumber: phoneNumber,
-      password: password
+      phoneNumber: phoneNumber
     }
 
     this.api.editInfo(id, data).subscribe((response: any) => {

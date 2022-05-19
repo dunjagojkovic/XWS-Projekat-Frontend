@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './api.service';
+import { AuthGuard } from './auth.guard';
+
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
@@ -49,7 +51,7 @@ import { UserSettingsComponent } from './profile/user-settings/user-settings.com
     MatCardModule
 
   ],
-  providers: [ApiService],
+  providers: [ApiService, AuthGuard,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

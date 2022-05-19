@@ -45,9 +45,18 @@ export class HomepageComponent implements OnInit {
       }
 
       this.service.login(data).subscribe((any: any) => {
-        localStorage.setItem('token', any.token)})
-        this.router.navigate(["/userSettings"]);
+        console.log(data);
+        localStorage.setItem('token', any.token);
 
+        this.service.current().subscribe((user: any) => {
+          localStorage.setItem('user', JSON.stringify(user));
+          console.log(user);
+          if(user.type == "User"){
+            this.router.navigate(['/userSettings']);
+          }
+        }, error => {
+          this._snackBar.open('Incorrect credentials! Please try again.', 'Close', {duration: 2000})});
+      })
     }
   }
 
