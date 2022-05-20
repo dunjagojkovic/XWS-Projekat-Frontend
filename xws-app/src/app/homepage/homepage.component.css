@@ -110,6 +110,7 @@ p button {
     margin-left: 2%;
     border-radius: 10%;
     font-weight: bold;
+    cursor: pointer;
 }
 
 ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {

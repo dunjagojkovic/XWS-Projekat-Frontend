@@ -38,6 +38,6 @@ export class ApiService {
   }
 
   changePassword(data: any){
-    return this.http.post(this.baseURL + "/api/users/password", data, this.getAuthoHeader());
+    return this.http.post(this.baseURL + "/api/users/changePassword", data, this.getAuthoHeader());
   }
 }

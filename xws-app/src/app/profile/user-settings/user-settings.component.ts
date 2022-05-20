@@ -15,7 +15,7 @@ export class UserSettingsComponent implements OnInit {
  
   form: FormGroup;
   formPassword: FormGroup;
-  user: any;
+  user: any = {} as any;
     
   constructor(
     private formBuilder : FormBuilder,
@@ -30,7 +30,7 @@ export class UserSettingsComponent implements OnInit {
         surname: ['', Validators.pattern('[a-zčćžšđA-ZČĆŽŠĐ]*')],
         username: [''],
         birthDate: [''], 
-        email: ['', Validators.required],
+        email: [''],
         gender: [''],
         education: ['', Validators.minLength(3)],
         workExperience: ['', Validators.pattern('[a-zčćžšđA-ZČĆŽŠĐ]*')],
@@ -48,9 +48,12 @@ export class UserSettingsComponent implements OnInit {
       });
     }
 
-  ngOnInit(): void {
-  }
-
+    ngOnInit(): void {
+      this.api.current().subscribe((response:any) => {
+        this.user = response;     
+        console.log(response)
+    });
+    }
   savePersonalInfo() {
 
     const name = this.form.get('name')?.value;
@@ -106,6 +109,11 @@ export class UserSettingsComponent implements OnInit {
     this.api.changePassword(data).subscribe((response: any) => {
       console.log(response);
     });
+  }
+
+  logout() {
+    this.user = localStorage.clear();
+    this.router.navigate(['/']);
   }
 
 }

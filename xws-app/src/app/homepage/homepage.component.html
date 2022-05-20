@@ -9,10 +9,10 @@
 <body>
     <header>
         <mat-toolbar>
-            <h1><span>S</span>tylinkt</h1>
+            <h1 [routerLink]="['/']" style="cursor: pointer;"><span>S</span>tylinkt</h1>
             <span class="example-spacer"></span>
-            <button [routerLink]="['/registration']" style="float:none"><a>Join us</a></button>
-            <button (click)="loginBox = true; textBox = false"><a>Log in</a></button>
+            <button [routerLink]="['/registration']" style="float: none; cursor: pointer;"><a>Join us</a></button>
+            <button (click)="loginBox = true; textBox = false" style="cursor: pointer;"><a>Log in</a></button>
         </mat-toolbar>
     </header>
     <main>
@@ -36,7 +36,7 @@
                           <mat-label>Password</mat-label>
                           <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
                       </mat-form-field>
-                      <p>Don't have account, <button><a>Sign up</a></button></p>
+                      <p>Don't have account, <button style="cursor: pointer;" [routerLink]="['/registration']"><a>Sign up</a></button></p>
                       <div style="display: flex; flex-direction: row">
                         <button (click)="onSubmit()" class="butt">Confirm</button>
                         <button class="butt" (click)="loginBox = false; textBox = true">Close</button>

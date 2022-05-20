@@ -11,8 +11,7 @@
         <mat-toolbar>
             <h1><span>S</span>tylinkt</h1>
             <span class="example-spacer"></span>
-            <button><a>Join us</a></button>
-            <button><a>Log in</a></button>
+            <button (click)="logout()" style="cursor: pointer;"><a>Logout</a></button>
         </mat-toolbar>
     </header>
     <main>
@@ -30,23 +29,27 @@
                 <div class="infoSec">
                    <mat-form-field class="input-box" appearance="outline">
                         <mat-label>Name</mat-label>
-                        <input matInput placeholder=""  formControlName="name">
+                        <input matInput placeholder="" value="{{user.name}}"   formControlName="name">
                     </mat-form-field>
                     <mat-form-field class="input-box" appearance="outline">
                         <mat-label>Surname</mat-label>
-                        <input matInput placeholder="" formControlName="surname">
+                        <input matInput placeholder="" value="{{user.surname}}" formControlName="surname">
                     </mat-form-field>
                     <mat-form-field class="input-box" appearance="outline">
                         <mat-label>Birth date</mat-label>
-                        <input matInput placeholder="" formControlName="birthDate">
+                        <input matInput placeholder="" value="{{user.birthDate}}" formControlName="birthDate">
                     </mat-form-field>
                     <mat-form-field class="input-box" appearance="outline">
                         <mat-label>Phone number</mat-label>
-                        <input matInput placeholder="" formControlName="phoneNumber">
+                        <input matInput placeholder="" value="{{user.phoneNumber}}" formControlName="phoneNumber">
                     </mat-form-field>
                     <mat-form-field class="input-box" appearance="outline">
                         <mat-label>Email</mat-label>
-                        <input matInput placeholder="" formControlName="email">
+                        <input matInput placeholder="" value="{{user.email}}" formControlName="email">
+                    </mat-form-field>
+                    <mat-form-field class="input-box" appearance="outline" style="margin-left: 2%; margin-top: 3%;">
+                        <mat-label>Username</mat-label>
+                        <input matInput placeholder="" value="{{user.username}}" formControlName="username" >
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="input-box">
                         <mat-label>Gender</mat-label>
@@ -69,11 +72,11 @@
                 <div>
                     <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>Education</mat-label>
-                        <textarea rows="12" matInput formControlName="education"></textarea>
+                        <textarea rows="12" matInput value="{{user.education}}" formControlName="education"></textarea>
                       </mat-form-field>
                       <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>Work experience</mat-label>
-                        <textarea rows="12" matInput formControlName="workExperience"></textarea>
+                        <textarea rows="12" matInput value="{{user.workExperience}}" formControlName="workExperience"></textarea>
                       </mat-form-field>
                 </div>
                 <button class="save">Save</button>
@@ -88,7 +91,7 @@
                 <div>
                     <mat-form-field class="example-full-widthh" appearance="outline">
                         <mat-label>Biography</mat-label>
-                        <textarea rows="12" matInput formControlName="biography"></textarea>
+                        <textarea rows="12" matInput value="{{user.biography}}" formControlName="biography"></textarea>
                       </mat-form-field>
                 </div>
                 <button class="save">Save</button>
@@ -118,10 +121,7 @@
                             <input matInput placeholder="" formControlName="passwordRepeat">
                         </mat-form-field>
                     </div>
-                    <mat-form-field class="input-box" appearance="outline" style="margin-left: 2%; margin-top: 3%;">
-                        <mat-label>Username</mat-label>
-                        <input matInput placeholder="">
-                    </mat-form-field>
+                    
                 </div>  
                 <button class="save" style="top: 76%;">Save</button>              
             </mat-card>
