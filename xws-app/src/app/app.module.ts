@@ -22,6 +22,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserSettingsComponent } from './profile/user-settings/user-settings.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -32,7 +33,8 @@ import { UserSettingsComponent } from './profile/user-settings/user-settings.com
     HomepageComponent,
     RegistrationComponent,
     ProfileComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

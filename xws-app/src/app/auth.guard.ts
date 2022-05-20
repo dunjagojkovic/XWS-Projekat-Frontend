@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot): boolean {
 
       if(route.data['role'] != this.getRole()) { 
-        this.router.navigate(['/']); 
+        this.router.navigate(['/notFound']); 
         return false;
       }
 
