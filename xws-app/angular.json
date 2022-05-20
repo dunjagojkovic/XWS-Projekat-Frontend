@@ -9,7 +9,7 @@
         "@schematics/angular:application": {
           "strict": true
         }
-      },
+      },      
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -75,7 +75,12 @@
               "browserTarget": "xws-app:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+            "options": {
+              "sslKey": "cert/Dislinkt.key",
+              "sslCert": "cert/Dislinkt.cer",
+              "ssl": true
+            }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
