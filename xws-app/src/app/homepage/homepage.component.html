@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <mat-toolbar>
-            <h1>Stylinkt</h1>
+            <h1 [routerLink]="['/']" style="cursor: pointer;"><span>S</span>tylinkt</h1>
             <span class="example-spacer"></span>
-            <button [routerLink]="['/registration']" style="float:none"><a>Join us</a></button>
-            <button (click)="loginBox = true; textBox = false"><a>Log in</a></button>
+            <button [routerLink]="['/registration']" style="float: none; cursor: pointer;"><a>Join us</a></button>
+            <button (click)="loginBox = true; textBox = false" style="cursor: pointer;"><a>Log in</a></button>
         </mat-toolbar>
     </header>
     <main>
@@ -23,21 +26,23 @@
                         <li>&#9656; Post your job for milions of people to see</li>
                         <li>&#9656; Learn the skills you need to succeed</li>
                     </ul>
+                    <form [formGroup]="form">
                     <div class="login-box" *ngIf="loginBox">
                         <mat-form-field class="input-box" appearance="outline">
                           <mat-label>Username</mat-label>
-                          <input matInput placeholder="" value="">
+                          <input matInput placeholder="" value="" formControlName="username">
                         </mat-form-field>
                         <mat-form-field class="input-box" appearance="outline">
                           <mat-label>Password</mat-label>
-                          <input matInput [type]="hide ? 'password' : 'text'">
+                          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
                       </mat-form-field>
-                      <p>Don't have account, <button><a>Sign up</a></button></p>
+                      <p>Don't have account, <button style="cursor: pointer;" [routerLink]="['/registration']"><a>Sign up</a></button></p>
                       <div style="display: flex; flex-direction: row">
-                        <button class="butt">Confirm</button>
+                        <button (click)="onSubmit()" class="butt">Confirm</button>
                         <button class="butt" (click)="loginBox = false; textBox = true">Close</button>
                       </div>
                   </div>
+                </form>
                 </div>
             </div>
         </div>

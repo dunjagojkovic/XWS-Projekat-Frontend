@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <mat-toolbar>
+            <h1><span>S</span>tylinkt</h1>
+            <span class="example-spacer"></span>
+            <button (click)="logout()" style="cursor: pointer;"><a>Logout</a></button>
+        </mat-toolbar>
+    </header>
+    <main>
+        <mat-slide-toggle>Private profile</mat-slide-toggle>
+        <form [formGroup]="form" (ngSubmit)="savePersonalInfo()">
+        <section class="personalInfo">
+            <mat-card class="headCard">
+                <h2>Personal informations</h2>
+            </mat-card>
+            <mat-card class="card1">
+                <div class="imgSec">
+                    <img src="assets/coworkers.jpg">
+                    <input type="file">
+                </div>
+                <div class="infoSec">
+                   <mat-form-field class="input-box" appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="" value="{{user.name}}"   formControlName="name">
+                    </mat-form-field>
+                    <mat-form-field class="input-box" appearance="outline">
+                        <mat-label>Surname</mat-label>
+                        <input matInput placeholder="" value="{{user.surname}}" formControlName="surname">
+                    </mat-form-field>
+                    <mat-form-field class="input-box" appearance="outline">
+                        <mat-label>Birth date</mat-label>
+                        <input matInput placeholder="" value="{{user.birthDate}}" formControlName="birthDate">
+                    </mat-form-field>
+                    <mat-form-field class="input-box" appearance="outline">
+                        <mat-label>Phone number</mat-label>
+                        <input matInput placeholder="" value="{{user.phoneNumber}}" formControlName="phoneNumber">
+                    </mat-form-field>
+                    <mat-form-field class="input-box" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="" value="{{user.email}}" formControlName="email">
+                    </mat-form-field>
+                    <mat-form-field class="input-box" appearance="outline" style="margin-left: 2%; margin-top: 3%;">
+                        <mat-label>Username</mat-label>
+                        <input matInput placeholder="" value="{{user.username}}" formControlName="username" >
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="input-box">
+                        <mat-label>Gender</mat-label>
+                        <select matNativeControl>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </mat-form-field>
+                </div>
+                <button class="save">Save</button>
+            </mat-card>
+        </section>
+
+        <section class="educationInfo">
+            <mat-card class="headCard">
+                <h2>Education and Work experience</h2>
+            </mat-card>
+            <mat-card class="card2">
+                <div>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Education</mat-label>
+                        <textarea rows="12" matInput value="{{user.education}}" formControlName="education"></textarea>
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Work experience</mat-label>
+                        <textarea rows="12" matInput value="{{user.workExperience}}" formControlName="workExperience"></textarea>
+                      </mat-form-field>
+                </div>
+                <button class="save">Save</button>
+            </mat-card>
+        </section>
+
+        <section class="biographyInfo">
+            <mat-card class="headCard">
+                <h2>My biography</h2>
+            </mat-card>
+            <mat-card class="card3">
+                <div>
+                    <mat-form-field class="example-full-widthh" appearance="outline">
+                        <mat-label>Biography</mat-label>
+                        <textarea rows="12" matInput value="{{user.biography}}" formControlName="biography"></textarea>
+                      </mat-form-field>
+                </div>
+                <button class="save">Save</button>
+            </mat-card>
+        </section>
+
+        </form>
+        
+        <form [formGroup]="formPassword" (ngSubmit)="saveNewPassword()">
+        <section class="securityInfo">
+            <mat-card class="headCard">
+                <h2>Security informations</h2>
+            </mat-card>
+            <mat-card class="card4">
+                <div>
+                    <div class="pass">
+                        <mat-form-field class="input-box" appearance="outline">
+                            <mat-label>Old password</mat-label>
+                            <input matInput placeholder="" formControlName="oldPassword">
+                        </mat-form-field>
+                        <mat-form-field class="input-box" appearance="outline">
+                            <mat-label>New password</mat-label>
+                            <input matInput placeholder="" formControlName="newPassword">
+                        </mat-form-field>
+                        <mat-form-field class="input-box" appearance="outline">
+                            <mat-label>Password repeat</mat-label>
+                            <input matInput placeholder="" formControlName="passwordRepeat">
+                        </mat-form-field>
+                    </div>
+                    
+                </div>  
+                <button class="save" style="top: 76%;">Save</button>              
+            </mat-card>
+        </section>
+    </form>
+    </main>
+
+    <footer>
+        <div>
+          <h2 class="link_title">Product</h2>
+          <h4 class="link_subtitle">Our plan</h4>
+          <h4 class="link_subtitle">Free trial</h4>
+        </div>
+        <div>
+          <h2 class="link_title">About us</h2>
+          <h4 class="link_subtitle">Request demo</h4>
+          <h4 class="link_subtitle">FAQs</h4>
+        </div>
+        <div>
+          <h2 class="link_title">Support</h2>
+          <h4 class="link_subtitle">Services</h4>
+          <h4 class="link_subtitle">Contact us</h4>
+        </div>
+        <div>
+          <h2 class="link_title">Brand police</h2>
+          <h4 class="link_subtitle">Reviews</h4>
+          <h4 class="link_subtitle">Safety</h4>
+        </div>
+    </footer>
+    <p style="background-color: #d0d5cf; padding: 6px; text-align: center;">Copyright 2022. &#xae;</p>
+</body>
+</html>

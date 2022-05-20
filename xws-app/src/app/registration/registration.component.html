@@ -2,61 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <mat-toolbar>
-            <h1>Stylinkt</h1>
+            <h1 [routerLink]="['/']" style="cursor: pointer;"><span>S</span>tylinkt</h1>
             <span class="example-spacer"></span>
         </mat-toolbar>
     </header>
     
-    <main>
+    <main>   
         <div class="forma">
             <h1>Registration form</h1>
+            <form [formGroup]="form">
             <mat-form-field class="input-box" appearance="outline">
                 <mat-label>Email address</mat-label>
-                <input matInput placeholder="" value="">
+                <input matInput placeholder="" value="" formControlName="email">
             </mat-form-field>
             <mat-form-field class="input-box" appearance="outline">
                 <mat-label>Username</mat-label>
-                <input matInput placeholder="" value="">
+                <input matInput placeholder="" value="" formControlName="username">
             </mat-form-field>
-            <div style="display: flex; flex-direction: row; align-items: center;">
+            <div style="display: flex; flex-direction: row; justify-content: center;">
                 <mat-form-field class="input-box-small" appearance="outline">
                     <mat-label>Name</mat-label>
-                    <input matInput placeholder="" value="">
+                    <input matInput placeholder="" value="" formControlName="name">
                 </mat-form-field>
                 <mat-form-field class="input-box-small" appearance="outline">
                     <mat-label>Surname</mat-label>
-                    <input matInput placeholder="" value="">
+                    <input matInput placeholder="" value="" formControlName="surname">
                 </mat-form-field>
             </div>
             <mat-form-field class="input-box" appearance="outline">
                 <mat-label>Phone number</mat-label>
-                <input matInput placeholder="" value="">
+                <input matInput placeholder="" value="" formControlName="phoneNumber">
             </mat-form-field>
             <mat-form-field class="input-box" appearance="outline">
                 <mat-label>Date of birth</mat-label>
-                <input matInput placeholder="" value="">
+                <input matInput placeholder="" value="" formControlName="birthDate">
             </mat-form-field>
             <mat-form-field appearance="outline" class="input-box">
                 <mat-label>Gender</mat-label>
-                <select matNativeControl required>
-                  <option value="man">Man</option>
-                  <option value="women">Woman</option>
-                  <option value="other">Other</option>
+                <select matNativeControl required formControlName="gender">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
                 </select>
               </mat-form-field>
             <mat-form-field class="input-box" appearance="outline">
                 <mat-label>Password</mat-label>
-                <input matInput placeholder="" value="">
+                <input matInput placeholder="" value="" formControlName="password">         
             </mat-form-field>
             <mat-form-field class="input-box" appearance="outline">
                 <mat-label>Repeat password</mat-label>
-                <input matInput placeholder="" value="">
+                <input matInput placeholder="" value="" formControlName="passwordRepeat">
             </mat-form-field>
-            <button class="butt">Register</button>
+            <button (click)="onSubmit()" class="submit">Register</button>
+        </form>
         </div>
     </main>
 
