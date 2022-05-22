@@ -25,7 +25,12 @@ export class RegistrationComponent implements OnInit {
       surname: ['', Validators.compose([Validators.required, Validators.pattern('[a-zčćžšđA-ZČĆŽŠĐ]*')])],
       email: ['', Validators.email],
       username: ['', Validators.required ],
-      password: ['', Validators.required],
+      password: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(30),
+        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$') //this is for the letters (both uppercase and lowercase) and numbers validation
+      ])],
       passwordRepeat: ['', Validators.required],
       phoneNumber: ['', Validators.compose([Validators.required, Validators.minLength(10)])],
       gender: ['', Validators.required],
