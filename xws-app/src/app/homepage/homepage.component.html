@@ -5,6 +5,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
     <header>
@@ -44,6 +45,23 @@
                   </div>
                 </form>
                 </div>
+            </div>
+            <div class="searchBox">
+              <div class="search-box-rooms">
+                <input class="search-txt-rooms" type="text" matInput value="" placeholder="Search for..." />
+                <a class="search-btn-rooms">
+                  <mat-icon>search</mat-icon>
+                </a>
+              </div>
+              <mat-selection-list #shoes [multiple]="false" class="list">
+                <mat-list-option class="listOpt">
+                  <div>
+                    <label>Ime</label>
+                    <label>Prezime</label>
+                    <label>Datum rodjenja</label>
+                  </div>
+                </mat-list-option>
+              </mat-selection-list>
             </div>
         </div>
     </main>

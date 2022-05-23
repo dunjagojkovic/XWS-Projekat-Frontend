@@ -17,6 +17,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
 
 import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -50,7 +51,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatSnackBarModule,
     MatDatepickerModule,
     MatSlideToggleModule,
-    MatCardModule
+    MatCardModule,
+    MatListModule
 
   ],
   providers: [ApiService, AuthGuard,],
