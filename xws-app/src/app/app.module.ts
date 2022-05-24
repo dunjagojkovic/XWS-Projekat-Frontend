@@ -3,9 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './api.service';
 import { AuthGuard } from './auth.guard';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
+
 
 
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -55,7 +57,11 @@ import { PasswordResComponent } from './password-res/password-res.component';
     MatCardModule
 
   ],
-  providers: [ApiService, AuthGuard,],
+  providers: [ApiService, AuthGuard, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
