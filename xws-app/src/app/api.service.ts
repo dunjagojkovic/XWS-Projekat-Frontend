@@ -19,7 +19,7 @@ export class ApiService {
     return{
       headers: headers
     };
-  }  
+  }
 
   login(data: any) {
     return this.http.post(this.baseURL + "/api/users/login", data);
@@ -39,5 +39,24 @@ export class ApiService {
 
   changePassword(data: any){
     return this.http.post(this.baseURL + "/api/users/changePassword", data, this.getAuthoHeader());
+  }
+
+  activateAccount(code: any){
+    return this.http.post(this.baseURL + "/api/users/checkActivationCode", code)
+  }
+
+  sendEmailCode(data: any) {
+    console.log("in send email")
+    return this.http.post(this.baseURL + "/api/users/loginCode", data )
+  }
+
+  resetPass( data: any) {
+    console.log("in reset")
+    return this.http.post(this.baseURL + "/api/users/forgottenpassword", data )
+  }
+
+  newPass(data: any){
+    console.log("sending new pass")
+    return this.http.post(this.baseURL + "/api/users/checkForgottenPassword", data )
   }
 }
