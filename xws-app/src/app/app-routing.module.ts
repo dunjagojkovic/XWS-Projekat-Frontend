@@ -6,8 +6,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserSettingsComponent } from './profile/user-settings/user-settings.component';
 import { AuthGuard } from './auth.guard';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { UserActivation} from './user-activation/user-activation.component';
 import {PasswordResComponent} from "./password-res/password-res.component";
+import {UserActivateComponent} from "./user-activate/user-activate.component";
+import {SuccessfullActivationComponent} from "./successfull-activation/successfull-activation.component";
 
 
 const routes: Routes = [
@@ -16,8 +17,9 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
   { path: 'userSettings', component: UserSettingsComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
   { path: 'notFound', component: NotFoundComponent},
-  { path: 'activation/:code', component: UserActivation},
-  {path: 'reset/:code', component: PasswordResComponent}
+  { path: 'activation/:code', component: UserActivateComponent},
+  {path: 'reset/:code', component: PasswordResComponent},
+  {path: 'successfullactivation', component: SuccessfullActivationComponent}
 ];
 
 @NgModule({

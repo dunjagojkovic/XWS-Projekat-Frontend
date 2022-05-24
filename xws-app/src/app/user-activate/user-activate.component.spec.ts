@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserActivation } from './user-activation.component';
+import { UserActivateComponent } from './user-activate.component';
 
-describe('RegistrationComponent', () => {
-  let component: UserActivation;
-  let fixture: ComponentFixture<UserActivation>;
+describe('UserActivateComponent', () => {
+  let component: UserActivateComponent;
+  let fixture: ComponentFixture<UserActivateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserActivation ]
+      declarations: [ UserActivateComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserActivation);
+    fixture = TestBed.createComponent(UserActivateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

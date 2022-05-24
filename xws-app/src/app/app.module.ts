@@ -26,6 +26,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserSettingsComponent } from './profile/user-settings/user-settings.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PasswordResComponent } from './password-res/password-res.component';
+import { UserActivateComponent } from './user-activate/user-activate.component';
+import { SuccessfullActivationComponent } from './successfull-activation/successfull-activation.component';
 
 
 
@@ -38,7 +40,9 @@ import { PasswordResComponent } from './password-res/password-res.component';
     ProfileComponent,
     UserSettingsComponent,
     NotFoundComponent,
-    PasswordResComponent
+    PasswordResComponent,
+    UserActivateComponent,
+    SuccessfullActivationComponent
   ],
   imports: [
     BrowserModule,
