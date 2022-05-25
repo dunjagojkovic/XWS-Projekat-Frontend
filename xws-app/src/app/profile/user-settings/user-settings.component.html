@@ -12,6 +12,7 @@
             <h1><span>S</span>tylinkt</h1>
             <span class="example-spacer"></span>
             <button (click)="logout()" style="cursor: pointer;"><a>Logout</a></button>
+            <button [routerLink]="['/userPosts']" style="float: none; cursor: pointer;"><a>My posts</a></button>
         </mat-toolbar>
     </header>
     <main>
