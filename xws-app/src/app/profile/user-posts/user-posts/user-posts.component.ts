@@ -62,7 +62,7 @@ export class UserPostsComponent implements OnInit {
   }
 
   dislikes(id: string) {
-    this.service.dislikeLikes(id).toPromise()
+    this.service.postDislikes(id).toPromise()
       .then(res => this.dislikeList = res as string[])
     this.postDislikeId = id
     this.dislikeBack = "";
