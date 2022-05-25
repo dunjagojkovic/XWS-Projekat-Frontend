@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'notFound', component: NotFoundComponent},
   { path: 'userPosts', component: UserPostsComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
   { path: 'publishPost', component: PublishPostComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
+  { path: 'followingPosts', component: PostReviewComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
 ];
 
 @NgModule({
