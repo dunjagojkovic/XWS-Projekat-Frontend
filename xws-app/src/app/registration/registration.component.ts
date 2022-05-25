@@ -14,6 +14,14 @@ export class RegistrationComponent implements OnInit {
   form: FormGroup;  
   hide = true;
 
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', Validators.compose([
+    Validators.required,
+    Validators.minLength(8),
+    Validators.maxLength(30),
+    Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[a-zA-Z0-9@$!%*?&]+$')
+  ]));
+
   constructor(
     private formBuilder : FormBuilder,
     private router: Router,
@@ -23,9 +31,9 @@ export class RegistrationComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', Validators.compose([Validators.required, Validators.pattern('[a-zčćžšđA-ZČĆŽŠĐ]*')])],
       surname: ['', Validators.compose([Validators.required, Validators.pattern('[a-zčćžšđA-ZČĆŽŠĐ]*')])],
-      email: ['', Validators.email],
+      email: this.email,
       username: ['', Validators.required ],
-      password: ['', Validators.required],
+      password: this.password,
       passwordRepeat: ['', Validators.required],
       phoneNumber: ['', Validators.compose([Validators.required, Validators.minLength(10)])],
       gender: ['', Validators.required],
@@ -72,6 +80,21 @@ export class RegistrationComponent implements OnInit {
     });
 
   }
+}
+
+getEmailErrorMessage() {
+  if (this.email.hasError('required')) {
+    return 'You must enter a value';
+  }
+
+  return this.email.hasError('email') ? 'Not a valid email' : '';
+}
+
+getPasswordErrorMessage() {
+  if (this.password.hasError('required')) {
+    return 'You must enter a value';
+  }
+  return this.password.hasError('pattern') ? 'Password must be 8 to 30 characters long, have uppercase and lowercase letters, numbers and symbols' : '';
 }
 
 }
