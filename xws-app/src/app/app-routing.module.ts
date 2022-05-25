@@ -8,6 +8,7 @@ import { AuthGuard } from './auth.guard';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UserPostsComponent } from './profile/user-posts/user-posts/user-posts.component';
 import { PostReviewComponent } from './posts/post-review/post-review.component';
+import { PublishPostComponent } from './profile/publish-post/publish-post/publish-post.component';
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'userSettings', component: UserSettingsComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
   { path: 'notFound', component: NotFoundComponent},
   { path: 'userPosts', component: UserPostsComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
+  { path: 'publishPost', component: PublishPostComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
 ];
 
 @NgModule({

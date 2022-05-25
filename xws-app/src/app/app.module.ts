@@ -27,6 +27,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { UserPostsComponent } from './profile/user-posts/user-posts/user-posts.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostReviewComponent } from './posts/post-review/post-review.component';
+import { PublishPostComponent } from './profile/publish-post/publish-post/publish-post.component';
 
 
 
@@ -40,7 +41,8 @@ import { PostReviewComponent } from './posts/post-review/post-review.component';
     UserSettingsComponent,
     NotFoundComponent,
     UserPostsComponent,
-    PostReviewComponent
+    PostReviewComponent,
+    PublishPostComponent
   ],
   imports: [
     BrowserModule,
