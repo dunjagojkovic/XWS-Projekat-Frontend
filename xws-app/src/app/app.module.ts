@@ -24,6 +24,9 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserSettingsComponent } from './profile/user-settings/user-settings.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { UserPostsComponent } from './profile/user-posts/user-posts/user-posts.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PostReviewComponent } from './posts/post-review/post-review.component';
 
 
 
@@ -35,7 +38,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     RegistrationComponent,
     ProfileComponent,
     UserSettingsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    UserPostsComponent,
+    PostReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatDatepickerModule,
     MatSlideToggleModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    NgbModule
 
   ],
   providers: [ApiService, AuthGuard,],
