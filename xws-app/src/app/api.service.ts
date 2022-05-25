@@ -42,7 +42,7 @@ export class ApiService {
   }
 
   activateAccount(code: any){
-    return this.http.post(this.baseURL + "/api/users/checkActivationCode", code)
+    return this.http.post(this.baseURL + "/api/users/checkActivationCode", code, {responseType:'text'})
   }
 
   sendEmailCode(data: any) {

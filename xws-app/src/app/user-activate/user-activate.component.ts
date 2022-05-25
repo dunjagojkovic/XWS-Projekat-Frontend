@@ -22,14 +22,16 @@ export class UserActivateComponent implements OnInit {
   ngOnInit(): void {
     let url = window.location.href
     var code = url.split('/')[4]
+    console.log(code)
 
-    this.api.activateAccount(code).subscribe((response: any) => {
-      console.log(response)
-      this.router.navigate(['successfullactivation'])
-
-    }, error=>{
-      this.router.navigate(['notFound'])
-    });
+    this.api.activateAccount(code).subscribe({
+      next:(response) =>{
+        console.log(response)
+        this.router.navigate(['successfullactivation'])
+      }, error: (err)=>{
+        console.log(err)
+        this.router.navigate(['notFound'])
+    }});
 
   }
 
