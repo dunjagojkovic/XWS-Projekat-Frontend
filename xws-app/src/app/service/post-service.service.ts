@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { PostRequest } from '../model/post-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,6 @@ export class PostServiceService {
   getAuthoHeader(): any {
     const headers = {
       'Content-Type': 'application/json',
-
     }
     return {
       headers: headers
@@ -35,6 +35,15 @@ export class PostServiceService {
 
   dislikeLikes(id: string) {
     return this.http.get(this.baseURL + "/post/" + id + "/dislikes");
+  }
+
+  publishPost(post: PostRequest) {
+
+    this.http.post(this.baseURL + "/post", JSON.stringify(post))
+      .subscribe(result => {
+        console.log(result)
+      });
+
   }
 
 
