@@ -28,7 +28,6 @@ modules/.settings
 modules/.vscode
 .vimrc
 .nvimrc
-/.angular/cache
 
 # Don't check in secret files
 *secret.js
@@ -42,6 +41,7 @@ yarn-error.log
 
 # rollup-test output
 /modules/rollup-test/dist/
+/.angular/cache
 
 # User specific bazel settings
 .bazelrc.user
