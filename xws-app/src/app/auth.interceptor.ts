@@ -33,7 +33,6 @@ export class AuthInterceptor implements HttpInterceptor {
          return;
         }
         this.router.navigate(['/notFound']);
-        localStorage.clear()
       }
     }));
   }
