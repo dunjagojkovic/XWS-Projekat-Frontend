@@ -18,12 +18,14 @@ import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 
 import { HomepageComponent } from './homepage/homepage.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent
+    HomepageComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

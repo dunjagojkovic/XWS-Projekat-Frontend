@@ -17,6 +17,7 @@ mat-toolbar h1,span {
     color: #2A9D8F;
     font-weight: bold;
     font-family: 'Sansita Swashed', cursive;
+    margin-bottom: 1%;
 }
 
 h1 span {
@@ -46,69 +47,38 @@ a:hover {
     color: #E7C15F;
 }
 
-.box1 {
+.pozadina {
+    position: relative;
     display: flex;
+    justify-content: center;
 }
 
-.box1>div {
-    margin-top: 10%;
-    margin-bottom: 10%;
-    margin-left: 2%;
+.forma {
+    position: absolute;
+    width: 32%;
+    top: 8%;
+    background-color: #264653;
+    border-radius: 50px;
+    opacity: 0.85;
+    justify-content: center;
 }
 
-.box1 img {
-    width: 45%;
-    margin-left: 2%;
-    margin-top: 1%;
-}
-
-ul {
-    margin-top: 6%;
-    margin-left: 10%;
-    list-style-type: none;
-}
-
-li {
-    width: 30vw;
-    background-color: #e7edec;
-    color: #264653;
-    padding: 20px;
-    margin-bottom: 3%;
-    border: none;
-    box-shadow: 5px 5px #d0d5cf;
-    border-radius: 20px;
-    font-size: 16px;
-    padding-left: 40px;
-}
-
-.login-box{
+.registracija {
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
+    position: relative;
     align-items: center;
+    width: 100%;
 }
 
-p button {
-    background-color: white;
-    border: none;
-    font-weight: bolder;
-    font-size: 16px;
-    color: #2A9D8F;
+.registracija h1 {
+    color: white;
+    padding: 2%;
 }
 
-.butt {
-    background-color: #83C3B4;
-    width: 110px;
-    text-align: center;
-    padding: 10px;
-    height: 40px;
-    color: #e5e9e4;
-    border: none;
-    margin-right: 2%;
-    margin-left: 2%;
-    border-radius: 10%;
-    font-weight: bold;
-    cursor: pointer;
+.example-full-width {
+    color: white;
+    width: 65%;
 }
 
 ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
@@ -126,38 +96,30 @@ p button {
   font-weight: bold;
 }
 
-.input-box {
-    width: 320px;
-    color: #2A9D8F;
-    align-items: center;
-    height: 58px;
-    margin-bottom: 10px;
-    border-radius: 10px;
+.btn {
+    cursor: pointer;
+    background-color: white;
+    position: relative;
+    width: 25%;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 5%;
+    color: #264653;
+    border: none;
+    border-radius: 15px;
     font-weight: bold;
 }
 
-.opis {
-    position: absolute;
-    top: 140%;
-    margin: 0 auto;
-    width: 30%;
-    color: #2A9D8F;
-    opacity: 0.90;
-    padding: 2%;
-    text-align: center;
-    border-radius: 100px;
-    background-color: white;
-    display: flex;
-    margin-left: 35%;
+.pozadina img {
+    width: 100%;
+    opacity: 0.95;
+    margin-bottom: -0.5%;
 }
 
-.opis h2 {
-    margin-left: 5%;
-    margin-right: 5%;
-}
 
 /* FOOTER */
 footer {
+    margin-bottom: 0;
     background-color: #264653;
     display: flex;
     align-items: right;
