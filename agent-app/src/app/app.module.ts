@@ -19,13 +19,15 @@ import {MatListModule} from '@angular/material/list';
 
 import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
