@@ -1,1 +1,57 @@
-<p>profile works!</p>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
+<body>
+    <div class="dugmici">
+        <button class="toolbtn" style="float: none; cursor: pointer;"><a>Companies</a></button>
+        <button class="toolbtn" [routerLink]="['/']" style="float: none; cursor: pointer;"><a>Log out</a></button>
+      </div>
+    <main>
+        <div class="leftbox">
+            <h1>Welcome Luka!</h1>
+            <a (click)="regBox = true; imgBox = false" *ngIf="imgBox">Register your company</a>
+        </div>
+        <div class="rightbox">
+            <img *ngIf="imgBox" src="assets/img.png">
+            <div *ngIf="regBox" class="registration">
+                <h1 style="font-weight: bold; color: #E7C15F;">Company registration</h1>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">Company Name</mat-label>
+                        <input matInput placeholder="" value="">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">State</mat-label>
+                        <input matInput placeholder="" value="">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">City</mat-label>
+                        <input matInput placeholder="" value="">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">Address</mat-label>
+                        <input matInput value="" placeholder="">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">Contact</mat-label>
+                        <input matInput  placeholder="" value="">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">Email address</mat-label>
+                        <input matInput placeholder="" value="">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">Description</mat-label>
+                        <textarea matInput placeholder=""></textarea>
+                      </mat-form-field>
+                      <button class="btn" (click)="regBox = false; imgBox = true;">Register</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -12,4 +12,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  regBox : boolean = false;
+  imgBox : boolean = true;
+  hide = true;
 }
