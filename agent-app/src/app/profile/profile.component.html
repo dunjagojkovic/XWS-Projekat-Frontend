@@ -14,7 +14,7 @@
       </div>
     <main>
         <div class="leftbox">
-            <h1>Welcome Luka!</h1>
+            <h1>Welcome {{user.name}}!</h1>
             <a (click)="regBox = true; imgBox = false" *ngIf="imgBox">Register your company</a>
         </div>
         <div class="rightbox">
