@@ -52,15 +52,12 @@ export class HomepageComponent implements OnInit {
           localStorage.setItem('user', JSON.stringify(user));
           console.log(user);
           if(user.type == "User"){
-            this.router.navigate(['/userSettings']);
+            this.router.navigate(['/profile']);
           }
         }, error => {
           this._snackBar.open('Incorrect credentials! Please try again.', 'Close', {duration: 2000})});
       })
     }
   }
-
-
-
 
 }
