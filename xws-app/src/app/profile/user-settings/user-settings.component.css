@@ -59,12 +59,13 @@ section {
 }
 
 .headCard {
-    background-color: #e5e9e4;
+    background-color: #83C3B4;
     font-weight: bolder;
-    color: #2A9D8F;
+    color: #f6f8f5;
     width: 40%;
     padding: 10px;
     padding-left: 20px;
+    margin-bottom: 2%;
 }
 
 .save {
