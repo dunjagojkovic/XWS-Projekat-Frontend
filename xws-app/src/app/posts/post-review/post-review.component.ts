@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
-import { Comment } from 'src/app/model/comment.model';
-import { Following } from 'src/app/model/following.model';
-import { Post } from 'src/app/model/post.model';
 import { PostServiceService } from 'src/app/service/post-service.service';
 
 @Component({
@@ -17,25 +14,28 @@ export class PostReviewComponent implements OnInit {
   backPost = ""
   comment = ""
 
-  public commentList: Comment[]
-  public likeList: string[]
-  public dislikeList: string[]
-  posts: Post[]
+  public commentList: any[]
+  posts: any[]
 
   user: any = {} as any
+  userPost: any = {} as any
+  userComment: any = {} as any
+  element: any;
   constructor(public service: PostServiceService, public api: ApiService, public router: Router) { }
 
   ngOnInit(): void {
 
     let users: string[] = ["dejan"]
-    let following: Following = {
-      Users: users
+    let data = {
+     users: users
     }
 
     this.api.current().subscribe((response: any) => {
       this.user = response;
-      this.service.followingPosts(following).toPromise().then(result => {
-        this.posts = result as Post[]
+      this.service.followingPosts(data).subscribe((response: any) => {
+        this.userPost = response
+        this.posts = this.userPost.posts
+        
       })
     });
 
@@ -43,9 +43,10 @@ export class PostReviewComponent implements OnInit {
   }
 
   comments(id: string) {
-    this.service.postComments(id).toPromise()
-      .then(res => this.commentList = res as Comment[])
-
+    this.service.postComments(id).subscribe((response: any) => {
+      this.userComment = response
+      this.commentList = this.userComment.comments
+    })
     this.postId = id
     this.backPost = ""
   }
@@ -58,44 +59,47 @@ export class PostReviewComponent implements OnInit {
   like(id: string) {
 
     let users: string[] = ["dejan"]
-    let following: Following = {
-      Users: users
+    let following = {
+      users: users
     }
     let data = {
-      Username: this.user.username
+      idPost: id,
+      username: this.user.username
     }
-    this.service.likePost(data, id)
-    this.service.followingPosts(following).toPromise().then(result => {
-      this.posts = result as Post[]
+    this.service.likePost(data)
+    this.service.followingPosts(following).subscribe((response: any) => {
+      this.userPost = response
+      this.posts = this.userPost.posts
+      
     })
 
   }
 
   dislike(id: string) {
     let users: string[] = ["dejan"]
-    let following: Following = {
-      Users: users
+    let following = {
+      users: users
     }
     let data = {
-      Username: this.user.username
+      idPost: id,
+      username: this.user.username
     }
-    this.service.dislikePost(data, id)
-    this.service.followingPosts(following).toPromise().then(result => {
-      this.posts = result as Post[]
+    this.service.dislikePost(data)
+    this.service.followingPosts(following).subscribe((response: any) => {
+      this.userPost = response
+      this.posts = this.userPost.posts
+      
     })
 
   }
 
-
-
-
-
   publishComment(id: string) {
-    let comment: Comment = {
-      User: this.user.username,
-      Content: this.comment
+    let comment = {
+      idPost: id,
+      user: this.user.username,
+      content: this.comment
     }
-    this.service.commentPost(comment, id)
+    this.service.commentPost(comment)
     this.comment = "";
     this.backPost = id;
     this.postId = "";
@@ -104,32 +108,32 @@ export class PostReviewComponent implements OnInit {
 
   isLiked(id: string) {
 
-    for (let i = 0; i < this.posts.length; i++) {
-      if (this.posts[i].Id == id) {
-        for (let j = 0; j < this.posts[i].LikeList.length; j++) {
-          if (this.posts[i].LikeList[j] == this.user.username) {
-            return true;
+    for(let post of this.posts){
+
+      if(post.id == id){
+        for(let like of post.likeList){
+          if (like == this.user.username){
+            return true
           }
         }
-        return false;
       }
     }
-    return false;
+    return false
   }
 
   isDisliked(id: string) {
 
-    for (let i = 0; i < this.posts.length; i++) {
-      if (this.posts[i].Id == id) {
-        for (let j = 0; j < this.posts[i].DislikeList.length; j++) {
-          if (this.posts[i].DislikeList[j] == this.user.username) {
-            return true;
+    for(let post of this.posts){
+
+      if(post.id == id){
+        for(let dislike of post.dislikeList){
+          if (dislike == this.user.username){
+            return true
           }
         }
-        return false;
       }
     }
-    return false;
+    return false
   }
 
 

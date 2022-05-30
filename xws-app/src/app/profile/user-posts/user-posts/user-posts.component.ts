@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
-import { Comment } from 'src/app/model/comment.model';
-import { Post } from 'src/app/model/post.model';
 import { PostServiceService } from 'src/app/service/post-service.service';
 
 @Component({
@@ -11,10 +9,10 @@ import { PostServiceService } from 'src/app/service/post-service.service';
 })
 export class UserPostsComponent implements OnInit {
 
-  public posts: Post[]
-  public commentList: Comment[]
-  public likeList: string[]
-  public dislikeList: string[]
+  public posts: any[]
+  public commentList: any[]
+  public likeList: any[]
+  public dislikeList: any[]
 
   isButtonClicked = false;
   postId = ""
@@ -24,25 +22,30 @@ export class UserPostsComponent implements OnInit {
   postLikeId = ""
   postDislikeId = ""
 
+  userPosts: any = {} as any
   user: any = {} as any
+  userComment: any = {} as any
+  userLike: any = {} as any
+  userDislike: any = {} as any
   constructor(public service: PostServiceService, public api: ApiService) { }
 
   ngOnInit(): void {
 
     this.api.current().subscribe((response: any) => {
       this.user = response;
-      this.service.userPosts(this.user.username).toPromise()
-        .then(res => this.posts = res as Post[])
+      this.service.userPosts(this.user.username).subscribe((response: any) => {
+        this.userPosts = response;
+        this.posts = this.userPosts.posts
+      })
+              
     });
-
-    //this.service.userPosts().toPromise()
-    //.then(res => this.posts = res as Post[])
-
   }
 
   comments(id: string) {
-    this.service.postComments(id).toPromise()
-      .then(res => this.commentList = res as Comment[])
+    this.service.postComments(id).subscribe((response: any) => {
+        this.userComment = response;
+        this.commentList = this.userComment.comments
+    })   
     this.isButtonClicked = true;
     this.postId = id
     this.backPost = ""
@@ -55,15 +58,19 @@ export class UserPostsComponent implements OnInit {
 
   likes(id: string) {
 
-    this.service.postLikes(id).toPromise()
-      .then(res => this.likeList = res as string[])
+    this.service.postLikes(id).subscribe((response: any) => {
+      this.userLike = response
+      this.likeList = response.likes
+    })
     this.postLikeId = id
     this.likeBack = "";
   }
 
   dislikes(id: string) {
-    this.service.postDislikes(id).toPromise()
-      .then(res => this.dislikeList = res as string[])
+    this.service.postDislikes(id).subscribe((response: any) => {
+      this.userDislike = response
+      this.dislikeList = this.userDislike.likes
+    })
     this.postDislikeId = id
     this.dislikeBack = "";
 

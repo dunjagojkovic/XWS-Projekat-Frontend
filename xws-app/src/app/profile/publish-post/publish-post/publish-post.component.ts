@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
-import { PostRequest } from 'src/app/model/post-request.model';
 import { PostServiceService } from 'src/app/service/post-service.service';
 
 @Component({
@@ -58,15 +57,17 @@ export class PublishPostComponent implements OnInit {
     let dislikeList: string[] = [];
     let commentList: Comment[] = [];
 
-    let post: PostRequest = {
-      Description: this.description,
-      Link: this.link,
-      Image: "assets/" + this.img,
-      User: this.user.username,
-      LikeList: likeList,
-      DislikeList: dislikeList,
-      CommentList: commentList
+    let post = {
+      user: this.user.username,
+      image: "assets/" + this.img,
+      description: this.description,
+      link: this.link,
+      likeList: likeList,
+      dislikeList: dislikeList,
+      commentList: commentList
     }
+
+
     this.service.publishPost(post)
     this.router.navigate(['/userPosts']);
   }

@@ -1,8 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Comment } from '../model/comment.model';
-import { Following } from '../model/following.model';
-import { PostRequest } from '../model/post-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +21,7 @@ export class PostServiceService {
   }
 
   userPosts(username: string) {
-    return this.http.get(this.baseURL + "/profile/posts/" + username);
+    return this.http.get(this.baseURL + "/posts/" + username);
   }
 
   postComments(id: string) {
@@ -39,7 +36,7 @@ export class PostServiceService {
     return this.http.get(this.baseURL + "/post/" + id + "/dislikes");
   }
 
-  publishPost(post: PostRequest) {
+  publishPost(post:any) {
 
     this.http.post(this.baseURL + "/post", JSON.stringify(post))
       .subscribe(result => {
@@ -48,31 +45,31 @@ export class PostServiceService {
 
   }
 
-  followingPosts(following: Following) {
+  followingPosts(following: any) {
     return this.http.post(this.baseURL + "/following/posts", JSON.stringify(following));
   }
 
-  commentPost(comment: Comment, id: string) {
+  commentPost(comment: any) {
 
-    this.http.post(this.baseURL + "/post/" + id + "/comment", JSON.stringify(comment))
+    this.http.post(this.baseURL + "/post/comment", JSON.stringify(comment))
       .subscribe(result => {
         console.log(result)
       });
 
   }
 
-  likePost(user: any, id: string) {
+  likePost(user: any) {
 
-    this.http.post(this.baseURL + "/post/" + id + "/like", JSON.stringify(user))
+    this.http.post(this.baseURL + "/post/like", JSON.stringify(user))
       .subscribe(result => {
         console.log(result)
       });
 
   }
 
-  dislikePost(user: any, id: string) {
+  dislikePost(user: any) {
 
-    this.http.post(this.baseURL + "/post/" + id + "/dislike", JSON.stringify(user))
+    this.http.post(this.baseURL + "/post/dislike", JSON.stringify(user))
       .subscribe(result => {
         console.log(result)
       });
