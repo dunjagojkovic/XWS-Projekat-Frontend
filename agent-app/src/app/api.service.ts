@@ -32,4 +32,9 @@ export class ApiService {
   current() {
     return this.http.get(this.baseURL + "/api/users/current", this.getAuthoHeader());
   }
+
+  registerCompany(data: any) {
+    return this.http.post(this.baseURL + "/api/companies", data, this.getAuthoHeader());
+  }
+
 }
