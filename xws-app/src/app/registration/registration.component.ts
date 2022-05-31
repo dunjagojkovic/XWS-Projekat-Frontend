@@ -69,6 +69,7 @@ export class RegistrationComponent implements OnInit {
 
       this.api.registerUser(data).subscribe((response: any) => {
         console.log(response)
+        location.reload();
     });
 
   }

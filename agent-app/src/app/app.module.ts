@@ -16,10 +16,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { ProfileComponent } from './profile/profile.component';
     AppComponent,
     HomepageComponent,
     RegistrationComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { ProfileComponent } from './profile/profile.component';
     MatDatepickerModule,
     MatSlideToggleModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatProgressBarModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

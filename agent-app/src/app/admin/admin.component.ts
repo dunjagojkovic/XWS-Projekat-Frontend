@@ -3,17 +3,14 @@ import { ApiService } from 'src/app/api.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class AdminComponent implements OnInit {
 
-  regBox : boolean = false;
-  imgBox : boolean = true;
-  hide = true;
   user: any = {} as any;
-  
+
   constructor(
     private api: ApiService,
     private router: Router,

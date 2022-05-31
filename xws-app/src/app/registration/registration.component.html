@@ -14,8 +14,59 @@
         </mat-toolbar>
     </header>
     
-    <main>   
-        <div class="forma">
+    <main>
+        <div class="pozadina">   
+            <img src="assets/coworkers.jpg">
+            <div class="forma">
+              <form [formGroup]="form">
+                <div class="registracija">
+                    <h1>Registration form</h1>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label style="color: #287271;">Name</mat-label>
+                            <input matInput placeholder="" value="" formControlName="name">
+                          </mat-form-field>
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label style="color: #287271;">Surname</mat-label>
+                            <input matInput placeholder="" value="" formControlName="surname">
+                          </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">Username</mat-label>
+                        <input matInput placeholder="" value="" formControlName="username">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">Email address</mat-label>
+                        <input matInput formControlName="email" value="" placeholder="">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">Phone number</mat-label>
+                        <input matInput  placeholder="" value="" formControlName="phoneNumber">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">Date of birth</mat-label>
+                        <input matInput placeholder="" value="" formControlName="birthDate">
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label style="color: #287271;">Gender</mat-label>
+                        <select style="color: #287271;" matNativeControl required formControlName="gender">
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">Password</mat-label>
+                        <input matInput type="password" placeholder="" value="" formControlName="password">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">Password repeat</mat-label>
+                        <input matInput type="password" placeholder="" value="" formControlName="passwordRepeat">
+                      </mat-form-field>
+                      <button class="btn" (click)="onSubmit()">Register</button>
+                </div>
+              </form>
+            </div>
+        </div>
+        <!-- <div class="forma">
             <h1>Registration form</h1>
             <form [formGroup]="form">
             <mat-form-field class="input-box" appearance="outline">
@@ -62,7 +113,7 @@
             </mat-form-field>
             <button (click)="onSubmit()" class="submit">Register</button>
         </form>
-        </div>
+        </div> -->
     </main>
 
     <footer>

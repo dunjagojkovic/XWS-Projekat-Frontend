@@ -54,6 +54,9 @@ export class HomepageComponent implements OnInit {
           if(user.type == "User"){
             this.router.navigate(['/profile']);
           }
+          if(user.type == "Admin"){
+            this.router.navigate(['/admin']);
+          }
         }, error => {
           this._snackBar.open('Incorrect credentials! Please try again.', 'Close', {duration: 2000})});
       })
