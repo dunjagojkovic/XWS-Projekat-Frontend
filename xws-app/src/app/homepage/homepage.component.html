@@ -64,7 +64,7 @@
                   </mat-card-content>
                   <mat-divider inset></mat-divider>
                   <mat-card-actions class="buttons">
-                    <button mat-button>Show profile</button>
+                    <button mat-button routerLink="/publicProfile" [queryParams]="{username: publicUser.username}">Show profile</button>
                   </mat-card-actions>
                 </mat-card>
               </div>

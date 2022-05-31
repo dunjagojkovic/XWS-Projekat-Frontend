@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
+<body>
+    <header>
+        <mat-toolbar>
+            <h1 [routerLink]="['/']" style="cursor: pointer;"><span>S</span>tylinkt</h1>
+            <span class="example-spacer"></span>
+            <button [routerLink]="['/registration']" style="float: none; cursor: pointer;"><a>Join us</a></button>
+            <button [routerLink]="['/']" style="cursor: pointer;"><a>Log in</a></button>
+        </mat-toolbar>
+    </header>
+    <main>
+        <div class="info">
+        <form [formGroup]="form">
+        <mat-card class="example-card">
+            <mat-card-subtitle class="subtitle">Username</mat-card-subtitle>
+            <mat-card-title class="title">Ime prezime</mat-card-title>
+            <mat-card-content>
+              <p>Email address - </p>
+              <p>Phone number - </p>
+              <p>Date of birth</p>
+              <p>Gender - </p>
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+              <p>Biography - </p>
+              <p>Education - </p>
+              <p>Work experience - </p>
+          </mat-card>
+        </form>
+        </div>
+        
+        <div class="posts">
+            
+        </div>
+    </main>
+</body>
+</html>
