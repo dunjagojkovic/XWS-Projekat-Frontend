@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +15,8 @@ export class ProfileComponent implements OnInit {
   user: any = {} as any;
   
   constructor(
-    private api: ApiService
+    private api: ApiService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -23,5 +25,8 @@ export class ProfileComponent implements OnInit {
   });
   }
 
-
+  logout() {
+    this.user = localStorage.clear();
+    this.router.navigate(['/']);
+  }
 }
