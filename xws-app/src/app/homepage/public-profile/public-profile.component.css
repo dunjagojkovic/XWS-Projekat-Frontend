@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+mat-toolbar {
+    padding: 20px;
+    background-color: #e5e9e4;
+    height: 10vh;
+}
+
+mat-toolbar h1,span {
+    font-size: 42px;
+    margin-left: 2%;
+    color: #2A9D8F;
+    font-weight: bold;
+    font-family: 'Sansita Swashed', cursive;
+}
+
+h1 span {
+    font-size: 52px;
+    color: #287271;
+}
+
+main {
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+mat-toolbar>button {
+    border: none;
+    padding: 20px;
+    width: 100px;
+    background-color: #e5e9e4;
+    color: #287271;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #F29040;
+}
+
+.info{
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.example-card {
+    width: 50vw;
+    background-color: #e5e9e4;
+    border: none;
+    margin-bottom: 1%;
+}
+
+.title {
+    font-weight: bold;
+    color: #264653;
+}
+
+.subtitle {
+    font-weight: bold;
+    color: #83C3B4;
+}
+
+p {
+    color: #2A9D8F;
+}
+
+.headCard {
+    background-color: #83C3B4;
+    font-weight: bolder;
+    color: #f6f8f5;
+    width: 25vw;
+    padding: 10px;
+    padding-left: 20px;
+    margin: 0 auto;
+}
+
+/* POSTS */
+
+h2 {
+    margin-left: 45%;
+    margin-right: 45%;
+    font-weight: bold;
+    color: #287271;
+}
+.card {
+    width: 24rem;
+    margin-left: 1%;
+    margin-right: 1%; 
+    margin-top: 3%; 
+    margin-bottom: 3%;
+    padding: 1%;
+    border: 2px solid #83C3B4;
+}
+
+.row {
+    justify-content: center;
+}
+
+.btnPost, .btnLink{
+    background-color: #2A9D8F;
+    border: none;
+    border-radius: 10px;
+    margin-top: 1%;
+    padding: 1%;
+    width: 30%;
+    color: white;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.btnLink{
+    background-color: #E8F0E6;
+    width: 60%;
+    justify-content: center;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.btnLink>a{
+    text-decoration: none;
+    color: #2A9D8F;
+}
+
+.text {
+    margin-top: 5%;
+}

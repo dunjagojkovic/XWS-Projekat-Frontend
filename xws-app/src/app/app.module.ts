@@ -28,6 +28,7 @@ import { UserPostsComponent } from './profile/user-posts/user-posts/user-posts.c
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostReviewComponent } from './posts/post-review/post-review.component';
 import { PublishPostComponent } from './profile/publish-post/publish-post/publish-post.component';
+import { PublicProfileComponent } from './homepage/public-profile/public-profile.component';
 
 
 
@@ -42,7 +43,8 @@ import { PublishPostComponent } from './profile/publish-post/publish-post/publis
     NotFoundComponent,
     UserPostsComponent,
     PostReviewComponent,
-    PublishPostComponent
+    PublishPostComponent,
+    PublicProfileComponent
   ],
   imports: [
     BrowserModule,

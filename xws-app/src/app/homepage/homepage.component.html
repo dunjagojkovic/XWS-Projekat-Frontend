@@ -47,21 +47,27 @@
                 </div>
             </div>
             <div class="searchBox">
+              <form [formGroup]="form1">
               <div class="search-box-rooms">
-                <input class="search-txt-rooms" type="text" matInput value="" placeholder="Search for..." />
+                <input class="search-txt-rooms" type="text" matInput value="" formControlName="searchTerm" placeholder="Search for..." />
                 <a class="search-btn-rooms">
-                  <mat-icon>search</mat-icon>
+                  <mat-icon (click)="onSearch()">search</mat-icon>
                 </a>
               </div>
-              <mat-selection-list #shoes [multiple]="false" class="list">
-                <mat-list-option class="listOpt">
-                  <div>
-                    <label>Ime</label>
-                    <label>Prezime</label>
-                    <label>Datum rodjenja</label>
-                  </div>
-                </mat-list-option>
-              </mat-selection-list>
+              </form>
+              <div style="display: flex; flex-direction: column; align-items: center; margin-top: 4%;">
+                <mat-card class="example-card" *ngFor = "let publicUser of publicUsers">
+                  <mat-card-subtitle class="subtitle">{{publicUser.username}}</mat-card-subtitle>
+                  <mat-card-title class="title">{{publicUser.name}} {{publicUser.surname}}</mat-card-title>
+                  <mat-card-content>
+                    <p>Email address - {{publicUser.email}} <br> Phone number - {{publicUser.phoneNumber}} </p>
+                  </mat-card-content>
+                  <mat-divider inset></mat-divider>
+                  <mat-card-actions class="buttons">
+                    <button mat-button routerLink="/publicProfile" [queryParams]="{username: publicUser.username}">Show profile</button>
+                  </mat-card-actions>
+                </mat-card>
+              </div>
             </div>
         </div>
     </main>

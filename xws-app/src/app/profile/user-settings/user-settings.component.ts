@@ -34,7 +34,7 @@ export class UserSettingsComponent implements OnInit {
         gender: [''],
         education: ['', Validators.minLength(3)],
         workExperience: ['', Validators.pattern('[a-zčćžšđA-ZČĆŽŠĐ]*')],
-        biography: ['', Validators.pattern('[a-zčćžšđA-ZČĆŽŠĐ]*')],
+        biography: [''],
         phoneNumber: ['', Validators.minLength(10)],
       });
 
@@ -87,6 +87,7 @@ export class UserSettingsComponent implements OnInit {
 
     this.api.editInfo(id, data).subscribe((response: any) => {
       console.log(response);
+      location.reload();
     });
   }
 

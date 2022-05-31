@@ -22,17 +22,36 @@ export class HomepageComponent implements OnInit {
         username: ['', Validators.required],
         password: ['', Validators.required]
       })
+      this.form1 = this.formBuilder.group({
+        searchTerm: ['']       
+      })
      }
 
   loginBox : boolean = false;
   textBox : boolean = true;
   hide = true;
   form: FormGroup;
+  form1: FormGroup;
+  publicUsers : any;
 
 
   ngOnInit(): void {
+    this.service.getPublicProfile().subscribe((response:any) => {
+      this.publicUsers = response;
+      console.log(this.publicUsers);
+  });
   }
 
+  onSearch() {
+    const searchTerm = this.form1.get('searchTerm')?.value;
+    let data = {
+      searchTerm: searchTerm   
+    }
+    this.service.filterUsers(data).subscribe((response: any) => {
+      console.log(response);
+      this.publicUsers = response;
+    });
+  }
 
   onSubmit() {
     if(this.form.valid){
