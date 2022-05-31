@@ -20,7 +20,7 @@
         <div class="info">
         <form [formGroup]="form">
         <mat-card class="example-card">
-            <mat-card-subtitle class="subtitle">Username</mat-card-subtitle>
+            <mat-card-subtitle class="subtitle">{{username}}</mat-card-subtitle>
             <mat-card-title class="title">Ime prezime</mat-card-title>
             <mat-card-content>
               <p>Email address - </p>
@@ -28,7 +28,7 @@
               <p>Date of birth</p>
               <p>Gender - </p>
             </mat-card-content>
-            <mat-divider inset></mat-divider>
+            <mat-divider inset style="margin-bottom: 2%;"></mat-divider>
               <p>Biography - </p>
               <p>Education - </p>
               <p>Work experience - </p>
@@ -37,7 +37,78 @@
         </div>
         
         <div class="posts">
+            <h2>Posts of {{username}}</h2>
+            <mat-divider inset style="margin: 0 auto; width: 80%;"></mat-divider>
+            <div class="row">
+                <div *ngFor='let post of posts' class="card">
+                    <div *ngIf="postId != post.id && postLikeId != post.id && postDislikeId != post.id">
+                        <img class="card-img-top p-2" src="{{post.image}}" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="row">
+                                <button class="btnPost" (click)="likes(post.id)">Likes</button>
+                                <button class="btnPost" (click)="dislikes(post.id)">Dislikes</button>
+                                <button (click)="comments(post.id)" class="btnPost">Comments</button>
+                            </div>
+                            <p class="text" style="font-size: 20px;">{{post.description}}</p>
+                            <button  class="btnLink"><a href="{{post.link}}" target="_blank">Show link</a></button>
+                        </div>
+                    </div>
+                    <div *ngIf="postId == post.id && backPost != post.id">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-10">
+                                </div>
+                                <div class="col-2">
+                                    <button style="color: #F29040;" (click)="back(post.id)"
+                                        class="btn btn-outline-secondary mb-2"><i class="bi bi-arrow-left"></i></button>
+                                </div>
+                            </div>
+                            <p class="card-text" style="font-size: 20px;">{{post.description}}</p>
+                            <h2 class="card-title" style="margin-left: 129px;"><b>Comments</b></h2>
+                            <div *ngFor="let comment of commentList">
+                                <label class="form-control mb-1">{{comment.user}}: {{comment.content}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="postLikeId == post.id && likeBack != post.id">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-10">
+                                </div>
+                                <div class="col-2">
+                                    <button style="color: #F29040;" (click)="backLike(post.id)"
+                                        class="btn btn-outline-secondary mb-2"><i class="bi bi-arrow-left"></i></button>
+                                </div>
+                            </div>
+                            <p class="card-text" style="font-size: 20px;">{{post.description}}</p>
+                            <h2 class="card-title" style="margin-left: 152px;"><b>Likes</b></h2>
+                            <div *ngFor="let like of likeList">
+                                <label class="form-control mb-1">{{like}}</label>
+                            </div>
+                        </div>
+                    </div>
             
+                    <div *ngIf="postDislikeId == post.id && dislikeBack != post.id">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-10">
+                                </div>
+                                <div class="col-2">
+                                    <button style="color: #F29040;" (click)="backDislike(post.id)"
+                                        class="btn btn-outline-secondary mb-2"><i class="bi bi-arrow-left"></i></button>
+                                </div>
+                            </div>
+                            <p class="card-text" style="font-size: 20px;">{{post.description}}</p>
+                            <h2 class="card-title" style="margin-left: 142px;"><b>Dislikes</b></h2>
+                            <div *ngFor="let dislike of dislikeList">
+                                <label class="form-control mb-1">{{dislike}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            </div>
         </div>
     </main>
 </body>
