@@ -146,18 +146,6 @@ p button {
     margin-top: 3%;
 }
 
-.list {
-    position: relative;
-    top: 20%;
-    width: 60%;
-    margin: 0 auto;
-}
-
-.listOpt{
-    display: flex;
-    flex-direction: row;
-}
-
 div>label {
     margin-left: 2%;
 }

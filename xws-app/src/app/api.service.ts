@@ -44,4 +44,8 @@ export class ApiService {
   getPublicProfile() {
     return this.http.get(this.baseURL + "/api/users/public");
   }
+
+  filterUsers(data: any) {
+    return this.http.post(this.baseURL + "/api/users/filterUsers", data);
+  }
 }
