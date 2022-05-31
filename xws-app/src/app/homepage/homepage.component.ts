@@ -28,9 +28,14 @@ export class HomepageComponent implements OnInit {
   textBox : boolean = true;
   hide = true;
   form: FormGroup;
+  publicUsers : any;
 
 
   ngOnInit(): void {
+    this.service.getPublicProfile().subscribe((response:any) => {
+      this.publicUsers = response;
+      console.log(this.publicUsers);
+  });
   }
 
 
