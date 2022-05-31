@@ -37,4 +37,8 @@ export class ApiService {
     return this.http.post(this.baseURL + "/api/companies", data, this.getAuthoHeader());
   }
 
+  getAllCompanies(){
+    return this.http.get(this.baseURL + "/api/companies/allCompanies", this.getAuthoHeader())
+  }
+
 }
