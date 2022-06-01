@@ -1,0 +1,36 @@
+<div>
+    <div class="input-group">
+        <div class="form-outline" style="margin-left: 1200px; margin-top: 30px;">
+            <input type="search" id="form1" class="form-control" [(ngModel)]="user" (input)="findUser()"/>
+        </div>
+        <button (click)="findUser()" type="button" style="color: #F29040; margin-top: 30px;" class="btn btn-outline-secondary">
+            <i class="bi bi-search"></i>
+        </button>
+    </div>
+
+    <div class="row">
+        <div *ngFor='let user of users' class="card"
+            style="width: 26rem; margin-left: 4.6rem; margin-top: 3rem; border: 1; border-color: #83C3B4;">
+            <div class="card-body">
+                <p class="card-text mt-2" style="font-size: 20px;"><span style="color: #287271;"><b>{{user.name}} {{user.surname}}</b></span></p>
+                <p class="card-text mt-2" style="font-size: 20px;">username:
+                    <span style="color: #287271;"><b> {{user.username}} </b></span></p>
+                    <div class="row">
+                        <div class="col-6">
+                            <button *ngIf="!isFollowed(user.username) && !isRequested(user.username)" style="color: #F29040; margin-top: 1.5rem;"
+                            class="btn btn-outline-secondary" (click)="follow(user.username)">Follow</button>
+                            <button *ngIf="isFollowed(user.username)" style="color: #F29040; margin-top: 1.5rem;"
+                            class="btn btn-outline-secondary" disabled>Following</button>
+                            <button *ngIf="isRequested(user.username)" style="color: #F29040; margin-top: 1.5rem;"
+                            class="btn btn-outline-secondary" disabled>Requested</button>
+                        </div>
+                        <div class="col-6">
+                            <button style="color: #F29040; margin-left: 3.4rem; margin-top: 1.5rem;"
+                            class="btn btn-outline-secondary">Show profile</button>
+                        </div>
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
+</div>

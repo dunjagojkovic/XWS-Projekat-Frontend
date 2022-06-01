@@ -31,6 +31,8 @@ import { PublishPostComponent } from './profile/publish-post/publish-post/publis
 import { PublicProfileComponent } from './homepage/public-profile/public-profile.component';
 import { JobOfferComponent } from './profile/job-offer/job-offer.component';
 import { JobOffersComponent } from './offers/job-offers/job-offers.component';
+import { SearchProfilesComponent } from './profiles/search-profiles/search-profiles.component';
+import { ViewProfileComponent } from './profiles/view-profile/view-profile.component';
 
 
 
@@ -48,7 +50,9 @@ import { JobOffersComponent } from './offers/job-offers/job-offers.component';
     PublishPostComponent,
     PublicProfileComponent,
     JobOfferComponent,
-    JobOffersComponent
+    JobOffersComponent,
+    SearchProfilesComponent,
+    ViewProfileComponent
   ],
   imports: [
     BrowserModule,

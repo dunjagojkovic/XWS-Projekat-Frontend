@@ -48,4 +48,20 @@ export class ApiService {
   filterUsers(data: any) {
     return this.http.post(this.baseURL + "/api/users/filterUsers", data);
   }
+
+  getUserProfiles() {
+    return this.http.get(this.baseURL + "/api/users/users", this.getAuthoHeader());
+  }
+
+  getFollowing(username: string) {
+    return this.http.get(this.baseURL + "/api/follow/following/" + username, this.getAuthoHeader());
+  }
+
+  getRequested(username: string) {
+    return this.http.get(this.baseURL + "/api/follow/requested/" + username, this.getAuthoHeader());
+  }
+
+  follow(data: any){
+    return this.http.post(this.baseURL + "/api/follow/follower", data, this.getAuthoHeader());
+  }
 }
