@@ -13,6 +13,7 @@ import { PublicProfileComponent } from './homepage/public-profile/public-profile
 import { JobOfferComponent } from './profile/job-offer/job-offer.component';
 import { JobOffersComponent } from './offers/job-offers/job-offers.component';
 import { SearchProfilesComponent } from './profiles/search-profiles/search-profiles.component';
+import { ViewProfileComponent } from './profiles/view-profile/view-profile.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'createJobOffer', component: JobOfferComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
   { path: 'jobOffers', component: JobOffersComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
   { path: 'searchProfiles', component: SearchProfilesComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
+  { path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
   { path: 'publicProfile', component: PublicProfileComponent}
 ];
 

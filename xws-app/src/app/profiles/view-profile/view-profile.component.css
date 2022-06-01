@@ -1,0 +1,27 @@
+section {
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 3%;
+}
+
+.headCard {
+    background-color: #83C3B4;
+    font-weight: bolder;
+    color: #f6f8f5;
+    left: 28.5%;
+    width: 40%;
+    padding: 10px;
+    padding-left: 150px;
+    margin-top: 60px;
+    margin-bottom: 2%;
+}
+
+
+.userInfo .card1 {
+    margin-top: 4%;
+    padding: 20px;
+    width: 75%;
+    background-color: #f6f8f5;
+    display: flex;
+    margin-left: 130px;
+}

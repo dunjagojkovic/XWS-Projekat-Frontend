@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class SearchProfilesComponent implements OnInit {
   public requested: any[]
   userAccount: any = {} as any
 
-  constructor(public service : ApiService) {
+  constructor(public service : ApiService, public router : Router) {
 
 
   }
@@ -85,6 +86,11 @@ export class SearchProfilesComponent implements OnInit {
         })
       })
     });
+  }
+
+  viewProfile(username : string) {
+
+      this.router.navigate(['/viewProfile'] , { queryParams: { username: username } } );
   }
 
 

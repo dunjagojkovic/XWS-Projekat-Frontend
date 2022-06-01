@@ -25,8 +25,9 @@
                             class="btn btn-outline-secondary" disabled>Requested</button>
                         </div>
                         <div class="col-6">
-                            <button style="color: #F29040; margin-left: 3.4rem; margin-top: 1.5rem;"
-                            class="btn btn-outline-secondary">Show profile</button>
+                            <button *ngIf="user.isPublic" 
+                            style="color: #F29040; margin-left: 3.4rem; margin-top: 1.5rem;" 
+                            class="btn btn-outline-secondary" (click)="viewProfile(user.username)">Show profile</button>
                         </div>
                     </div>
                     
