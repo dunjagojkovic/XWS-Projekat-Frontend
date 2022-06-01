@@ -3,7 +3,7 @@
         <div class="form-outline" style="margin-left: 1200px; margin-top: 30px;">
             <input type="search" id="form1" class="form-control" [(ngModel)]="position" (input)="findJobOffers()"/>
         </div>
-        <button type="button" style="color: #F29040; margin-top: 30px;" class="btn btn-outline-secondary">
+        <button (click)="findJobOffers()" type="button" style="color: #F29040; margin-top: 30px;" class="btn btn-outline-secondary">
             <i class="bi bi-search"></i>
         </button>
     </div>
