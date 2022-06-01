@@ -29,6 +29,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostReviewComponent } from './posts/post-review/post-review.component';
 import { PublishPostComponent } from './profile/publish-post/publish-post/publish-post.component';
 import { PublicProfileComponent } from './homepage/public-profile/public-profile.component';
+import { JobOfferComponent } from './profile/job-offer/job-offer.component';
+import { JobOffersComponent } from './offers/job-offers/job-offers.component';
 
 
 
@@ -44,7 +46,9 @@ import { PublicProfileComponent } from './homepage/public-profile/public-profile
     UserPostsComponent,
     PostReviewComponent,
     PublishPostComponent,
-    PublicProfileComponent
+    PublicProfileComponent,
+    JobOfferComponent,
+    JobOffersComponent
   ],
   imports: [
     BrowserModule,

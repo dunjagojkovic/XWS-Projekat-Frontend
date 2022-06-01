@@ -10,6 +10,8 @@ import { UserPostsComponent } from './profile/user-posts/user-posts/user-posts.c
 import { PostReviewComponent } from './posts/post-review/post-review.component';
 import { PublishPostComponent } from './profile/publish-post/publish-post/publish-post.component';
 import { PublicProfileComponent } from './homepage/public-profile/public-profile.component';
+import { JobOfferComponent } from './profile/job-offer/job-offer.component';
+import { JobOffersComponent } from './offers/job-offers/job-offers.component';
 
 
 const routes: Routes = [
@@ -21,6 +23,8 @@ const routes: Routes = [
   { path: 'userPosts', component: UserPostsComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
   { path: 'publishPost', component: PublishPostComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
   { path: 'followingPosts', component: PostReviewComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
+  { path: 'createJobOffer', component: JobOfferComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
+  { path: 'jobOffers', component: JobOffersComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
   { path: 'publicProfile', component: PublicProfileComponent}
 ];
 
