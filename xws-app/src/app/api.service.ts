@@ -48,4 +48,36 @@ export class ApiService {
   filterUsers(data: any) {
     return this.http.post(this.baseURL + "/api/users/filterUsers", data);
   }
+
+  getUserProfiles() {
+    return this.http.get(this.baseURL + "/api/users/users", this.getAuthoHeader());
+  }
+
+  getFollowing(username: string) {
+    return this.http.get(this.baseURL + "/api/follow/following/" + username, this.getAuthoHeader());
+  }
+
+  getRequested(username: string) {
+    return this.http.get(this.baseURL + "/api/follow/requested/" + username, this.getAuthoHeader());
+  }
+
+  follow(data: any){
+    return this.http.post(this.baseURL + "/api/follow/follower", data, this.getAuthoHeader());
+  }
+
+  getUser(username: string) {
+    return this.http.get(this.baseURL + "/api/users/user/" + username, this.getAuthoHeader());
+  }
+
+  getRequests(username: string) {
+    return this.http.get(this.baseURL + "/api/follow/requests/" + username, this.getAuthoHeader());
+  }
+
+  accept(data: any){
+    return this.http.post(this.baseURL + "/api/follow/accept", data, this.getAuthoHeader());
+  }
+
+  deny(data: any){
+    return this.http.post(this.baseURL + "/api/follow/deny", data, this.getAuthoHeader());
+  }
 }
