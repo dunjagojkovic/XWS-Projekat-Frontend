@@ -1,0 +1,28 @@
+<section class="jobOffer">
+    <mat-card class="headCard">
+        <h2 style="font-weight: bold;">Create job offer</h2>
+    </mat-card>
+    <mat-card class="card1">
+
+        <div>
+            <label for="position" style="color: #287271;"><b>Position:</b></label>
+            <input type="text" [(ngModel)]="position" id="position" class="form-control">
+
+            <label for="description" style="color: #287271;"><b>Description:</b></label>
+            <textarea [(ngModel)]="description" style="border-color: #83C3B4; width: 500px;" id="description" class="form-control"
+                rows="3"></textarea>
+
+            <label for="activities" style="color: #287271;"><b>Daily activities:</b></label>
+            <textarea [(ngModel)]="activities" style="border-color: #83C3B4; width: 500px;" id="activities" class="form-control"
+                rows="3"></textarea>
+
+            <label for="precond" style="color: #287271;"><b>Preconditions:</b></label>
+            <textarea [(ngModel)]="preconditions" style="border-color: #83C3B4; width: 500px;" id="precond" class="form-control"
+                rows="3"></textarea>
+
+            <button (click) = "createJobOffer()" class="publish">Create</button>
+        </div>
+
+
+    </mat-card>
+</section>

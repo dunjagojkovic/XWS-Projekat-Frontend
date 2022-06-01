@@ -1,0 +1,45 @@
+section {
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 3%;
+}
+
+.headCard {
+    background-color: #83C3B4;
+    font-weight: bolder;
+    color: #f6f8f5;
+    left: 28.5%;
+    width: 40%;
+    padding: 10px;
+    padding-left: 150px;
+    margin-top: 60px;
+    margin-bottom: 2%;
+}
+
+
+.jobOffer .card1 {
+    margin-top: 4%;
+    padding: 20px;
+    width: 50%;
+    background-color: #f6f8f5;
+    display: flex;
+    margin-left: 240px;
+}
+
+
+.publish {
+    width: 25%;
+    background-color: #83C3B4;
+    color: white;
+    padding: 14px 20px;
+    margin-left: 187px;
+    margin-top: 20px;
+
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.publish:hover {
+    background-color: #287271;
+}
