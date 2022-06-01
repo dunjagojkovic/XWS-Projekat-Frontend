@@ -33,6 +33,7 @@ import { JobOfferComponent } from './profile/job-offer/job-offer.component';
 import { JobOffersComponent } from './offers/job-offers/job-offers.component';
 import { SearchProfilesComponent } from './profiles/search-profiles/search-profiles.component';
 import { ViewProfileComponent } from './profiles/view-profile/view-profile.component';
+import { ViewRequestsComponent } from './profiles/view-requests/view-requests.component';
 
 
 
@@ -52,7 +53,8 @@ import { ViewProfileComponent } from './profiles/view-profile/view-profile.compo
     JobOfferComponent,
     JobOffersComponent,
     SearchProfilesComponent,
-    ViewProfileComponent
+    ViewProfileComponent,
+    ViewRequestsComponent
   ],
   imports: [
     BrowserModule,

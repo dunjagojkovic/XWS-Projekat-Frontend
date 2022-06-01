@@ -69,4 +69,15 @@ export class ApiService {
     return this.http.get(this.baseURL + "/api/users/user/" + username, this.getAuthoHeader());
   }
 
+  getRequests(username: string) {
+    return this.http.get(this.baseURL + "/api/follow/requests/" + username, this.getAuthoHeader());
+  }
+
+  accept(data: any){
+    return this.http.post(this.baseURL + "/api/follow/accept", data, this.getAuthoHeader());
+  }
+
+  deny(data: any){
+    return this.http.post(this.baseURL + "/api/follow/deny", data, this.getAuthoHeader());
+  }
 }
