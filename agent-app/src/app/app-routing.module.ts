@@ -4,12 +4,14 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
+import { CompaniesComponent } from './companies/companies.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
   { path: 'registration', component: RegistrationComponent},
   { path: 'profile', component: ProfileComponent},
-  { path: 'admin', component: AdminComponent}
+  { path: 'admin', component: AdminComponent},
+  { path: 'myCompanies', component: CompaniesComponent}
 ];
 
 @NgModule({

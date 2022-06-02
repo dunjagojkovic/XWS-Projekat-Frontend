@@ -49,6 +49,10 @@ export class ApiService {
     return this.http.put(this.baseURL + "/api/companies/approveCompanyRequest", data, this.getAuthoHeader());
   }
 
+  getMyCompanies() {
+    return this.http.get(this.baseURL + "/api/companies/myCompanies", this.getAuthoHeader());
+  }
+
 
 
 }
