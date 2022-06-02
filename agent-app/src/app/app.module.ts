@@ -17,6 +17,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatOptionModule } from '@angular/material/core';
 
 import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -48,7 +49,8 @@ import { AdminComponent } from './admin/admin.component';
     MatSlideToggleModule,
     MatCardModule,
     MatListModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatOptionModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

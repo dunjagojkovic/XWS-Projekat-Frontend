@@ -26,7 +26,7 @@ export class ApiService {
   }
 
   registerUser(data: any) {
-    return this.http.post(this.baseURL + "/api/users/register", data);
+    return this.http.post(this.baseURL + "/api/users/registerUser", data);
   }
 
   current() {
@@ -34,7 +34,7 @@ export class ApiService {
   }
 
   registerCompany(data: any) {
-    return this.http.post(this.baseURL + "/api/companies", data, this.getAuthoHeader());
+    return this.http.post(this.baseURL + "/api/companies/registerCompany", data, this.getAuthoHeader());
   }
 
   getAllCompanies(){

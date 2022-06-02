@@ -29,7 +29,8 @@ export class RegistrationComponent implements OnInit {
       passwordRepeat: ['', Validators.required],
       phoneNumber: ['', Validators.compose([Validators.required, Validators.minLength(10)])],
       gender: ['', Validators.required],
-      birthDate: ['', Validators.required]
+      birthDate: ['', Validators.required],
+      type: ['', Validators.required]
     })
   }
 
@@ -48,6 +49,8 @@ export class RegistrationComponent implements OnInit {
       const phoneNumber = this.form.get('phoneNumber')?.value;
       const gender = this.form.get('gender')?.value;
       const birthDate = this.form.get('birthDate')?.value;
+      const type = this.form.get('type')?.value;
+
 
       if(passwordRepeat != password) {
         alert('Passwords do not match')
@@ -62,14 +65,19 @@ export class RegistrationComponent implements OnInit {
         password: password,
         phoneNumber: phoneNumber,
         gender: gender,
-        birthDate: birthDate
+        birthDate: birthDate,
+        type: type
       }
 
-      this.api.registerUser(data).subscribe((response: any) => {
-        console.log(response)
-    });
+      this.api.registerUser(data).subscribe( (any: any) => {
+        this.router.navigate(['/'])
+      }, error => {
+        this._snackBar.open('Username already exists', 'Close', {duration: 5000})
+      });
+      this._snackBar.open('Registration request successfully submited!', 'Close', {duration: 5000})
+    }
 
   }
 }
 
-}
+
