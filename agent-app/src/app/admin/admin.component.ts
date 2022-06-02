@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { Router } from '@angular/router';
+import { state } from '@angular/animations';
+import { createInjectorType } from '@angular/compiler/src/render3/r3_injector_compiler';
 
 @Component({
   selector: 'app-admin',
@@ -41,6 +43,7 @@ export class AdminComponent implements OnInit {
     let data = {
       id: id,
       ownerId: this.user.id
+
     }
     console.log(data);
   this.api.aproveCompanyRequest(data).subscribe((response:any) => {
