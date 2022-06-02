@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
+<body>
+    <div class="dugmici">
+        <button class="toolbtn" [routerLink]="['/myCompanies']" style="float: none; cursor: pointer;"><a>My companies</a></button>
+        <button class="toolbtn" [routerLink]="['/']" style="float: none; cursor: pointer;"><a>Log out</a></button>
+      </div>
+    <main>
+        
+        <form class="rightbox" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="registration">
+                <h1 style="font-weight: bold; color: #E7C15F;">Add job offers for </h1>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">Job  position</mat-label>
+                        <input matInput placeholder="" value="" formControlName="position">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">Salary</mat-label>
+                        <input matInput placeholder="" value="" formControlName="salary">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">Responsibilities</mat-label>
+                        <input matInput placeholder="" value="" formControlName="responsibilities">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">Requirements</mat-label>
+                        <input matInput value="" placeholder="" formControlName="requirements">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: #287271;">Benefits</mat-label>
+                        <input matInput  placeholder="" value="" formControlName="benefit">
+                      </mat-form-field>
+                      <button class="btn">Save</button>
+                    </div>
+                  </form>
+    </main>
+</body>
+</html>

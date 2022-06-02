@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
-import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-companies',
@@ -13,7 +13,6 @@ export class CompaniesComponent implements OnInit {
 
   constructor(
     private api: ApiService,
-    private router: Router,
   ) { 
     this.companies = [];
   }

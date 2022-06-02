@@ -53,6 +53,10 @@ export class ApiService {
     return this.http.get(this.baseURL + "/api/companies/myCompanies", this.getAuthoHeader());
   }
 
+  addJobOffer(data: any) {
+    return this.http.post(this.baseURL + "/api/jobs/addOffer", data, this.getAuthoHeader());
+  }
+
 
 
 }

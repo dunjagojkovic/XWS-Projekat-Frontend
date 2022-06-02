@@ -4,10 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { state } from '@angular/animations';
-import { createInjectorType } from '@angular/compiler/src/render3/r3_injector_compiler';
-import { convertActionBinding } from '@angular/compiler/src/compiler_util/expression_converter';
-import { HighContrastModeDetector } from '@angular/cdk/a11y';
+
 
 @Component({
   selector: 'app-profile',

@@ -18,12 +18,14 @@ import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatOptionModule } from '@angular/material/core';
+import { RouterModule } from '@angular/router';
 
 import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
 import { CompaniesComponent } from './companies/companies.component';
+import { AddJobOfferComponent } from './add-job-offer/add-job-offer.component';
 
 
 @NgModule({
@@ -33,11 +35,13 @@ import { CompaniesComponent } from './companies/companies.component';
     RegistrationComponent,
     ProfileComponent,
     AdminComponent,
-    CompaniesComponent
+    CompaniesComponent,
+    AddJobOfferComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
+    RouterModule,
     NoopAnimationsModule,
     MatToolbarModule,
     MatInputModule,
