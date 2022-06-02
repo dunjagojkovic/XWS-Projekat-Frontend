@@ -16,8 +16,8 @@
         </mat-card-content>
         <mat-divider inset></mat-divider>
         <mat-card-actions class="buttons">
-          <button mat-button>Accept</button>
-          <button mat-button style="background-color: #264653;">Decline</button>
+          <button (click)="onAccept(company.id)" mat-button>Accept</button>
+          <button (click)="onDecline(company.id)" mat-button style="background-color: #264653;">Decline</button>
         </mat-card-actions>
         <mat-card-footer>
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>

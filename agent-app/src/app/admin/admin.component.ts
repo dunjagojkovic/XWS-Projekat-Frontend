@@ -11,6 +11,9 @@ export class AdminComponent implements OnInit {
 
   user: any = {} as any;
   companies : any;
+  company: any = {} as any;
+
+
 
   constructor(
     private api: ApiService,
@@ -32,5 +35,28 @@ export class AdminComponent implements OnInit {
   logout() {
     this.user = localStorage.clear();
     this.router.navigate(['/']);
+  }
+
+  onAccept(id: any) {
+    let data = {
+      id: id,
+      ownerId: this.user.id
+    }
+    console.log(data);
+  this.api.aproveCompanyRequest(data).subscribe((response:any) => {
+    location.reload();
+  
+  });
+  } 
+
+  onDecline(id: number){
+    let data = {
+      id: id
+    }
+    console.log(data);
+  this.api.declineCompanyRequest(data).subscribe((response:any) => {
+    location.reload();
+  
+  });
   }
 }

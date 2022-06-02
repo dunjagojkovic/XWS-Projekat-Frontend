@@ -38,7 +38,17 @@ export class ApiService {
   }
 
   getAllCompanies(){
-    return this.http.get(this.baseURL + "/api/companies/allCompanies", this.getAuthoHeader())
+    return this.http.get(this.baseURL + "/api/companies/allPendingCompanies", this.getAuthoHeader())
   }
+
+  declineCompanyRequest(data: any) {
+    return this.http.put(this.baseURL + "/api/companies/declineCompanyRequest", data, this.getAuthoHeader());
+  }
+
+  aproveCompanyRequest(data: any) {
+    return this.http.put(this.baseURL + "/api/companies/approveCompanyRequest", data, this.getAuthoHeader());
+  }
+
+
 
 }
