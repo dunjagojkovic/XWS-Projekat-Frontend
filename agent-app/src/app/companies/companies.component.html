@@ -16,8 +16,8 @@
         </mat-card-content>
         <mat-divider inset></mat-divider>
         <mat-card-actions class="buttons">
-          <button (click)="onAccept(company.id)" mat-button>Accept</button>
-          <button (click)="onDecline(company.id)" mat-button style="background-color: #264653;">Decline</button>
+          <button mat-button queryParams="{id: company.id}">Edit</button>
+          <button mat-button style="background-color: #264653;" [routerLink]="['/addJobOffer']" [queryParams]="{id: company.id}">Add job offers</button>
         </mat-card-actions>
         <mat-card-footer>
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>

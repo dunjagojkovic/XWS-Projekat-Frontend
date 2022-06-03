@@ -17,11 +17,15 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatOptionModule } from '@angular/material/core';
+import { RouterModule } from '@angular/router';
 
 import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
+import { CompaniesComponent } from './companies/companies.component';
+import { AddJobOfferComponent } from './add-job-offer/add-job-offer.component';
 
 
 @NgModule({
@@ -30,11 +34,14 @@ import { AdminComponent } from './admin/admin.component';
     HomepageComponent,
     RegistrationComponent,
     ProfileComponent,
-    AdminComponent
+    AdminComponent,
+    CompaniesComponent,
+    AddJobOfferComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
+    RouterModule,
     NoopAnimationsModule,
     MatToolbarModule,
     MatInputModule,
@@ -48,7 +55,8 @@ import { AdminComponent } from './admin/admin.component';
     MatSlideToggleModule,
     MatCardModule,
     MatListModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatOptionModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

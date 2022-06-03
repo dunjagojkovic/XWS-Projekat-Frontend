@@ -26,10 +26,37 @@ export class ApiService {
   }
 
   registerUser(data: any) {
-    return this.http.post(this.baseURL + "/api/users/register", data);
+    return this.http.post(this.baseURL + "/api/users/registerUser", data);
   }
 
   current() {
     return this.http.get(this.baseURL + "/api/users/current", this.getAuthoHeader());
   }
+
+  registerCompany(data: any) {
+    return this.http.post(this.baseURL + "/api/companies/registerCompany", data, this.getAuthoHeader());
+  }
+
+  getAllCompanies(){
+    return this.http.get(this.baseURL + "/api/companies/allPendingCompanies", this.getAuthoHeader())
+  }
+
+  declineCompanyRequest(data: any) {
+    return this.http.put(this.baseURL + "/api/companies/declineCompanyRequest", data, this.getAuthoHeader());
+  }
+
+  aproveCompanyRequest(data: any) {
+    return this.http.put(this.baseURL + "/api/companies/approveCompanyRequest", data, this.getAuthoHeader());
+  }
+
+  getMyCompanies() {
+    return this.http.get(this.baseURL + "/api/companies/myCompanies", this.getAuthoHeader());
+  }
+
+  addJobOffer(data: any) {
+    return this.http.post(this.baseURL + "/api/jobs/addOffer", data, this.getAuthoHeader());
+  }
+
+
+
 }
