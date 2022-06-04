@@ -1,0 +1,23 @@
+<div class="row">
+    <div *ngFor='let survey of surveys' class="card"
+        style="width: 26rem; margin-left: 4.6rem; margin-top: 3rem; border: 1; border-color: #83C3B4;">
+        <div class="card-body">
+            <p class="card-text mt-2" style="font-size: 20px;">Username: <span style="color: #287271;"><b>{{survey.username}}</b></span></p>
+            <p class="card-text mt-2" style="font-size: 20px;">Work Environment:
+                <span style="color: #287271;"><b> {{survey.workEnvironment}} </b></span></p>
+            <p class="card-text mt-2" style="font-size: 20px;">Opportunities:
+                <span style="color: #287271;"><b> {{survey.opportunities}} </b></span></p>
+            <p class="card-text mt-2" style="font-size: 20px;">Benefits:
+                <span style="color: #287271;"><b> {{survey.benefits}} </b></span></p>
+            <p class="card-text mt-2" style="font-size: 20px;">Salary:
+                <span style="color: #287271;"><b> {{survey.salary}} </b></span></p>
+            <p class="card-text mt-2" style="font-size: 20px;">Supervision:
+                <span style="color: #287271;"><b> {{survey.supervision}} </b></span></p>
+            <p class="card-text mt-2" style="font-size: 20px;">Communication:
+                <span style="color: #287271;"><b> {{survey.communication}} </b></span></p>
+            <p class="card-text mt-2" style="font-size: 20px;">Colleagues:
+                <span style="color: #287271;"><b> {{survey.colleagues}} </b></span></p>
+                
+        </div>
+    </div>
+</div>
