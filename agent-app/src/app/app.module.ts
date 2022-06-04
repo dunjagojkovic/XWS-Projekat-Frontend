@@ -26,6 +26,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { AddJobOfferComponent } from './add-job-offer/add-job-offer.component';
+import { JobOffersComponent } from './job-offers/job-offers.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { JobSurveyComponent } from './job-survey/job-survey.component';
+import { SurveysComponent } from './surveys/surveys.component';
 
 
 @NgModule({
@@ -36,7 +40,10 @@ import { AddJobOfferComponent } from './add-job-offer/add-job-offer.component';
     ProfileComponent,
     AdminComponent,
     CompaniesComponent,
-    AddJobOfferComponent
+    AddJobOfferComponent,
+    JobOffersComponent,
+    JobSurveyComponent,
+    SurveysComponent
   ],
   imports: [
     AppRoutingModule,
@@ -56,7 +63,8 @@ import { AddJobOfferComponent } from './add-job-offer/add-job-offer.component';
     MatCardModule,
     MatListModule,
     MatProgressBarModule,
-    MatOptionModule
+    MatOptionModule,
+    NgbModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

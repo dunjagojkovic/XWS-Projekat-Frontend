@@ -1,0 +1,82 @@
+<div class="row">
+    <div *ngFor='let offer of offers' class="card"
+        style="width: 27rem; margin-left: 4.1rem; margin-top: 3rem; border: 1; border-color: #83C3B4;">
+        <div *ngIf="offerId != offer.id && offerSalaryId != offer.id">
+        <div class="card-body">
+            <p class="card-text mt-2" style="font-size: 20px;">Company: <span style="color: #287271;"><b>{{offer.company.name}}</b></span></p>
+            <p class="card-text mt-2" style="font-size: 20px;">Company owner: <span style="color: #287271;"><b>{{offer.company.owner.name}} {{offer.company.owner.surname}}</b></span></p>
+            <p class="card-text mt-2" style="font-size: 20px;">Position: <span style="color: #287271;"><b> {{offer.position}}</b></span></p>
+            <p class="card-text mt-2" style="font-size: 20px;">Responsibilities: {{offer.responsibilities}}</p>
+            <p class="card-text mt-2" style="font-size: 20px;">Requirements: {{offer.requirements}}</p>
+            <p class="card-text mt-2" style="font-size: 20px;">Benefit: {{offer.benefit}}</p>
+                <div class="row">
+                    <div class="col-9">
+                        <button (click)="comments(offer.id)"  style="color: #F29040; margin-top: 1.5rem;"
+                        class="btn btn-outline-secondary">Comment</button>
+                        <button (click) = "salaries(offer.id)" style="color: #F29040; margin-top: 1.5rem;"
+                        class="btn btn-outline-secondary">Add salary</button>
+                        <button (click) = "survey(offer.id)"  style="color: #F29040; margin-top: 1.5rem;"
+                        class="btn btn-outline-secondary">Survey</button>
+                    </div>
+                    <div class="col-3">
+                        <button (click) = "surveys(offer.id)"
+                        style="color: #F29040; margin-top: 1.5rem;" 
+                        class="btn btn-outline-secondary">Surveys</button>
+                    </div>
+                </div>             
+        </div>
+        </div>
+        <div *ngIf="offerId == offer.id && backOffer != offer.id">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-10">
+                    </div>
+                    <div class="col-2">
+                        <button style="color: #F29040;" (click)="back(offer.id)"
+                            class="btn btn-outline-secondary mb-2"><i class="bi bi-arrow-left"></i></button>
+                    </div>
+                </div>
+                <p class="card-text" style="font-size: 20px;">{{offer.position}}</p>
+                <h2 class="card-title" style="margin-left: 129px;"><b>Comments</b></h2>
+                <div *ngFor="let comment of commentList">
+                    <label class="form-control mb-1">{{comment.username}}: {{comment.content}}</label>
+                </div>
+                <div class="form-group mt-4">
+                    <label style="color: #F29040;" for="textA">Enter your comment here</label>
+                    <textarea [(ngModel)]="comment" class="form-control" rows="1" id="textA"></textarea>
+                </div>
+                <div class="col-md-12 text-center">
+                    <button (click)="publishComment(offer.id)" type="button" style="color: #F29040;"
+                        class="btn btn-outline-secondary mt-3">Publish</button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="offerSalaryId == offer.id && salaryBack != offer.id">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-10">
+                    </div>
+                    <div class="col-2">
+                        <button style="color: #F29040;" (click)="backSalary(offer.id)"
+                            class="btn btn-outline-secondary mb-2"><i class="bi bi-arrow-left"></i></button>
+                    </div>
+                </div>
+                <p class="card-text" style="font-size: 20px;">{{offer.position}}</p>
+                <h2 class="card-title" style="margin-left: 152px;"><b>Salaries</b></h2>
+                <div *ngFor="let salary of salaryList">
+                    <label class="form-control mb-1">{{salary.username}}: {{salary.amount}}</label>
+                </div>
+                <div class="form-group mt-4">
+                    <label style="color: #F29040;" for="textA">Enter your salary here</label>
+                    <textarea [(ngModel)]="amount" class="form-control" rows="1" id="textA"></textarea>
+                </div>
+                <div class="col-md-12 text-center">
+                    <button (click)="addSalary(offer.id)" type="button" style="color: #F29040;"
+                        class="btn btn-outline-secondary mt-3">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>

@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class ApiService {
 
 
-  baseURL = "http://localhost:8081";
+  baseURL = "http://localhost:8083";
 
   constructor(private http: HttpClient) { }
 
@@ -56,6 +56,49 @@ export class ApiService {
   addJobOffer(data: any) {
     return this.http.post(this.baseURL + "/api/jobs/addOffer", data, this.getAuthoHeader());
   }
+
+  getJobOffers() {
+    return this.http.get(this.baseURL + "/api/jobs/offers", this.getAuthoHeader());
+  }
+
+  getOfferComments(id: string) {
+    return this.http.get(this.baseURL + "/api/jobs/comments/" + id, this.getAuthoHeader());
+  }
+
+  getOfferSalaries(id: string) {
+    return this.http.get(this.baseURL + "/api/jobs/salaries/" + id, this.getAuthoHeader());
+  }
+
+  getOfferSurveys(id: string) {
+    return this.http.get(this.baseURL + "/api/jobs/surveys/" + id, this.getAuthoHeader());
+  }
+
+  commentOffer(comment: any) {
+
+    this.http.post(this.baseURL + "/api/jobs/comment", comment, this.getAuthoHeader())
+      .subscribe(result => {
+        console.log(result)
+      });
+
+  }
+  addSalary(salary: any) {
+
+    this.http.post(this.baseURL + "/api/jobs/salary", salary, this.getAuthoHeader())
+      .subscribe(result => {
+        console.log(result)
+      });
+
+  }
+
+  addSurvey(survey: any) {
+
+    this.http.post(this.baseURL + "/api/jobs/survey", survey, this.getAuthoHeader())
+      .subscribe(result => {
+        console.log(result)
+      });
+
+  }
+
 
 
 
