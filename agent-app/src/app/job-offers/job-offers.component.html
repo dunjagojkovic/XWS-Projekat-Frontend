@@ -3,6 +3,8 @@
         style="width: 27rem; margin-left: 4.1rem; margin-top: 3rem; border: 1; border-color: #83C3B4;">
         <div *ngIf="offerId != offer.id && offerSalaryId != offer.id">
         <div class="card-body">
+            <p class="card-text mt-2" style="font-size: 20px;">Company: <span style="color: #287271;"><b>{{offer.company.name}}</b></span></p>
+            <p class="card-text mt-2" style="font-size: 20px;">Company owner: <span style="color: #287271;"><b>{{offer.company.owner.name}} {{offer.company.owner.surname}}</b></span></p>
             <p class="card-text mt-2" style="font-size: 20px;">Position: <span style="color: #287271;"><b> {{offer.position}}</b></span></p>
             <p class="card-text mt-2" style="font-size: 20px;">Responsibilities: {{offer.responsibilities}}</p>
             <p class="card-text mt-2" style="font-size: 20px;">Requirements: {{offer.requirements}}</p>
