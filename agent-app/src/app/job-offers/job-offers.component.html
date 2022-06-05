@@ -15,7 +15,7 @@
                         class="btn btn-outline-secondary">Comment</button>
                         <button (click) = "salaries(offer.id)" style="color: #F29040; margin-top: 1.5rem;"
                         class="btn btn-outline-secondary">Add salary</button>
-                        <button (click) = "survey(offer.id)"  style="color: #F29040; margin-top: 1.5rem;"
+                        <button *ngIf = "offer.company.owner.username != user.username" (click) = "survey(offer.id)"  style="color: #F29040; margin-top: 1.5rem;"
                         class="btn btn-outline-secondary">Survey</button>
                     </div>
                     <div class="col-3">
@@ -41,11 +41,11 @@
                 <div *ngFor="let comment of commentList">
                     <label class="form-control mb-1">{{comment.username}}: {{comment.content}}</label>
                 </div>
-                <div class="form-group mt-4">
+                <div *ngIf = "offer.company.owner.username != user.username " class="form-group mt-4">
                     <label style="color: #F29040;" for="textA">Enter your comment here</label>
                     <textarea [(ngModel)]="comment" class="form-control" rows="1" id="textA"></textarea>
                 </div>
-                <div class="col-md-12 text-center">
+                <div *ngIf = "offer.company.owner.username != user.username " class="col-md-12 text-center">
                     <button (click)="publishComment(offer.id)" type="button" style="color: #F29040;"
                         class="btn btn-outline-secondary mt-3">Publish</button>
                 </div>
@@ -66,11 +66,11 @@
                 <div *ngFor="let salary of salaryList">
                     <label class="form-control mb-1">{{salary.username}}: {{salary.amount}}</label>
                 </div>
-                <div class="form-group mt-4">
+                <div *ngIf = "offer.company.owner.username != user.username " class="form-group mt-4">
                     <label style="color: #F29040;" for="textA">Enter your salary here</label>
                     <textarea [(ngModel)]="amount" class="form-control" rows="1" id="textA"></textarea>
                 </div>
-                <div class="col-md-12 text-center">
+                <div *ngIf = "offer.company.owner.username != user.username " class="col-md-12 text-center">
                     <button (click)="addSalary(offer.id)" type="button" style="color: #F29040;"
                         class="btn btn-outline-secondary mt-3">Add</button>
                 </div>
