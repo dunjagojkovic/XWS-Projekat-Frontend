@@ -10,7 +10,7 @@
 <body>
     <header>
         <mat-toolbar>
-            <h1 [routerLink]="['/']" style="cursor: pointer;"><span>S</span>tylinkt</h1>
+            <h1 [routerLink]="['/']" style="cursor: pointer;"><span class="hSpan">S</span>tylinkt</h1>
             <span class="example-spacer"></span>
             <button [routerLink]="['/registration']" style="float: none; cursor: pointer;"><a>Join us</a></button>
             <button [routerLink]="['/']" style="cursor: pointer;"><a>Log in</a></button>
@@ -21,17 +21,20 @@
         <form [formGroup]="form">
         <mat-card class="example-card">
             <mat-card-subtitle class="subtitle">{{username}}</mat-card-subtitle>
-            <mat-card-title class="title">Ime prezime</mat-card-title>
+            <mat-card-title class="title">{{name}} {{surname}}</mat-card-title>
             <mat-card-content>
-              <p>Email address - </p>
-              <p>Phone number - </p>
-              <p>Date of birth</p>
-              <p>Gender - </p>
+              <p><span class="spann">Email address - </span> {{email}}</p>
+              <p><span class="spann">Phone number - </span> {{phoneNumber}}</p>
+              <p><span class="spann">Date of birth - </span> {{birthDate}}</p>
+              <p><span class="spann">Gender - </span>{{gender}}</p>
             </mat-card-content>
             <mat-divider inset style="margin-bottom: 2%;"></mat-divider>
-              <p>Biography - </p>
-              <p>Education - </p>
-              <p>Work experience - </p>
+              <p><span class="spann">Biography - </span> {{biography}}</p>
+              <p><span class="spann">Education - </span> {{education}}</p>
+              <p><span class="spann">Work experience - </span> {{workExperience}}</p>
+              <mat-divider inset style="margin-bottom: 2%;"></mat-divider>
+              <p><span class="spann">Hobby - </span> {{hobby}}</p>
+              <p><span class="spann">Interests - </span> {{interest}}</p>
           </mat-card>
         </form>
         </div>

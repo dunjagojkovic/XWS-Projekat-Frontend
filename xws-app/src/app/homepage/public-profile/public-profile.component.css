@@ -11,7 +11,7 @@ mat-toolbar {
     height: 10vh;
 }
 
-mat-toolbar h1,span {
+mat-toolbar h1, .hSpan {
     font-size: 42px;
     margin-left: 2%;
     color: #2A9D8F;
@@ -86,6 +86,9 @@ p {
     margin: 0 auto;
 }
 
+.spann {
+    font-weight: bold;
+}
 /* POSTS */
 
 h2 {

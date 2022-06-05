@@ -20,6 +20,17 @@ export class PublicProfileComponent implements OnInit {
   public posts: any[]
   name: any;
   surname: any;
+  email: any;
+  phoneNumber: any;
+  birthDate: any;
+  gender: any;
+  publicUsers : any;
+  biography : any;
+  workExperience: any;
+  education : any;
+  interest : any;
+  hobby : any;
+
 
   public commentList: any[]
   public likeList: any[]
@@ -65,8 +76,27 @@ export class PublicProfileComponent implements OnInit {
     this.service.userPosts(this.username).subscribe((response: any) => {
       this.userPosts = response;
       this.posts = this.userPosts.posts
-      console.log(this.posts);
+      // console.log(this.posts);
     });
+
+    this.api.getPublicProfile().subscribe((response:any) => {
+      this.publicUsers = response;
+      for(var i in this.publicUsers){
+        if(this.publicUsers[i].username == this.username){
+            this.name = this.publicUsers[i].name;
+            this.surname = this.publicUsers[i].surname;
+            this.phoneNumber = this.publicUsers[i].phoneNumber; 
+            this.gender = this.publicUsers[i].gender;
+            this.email = this.publicUsers[i].email;
+            this.birthDate = this.publicUsers[i].birthDate;
+            this.biography = this.publicUsers[i].biography;
+            this.hobby = this.publicUsers[i].hobby;
+            this.workExperience = this.publicUsers[i].workExperience;
+            this.interest = this.publicUsers[i].interest;
+            this.education = this.publicUsers[i].education;
+        }
+      }
+  });
   }
 
   comments(id: string) {
