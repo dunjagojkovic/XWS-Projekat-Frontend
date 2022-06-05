@@ -106,4 +106,10 @@ export class ApiService {
 
   }
 
+  editCompanyInfo(data: any) {
+    return this.http.put(this.baseURL + "/api/companies/editCompanyInfo", data, this.getAuthoHeader());
+  }
+
+
+
 }

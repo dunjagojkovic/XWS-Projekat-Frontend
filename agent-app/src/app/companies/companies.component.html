@@ -16,7 +16,7 @@
         </mat-card-content>
         <mat-divider inset></mat-divider>
         <mat-card-actions class="buttons">
-          <button mat-button queryParams="{id: company.id}">Edit</button>
+          <button mat-button [routerLink]="['/editCompanyInfo']" [queryParams]="{id: company.id}">Edit</button>
           <button mat-button style="background-color: #264653;" [routerLink]="['/addJobOffer']" [queryParams]="{id: company.id}">Add job offers</button>
           <button mat-button style="background-color: #264653;" [routerLink]="['/publishJobOffer']" [queryParams]="{id: company.id}">Publish existing offer</button>
         </mat-card-actions>
