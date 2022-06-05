@@ -46,10 +46,11 @@ a:hover {
 .forma {
     position: absolute;
     width: 32%;
-    top: 8%;
+    top: 3%;
     background-color: #264653;
     border-radius: 50px;
     opacity: 0.90;
+    margin-bottom: 3%;
     justify-content: center;
 }
 

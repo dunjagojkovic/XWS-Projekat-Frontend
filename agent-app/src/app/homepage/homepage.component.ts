@@ -51,7 +51,7 @@ export class HomepageComponent implements OnInit {
         this.service.current().subscribe((user: any) => {
           localStorage.setItem('user', JSON.stringify(user));
           console.log(user);
-          if(user.type == "Potential company owner" || user.type == "Company owner"){
+          if(user.type == "Potential company owner" || user.type == "Company owner" || user.type == "User"){
             this.router.navigate(['/profile']);
           }
           if(user.type == "Admin"){

@@ -19,7 +19,7 @@ main {
 
 .toolbtn {
     border: none;
-    width: 100px;
+    width: 115px;
     background-color: #264653;
     color: #83C3B4;
     font-size: 16px;
@@ -40,7 +40,7 @@ a:hover {
 }
 
 .leftbox h1{
-    font-size: 5em;
+    font-size: 4.2em;
     margin-bottom: 2%;
     margin-left: 8%;
     padding: 2%;
