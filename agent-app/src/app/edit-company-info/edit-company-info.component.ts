@@ -44,7 +44,9 @@ export class EditCompanyInfoComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  
+  /* this.api.getCompanyInfo(this.id).subscribe((response: any) => {
+      console.log(response)
+  });*/
   }
 
   onSubmit() {
