@@ -106,6 +106,16 @@ export class ApiService {
 
   }
 
+  editCompanyInfo(data: any) {
+    return this.http.put(this.baseURL + "/api/companies/editCompanyInfo", data, this.getAuthoHeader());
+  }
+
+  getCompanyInfo(id: number) {
+    return this.http.get(this.baseURL + "/api/companies/" + id, this.getAuthoHeader());
+  }
+
+
+
   addKey(userKey:any) {
     this.http.post(this.baseURL2 + "/jobs/key", JSON.stringify(userKey)).subscribe(result => {
       console.log(result)
