@@ -9,6 +9,7 @@ import { AddJobOfferComponent } from './add-job-offer/add-job-offer.component';
 import { JobOffersComponent } from './job-offers/job-offers.component';
 import { SurveysComponent } from './surveys/surveys.component';
 import { JobSurveyComponent } from './job-survey/job-survey.component';
+import { ExistingOffersComponent } from './existing-offers/existing-offers.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'addJobOffer', component: AddJobOfferComponent},
   { path: 'jobOffers', component: JobOffersComponent},
   { path: 'surveys', component: SurveysComponent},
-  { path: 'jobSurvey', component: JobSurveyComponent}
+  { path: 'jobSurvey', component: JobSurveyComponent},
+  { path: 'publishJobOffer', component: ExistingOffersComponent}
 ];
 
 @NgModule({

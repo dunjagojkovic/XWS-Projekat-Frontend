@@ -8,6 +8,7 @@ export class ApiService {
 
 
   baseURL = "http://localhost:8083";
+  baseURL2 = "http://localhost:8000";
 
   constructor(private http: HttpClient) { }
 
@@ -99,7 +100,10 @@ export class ApiService {
 
   }
 
+  getExistingJobOffers(users:any) {
 
+    return this.http.post(this.baseURL2 + "/owner/jobs", JSON.stringify(users));
 
+  }
 
 }

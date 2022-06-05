@@ -30,6 +30,7 @@ import { JobOffersComponent } from './job-offers/job-offers.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JobSurveyComponent } from './job-survey/job-survey.component';
 import { SurveysComponent } from './surveys/surveys.component';
+import { ExistingOffersComponent } from './existing-offers/existing-offers.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { SurveysComponent } from './surveys/surveys.component';
     AddJobOfferComponent,
     JobOffersComponent,
     JobSurveyComponent,
-    SurveysComponent
+    SurveysComponent,
+    ExistingOffersComponent
   ],
   imports: [
     AppRoutingModule,
