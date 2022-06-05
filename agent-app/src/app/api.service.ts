@@ -100,9 +100,9 @@ export class ApiService {
 
   }
 
-  getExistingJobOffers(users:any) {
+  getExistingJobOffers(user:any) {
 
-    return this.http.post(this.baseURL2 + "/owner/jobs", JSON.stringify(users));
+    return this.http.post(this.baseURL2 + "/owner/jobs", JSON.stringify(user));
 
   }
 

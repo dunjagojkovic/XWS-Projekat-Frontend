@@ -25,10 +25,10 @@ export class ExistingOffersComponent implements OnInit {
       this.id = params['id'];
       this.service.current().subscribe((response: any) => {
         this.user = response;
-        let users = {
-          companyOwners : [this.user.username]
+        let user = {
+          ownerKey: "asflkdkufrtbtt674584"
         };
-        this.service.getExistingJobOffers(users).subscribe((response: any) => {
+        this.service.getExistingJobOffers(user).subscribe((response: any) => {
           this.ownerJobs = response;
           this.offers = this.ownerJobs.offers;
           console.log(response);
