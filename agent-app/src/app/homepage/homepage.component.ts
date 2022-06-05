@@ -28,6 +28,7 @@ export class HomepageComponent implements OnInit {
   textBox : boolean = true;
   hide = true;
   form: FormGroup;
+  user: any = {} as any
 
 
   ngOnInit(): void {
@@ -47,9 +48,11 @@ export class HomepageComponent implements OnInit {
       this.service.login(data).subscribe((any: any) => {
         console.log(data);
         localStorage.setItem('token', any.token);
+        localStorage.setItem('key', any.key);
 
         this.service.current().subscribe((user: any) => {
           localStorage.setItem('user', JSON.stringify(user));
+          this.user = user
           console.log(user);
           if(user.type == "Potential company owner" || user.type == "Company owner" || user.type == "User"){
             this.router.navigate(['/profile']);
@@ -57,6 +60,12 @@ export class HomepageComponent implements OnInit {
           if(user.type == "Admin"){
             this.router.navigate(['/admin']);
           }
+          let userKey = {
+            key: localStorage.getItem('key'),
+            username: this.user.username
+            
+          }
+          this.service.addKey(userKey);
         }, error => {
           this._snackBar.open('Incorrect credentials! Please try again.', 'Close', {duration: 2000})});
       })

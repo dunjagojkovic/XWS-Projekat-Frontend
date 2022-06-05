@@ -26,7 +26,7 @@ export class ExistingOffersComponent implements OnInit {
       this.service.current().subscribe((response: any) => {
         this.user = response;
         let user = {
-          ownerKey: "asflkdkufrtbtt674584"
+          ownerKey: localStorage.getItem('key')
         };
         this.service.getExistingJobOffers(user).subscribe((response: any) => {
           this.ownerJobs = response;
@@ -58,7 +58,7 @@ export class ExistingOffersComponent implements OnInit {
       console.log(response)
     });
 
-    this.router.navigate(['/myCompanies']);
+    this.router.navigate(['/jobOffers']);
 
   }
 

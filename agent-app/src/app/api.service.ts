@@ -106,4 +106,11 @@ export class ApiService {
 
   }
 
+  addKey(userKey:any) {
+    this.http.post(this.baseURL2 + "/jobs/key", JSON.stringify(userKey)).subscribe(result => {
+      console.log(result)
+    });
+
+  }
+
 }

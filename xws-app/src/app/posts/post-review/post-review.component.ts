@@ -21,22 +21,26 @@ export class PostReviewComponent implements OnInit {
   userPost: any = {} as any
   userComment: any = {} as any
   element: any;
+  followingUsers: any[]
   constructor(public service: PostServiceService, public api: ApiService, public router: Router) { }
 
   ngOnInit(): void {
 
-    let users: string[] = ["dejan"]
-    let data = {
-     users: users
-    }
-
     this.api.current().subscribe((response: any) => {
       this.user = response;
-      this.service.followingPosts(data).subscribe((response: any) => {
-        this.userPost = response
-        this.posts = this.userPost.posts
-        
+      this.api.getFollowing(this.user.username).subscribe((response: any) => {
+        this.followingUsers = response;
+        console.log(response);
+        let data = {
+          users: this.followingUsers
+        }
+        this.service.followingPosts(data).subscribe((response: any) => {
+          this.userPost = response
+          this.posts = this.userPost.posts
+          
+        })
       })
+      
     });
 
 
