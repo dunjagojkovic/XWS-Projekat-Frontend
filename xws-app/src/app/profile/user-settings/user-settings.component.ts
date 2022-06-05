@@ -35,6 +35,8 @@ export class UserSettingsComponent implements OnInit {
         education: ['', Validators.minLength(3)],
         workExperience: ['', Validators.pattern('[a-zčćžšđA-ZČĆŽŠĐ]*')],
         biography: [''],
+        hobby: [''],
+        interest: [''],
         phoneNumber: ['', Validators.minLength(10)],
       });
 
@@ -68,7 +70,8 @@ export class UserSettingsComponent implements OnInit {
     const education = this.form.get('education')?.value;
     const workExperience = this.form.get('workExperience')?.value;
     const biography = this.form.get('biography')?.value;
-
+    const interest = this.form.get('interest')?.value;
+    const hobby = this.form.get('hobby')?.value;
 
 
     let data = {
@@ -82,7 +85,9 @@ export class UserSettingsComponent implements OnInit {
       education: education,
       workExperience: workExperience,
       biography: biography,     
-      phoneNumber: phoneNumber
+      phoneNumber: phoneNumber,
+      interest: interest,
+      hobby: hobby
     }
 
     this.api.editInfo(id, data).subscribe((response: any) => {

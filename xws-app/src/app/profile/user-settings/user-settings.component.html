@@ -88,7 +88,17 @@
                         <textarea rows="10" matInput value="{{user.biography}}" formControlName="biography"></textarea>
                       </mat-form-field>
                 </div>
-                <button class="save" style="top: 92%;">Save</button>
+                <div style="margin-bottom: 4%;">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Hobby</mat-label>
+                        <textarea rows="6" matInput value="{{user.hobby}}" formControlName="hobby"></textarea>
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Interests</mat-label>
+                        <textarea rows="6" matInput value="{{user.interest}}" formControlName="interest"></textarea>
+                      </mat-form-field>
+                </div>
+                <button class="save" style="top: 94%;">Save</button>
             </mat-card>
         </section>
         </form>
