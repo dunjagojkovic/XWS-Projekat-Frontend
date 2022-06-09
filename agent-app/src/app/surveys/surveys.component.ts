@@ -17,7 +17,7 @@ export class SurveysComponent implements OnInit {
     this.activatedRoute.queryParams
       .subscribe(params => {
         this.id = params['id'];
-        this.service.getOfferSurveys(this.id).subscribe((response: any) => {
+        this.service.getCompanySurveys(this.id).subscribe((response: any) => {
           this.surveys = response;
         })
       }

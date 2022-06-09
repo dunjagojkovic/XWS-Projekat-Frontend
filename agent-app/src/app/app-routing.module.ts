@@ -11,6 +11,7 @@ import { SurveysComponent } from './surveys/surveys.component';
 import { JobSurveyComponent } from './job-survey/job-survey.component';
 import { ExistingOffersComponent } from './existing-offers/existing-offers.component';
 import { EditCompanyInfoComponent } from './edit-company-info/edit-company-info.component';
+import { ApprovedCompaniesComponent } from './approved-companies/approved-companies.component';
 
 
 
@@ -23,9 +24,10 @@ const routes: Routes = [
   { path: 'addJobOffer', component: AddJobOfferComponent},
   { path: 'jobOffers', component: JobOffersComponent},
   { path: 'surveys', component: SurveysComponent},
-  { path: 'jobSurvey', component: JobSurveyComponent},
+  { path: 'companySurvey', component: JobSurveyComponent},
   { path: 'publishJobOffer', component: ExistingOffersComponent},
-  { path: 'editCompanyInfo', component: EditCompanyInfoComponent}
+  { path: 'editCompanyInfo', component: EditCompanyInfoComponent},
+  { path: 'companies', component: ApprovedCompaniesComponent}
 
 ];
 
