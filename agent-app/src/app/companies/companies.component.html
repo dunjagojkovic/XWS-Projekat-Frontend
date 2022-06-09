@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="dugmici">
+        <button class="toolbtn" [routerLink]="['/']" style="float: none; cursor: pointer;"><a>Logout</a></button>
+      </div>
+    <mat-card class="example-card" *ngFor="let company of companies">
+        <mat-card-subtitle class="subtitle">{{company.email}}<br> {{company.contact}}</mat-card-subtitle>
+        <mat-card-title class="title">Company - {{company.name}}</mat-card-title>
+        <mat-card-content>
+          <p>{{company.state}}, {{company.city}}, {{company.address}}</p>
+          <p>{{company.description}}</p>
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions class="buttons">
+          <button mat-button [routerLink]="['/editCompanyInfo']" [queryParams]="{id: company.id}">Edit</button>
+          <button mat-button style="background-color: #264653;" [routerLink]="['/addJobOffer']" [queryParams]="{id: company.id}">Add job offers</button>
+          <button mat-button style="background-color: #264653;" [routerLink]="['/publishJobOffer']" [queryParams]="{id: company.id}">Publish existing offer</button>
+        </mat-card-actions>
+        <mat-card-footer>
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </mat-card-footer>
+      </mat-card>
+</body>
+</html>

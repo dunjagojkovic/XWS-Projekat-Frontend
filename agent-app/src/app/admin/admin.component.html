@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="dugmici">
+        <button class="toolbtn" [routerLink]="['/']" style="float: none; cursor: pointer;"><a>Logout</a></button>
+      </div>
+    <mat-card class="example-card" *ngFor="let company of companies">
+        <mat-card-subtitle class="subtitle">{{company.email}}<br> {{company.contact}}</mat-card-subtitle>
+        <mat-card-title class="title">Company - {{company.name}}</mat-card-title>
+        <mat-card-content>
+          <p>{{company.state}}, {{company.city}}, {{company.address}}</p>
+          <p>{{company.description}}</p>
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions class="buttons">
+          <button (click)="onAccept(company.id)" mat-button>Accept</button>
+          <button (click)="onDecline(company.id)" mat-button style="background-color: #264653;">Decline</button>
+        </mat-card-actions>
+        <mat-card-footer>
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </mat-card-footer>
+      </mat-card>
+</body>
+</html>

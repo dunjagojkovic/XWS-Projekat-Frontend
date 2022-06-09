@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <main>
+      <div class="dugmici">
+        <button class="toolbtn" [routerLink]="['/']" style="float: none; cursor: pointer;"><a>Homepage</a></button>
+      </div>
+        <div class="pozadina">   
+            <img src="assets/sto.jpg">
+            <div class="forma">
+              <form [formGroup]="form">
+                <div class="registracija">
+                    <h1 style="margin-bottom: -2%; font-size: 1.2em;">Registration form</h1>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                      <mat-label style="color: white;">User type</mat-label>
+                      <select style="color: white;" matNativeControl required formControlName="type">
+                        <option value="User" style="color: black;">User</option>
+                        <option value="Potential company owner" style="color: black;">Company owner</option>
+                        <option value="Admin" style="color: black;">Admin</option>
+                      </select>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: white;">Name</mat-label>
+                        <input matInput placeholder="" value="" formControlName="name">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: white;">Surname</mat-label>
+                        <input matInput placeholder="" value="" formControlName="surname">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: white;">Username</mat-label>
+                        <input matInput placeholder="" value="" formControlName="username">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: white;">Email</mat-label>
+                        <input matInput formControlName="email" value="" placeholder="">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: white;">Phone</mat-label>
+                        <input matInput  placeholder="" value="" formControlName="phoneNumber">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: white;">Date of birth</mat-label>
+                        <input matInput placeholder="" value="" formControlName="birthDate">
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label style="color: white;">Gender</mat-label>
+                        <select style="color: black;" matNativeControl required formControlName="gender">
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: white;">Password</mat-label>
+                        <input matInput type="password" placeholder="" value="" formControlName="password">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: white;">Password repeat</mat-label>
+                        <input matInput type="password" placeholder="" value="" formControlName="passwordRepeat">
+                      </mat-form-field>
+                      <button class="btn" (click)="onSubmit()">Register</button>
+                </div>
+              </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+          <h2 class="link_title">Product</h2>
+          <h4 class="link_subtitle">Our plan</h4>
+          <h4 class="link_subtitle">Free trial</h4>
+        </div>
+        <div>
+          <h2 class="link_title">About us</h2>
+          <h4 class="link_subtitle">Request demo</h4>
+          <h4 class="link_subtitle">FAQs</h4>
+        </div>
+        <div>
+          <h2 class="link_title">Support</h2>
+          <h4 class="link_subtitle">Services</h4>
+          <h4 class="link_subtitle">Contact us</h4>
+        </div>
+        <div>
+          <h2 class="link_title">Brand police</h2>
+          <h4 class="link_subtitle">Reviews</h4>
+          <h4 class="link_subtitle">Safety</h4>
+        </div>
+    </footer>
+    <p style="background-color: #d0d5cf; padding: 6px; text-align: center;">Copyright 2022. &#xae;</p>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
+<body>
+    <header>
+        <mat-toolbar>
+            <h1 [routerLink]="['/']" style="cursor: pointer;"><span class="hSpan">S</span>tylinkt</h1>
+            <span class="example-spacer"></span>
+            <button [routerLink]="['/registration']" style="float: none; cursor: pointer;"><a>Join us</a></button>
+            <button [routerLink]="['/']" style="cursor: pointer;"><a>Log in</a></button>
+        </mat-toolbar>
+    </header>
+    <main>
+        <div class="info">
+        <form [formGroup]="form">
+        <mat-card class="example-card">
+            <mat-card-subtitle class="subtitle">{{username}}</mat-card-subtitle>
+            <mat-card-title class="title">{{name}} {{surname}}</mat-card-title>
+            <mat-card-content>
+              <p><span class="spann">Email address - </span> {{email}}</p>
+              <p><span class="spann">Phone number - </span> {{phoneNumber}}</p>
+              <p><span class="spann">Date of birth - </span> {{birthDate}}</p>
+              <p><span class="spann">Gender - </span>{{gender}}</p>
+            </mat-card-content>
+            <mat-divider inset style="margin-bottom: 2%;"></mat-divider>
+              <p><span class="spann">Biography - </span> {{biography}}</p>
+              <p><span class="spann">Education - </span> {{education}}</p>
+              <p><span class="spann">Work experience - </span> {{workExperience}}</p>
+              <mat-divider inset style="margin-bottom: 2%;"></mat-divider>
+              <p><span class="spann">Hobby - </span> {{hobby}}</p>
+              <p><span class="spann">Interests - </span> {{interest}}</p>
+          </mat-card>
+        </form>
+        </div>
+        
+        <div class="posts">
+            <h2>Posts of {{username}}</h2>
+            <mat-divider inset style="margin: 0 auto; width: 80%;"></mat-divider>
+            <div class="row">
+                <div *ngFor='let post of posts' class="card">
+                    <div *ngIf="postId != post.id && postLikeId != post.id && postDislikeId != post.id">
+                        <img class="card-img-top p-2" src="{{post.image}}" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="row">
+                                <button class="btnPost" (click)="likes(post.id)">Likes</button>
+                                <button class="btnPost" (click)="dislikes(post.id)">Dislikes</button>
+                                <button (click)="comments(post.id)" class="btnPost">Comments</button>
+                            </div>
+                            <p class="text" style="font-size: 20px;">{{post.description}}</p>
+                            <button  class="btnLink"><a href="{{post.link}}" target="_blank">Show link</a></button>
+                        </div>
+                    </div>
+                    <div *ngIf="postId == post.id && backPost != post.id">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-10">
+                                </div>
+                                <div class="col-2">
+                                    <button style="color: #F29040;" (click)="back(post.id)"
+                                        class="btn btn-outline-secondary mb-2"><i class="bi bi-arrow-left"></i></button>
+                                </div>
+                            </div>
+                            <p class="card-text" style="font-size: 20px;">{{post.description}}</p>
+                            <h2 class="card-title" style="margin-left: 129px;"><b>Comments</b></h2>
+                            <div *ngFor="let comment of commentList">
+                                <label class="form-control mb-1">{{comment.user}}: {{comment.content}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="postLikeId == post.id && likeBack != post.id">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-10">
+                                </div>
+                                <div class="col-2">
+                                    <button style="color: #F29040;" (click)="backLike(post.id)"
+                                        class="btn btn-outline-secondary mb-2"><i class="bi bi-arrow-left"></i></button>
+                                </div>
+                            </div>
+                            <p class="card-text" style="font-size: 20px;">{{post.description}}</p>
+                            <h2 class="card-title" style="margin-left: 152px;"><b>Likes</b></h2>
+                            <div *ngFor="let like of likeList">
+                                <label class="form-control mb-1">{{like}}</label>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div *ngIf="postDislikeId == post.id && dislikeBack != post.id">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-10">
+                                </div>
+                                <div class="col-2">
+                                    <button style="color: #F29040;" (click)="backDislike(post.id)"
+                                        class="btn btn-outline-secondary mb-2"><i class="bi bi-arrow-left"></i></button>
+                                </div>
+                            </div>
+                            <p class="card-text" style="font-size: 20px;">{{post.description}}</p>
+                            <h2 class="card-title" style="margin-left: 142px;"><b>Dislikes</b></h2>
+                            <div *ngFor="let dislike of dislikeList">
+                                <label class="form-control mb-1">{{dislike}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            </div>
+        </div>
+    </main>
+</body>
+</html>

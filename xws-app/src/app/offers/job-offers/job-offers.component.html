@@ -1,0 +1,29 @@
+<div>
+    <div class="input-group">
+        <div class="form-outline" style="margin-left: 1200px; margin-top: 30px;">
+            <input type="search" id="form1" class="form-control" [(ngModel)]="position" (input)="findJobOffers()"/>
+        </div>
+        <button (click)="findJobOffers()" type="button" style="color: #F29040; margin-top: 30px;" class="btn btn-outline-secondary">
+            <i class="bi bi-search"></i>
+        </button>
+    </div>
+
+    <div class="row">
+        <div *ngFor='let job of jobs' class="card"
+            style="width: 26rem; margin-left: 4.6rem; margin-top: 3rem; border: 1; border-color: #83C3B4;">
+            <div class="card-body">
+                <p class="card-text mt-2" style="font-size: 20px;"><span style="color: #287271;"><b>Position:</b></span>
+                    {{job.position}}</p>
+                <p class="card-text mt-2" style="font-size: 20px;"><span
+                        style="color: #287271;"><b>Description:</b></span> {{job.description}}</p>
+                <p class="card-text mt-2" style="font-size: 20px;"><span style="color: #287271;"><b>Daily
+                            activities:</b></span> {{job.dailyActivities}}</p>
+                <p class="card-text mt-2" style="font-size: 20px;"><span
+                        style="color: #287271;"><b>Preconditions:</b></span> {{job.precondition}}</p>
+                <p class="card-text mt-2" style="font-size: 20px;"><span style="color: #287271;"><b>User:</b></span>
+                    {{job.user}}</p>
+
+            </div>
+        </div>
+    </div>
+</div>

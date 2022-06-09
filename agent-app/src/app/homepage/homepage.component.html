@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <main>
+      <div class="dugmici">
+        <button class="toolbtn" [routerLink]="['/registration']" style="float: none; cursor: pointer;"><a>Join us</a></button>
+        <button class="toolbtn" (click)="loginBox = true; textBox = false" style="cursor: pointer;"><a>Log in</a></button>
+      </div>
+        <div>   
+            <div class="box1">
+                <img src="assets/img.png">
+                <div>
+                    <h1 style="font-size: 50px; color: #E7C15F;">Improve your company with us!</h1>
+                    <ul *ngIf="textBox">
+                        <li>&#9656; Find a new job, coworker or classmate</li>
+                        <li>&#9656; Post your job for milions of people to see</li>
+                        <li>&#9656; Learn the skills you need to succeed</li>
+                    </ul>
+                    <form [formGroup]="form">
+                    <div class="login-box" *ngIf="loginBox">
+                        <mat-form-field class="input-box" appearance="outline">
+                          <mat-label>Username</mat-label>
+                          <input matInput placeholder="" value="" formControlName="username">
+                        </mat-form-field>
+                        <mat-form-field class="input-box" appearance="outline">
+                          <mat-label>Password</mat-label>
+                          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                      </mat-form-field>
+                      <p>Don't have account, <button style="cursor: pointer;" [routerLink]="['/registration']"><a>Sign up</a></button></p>
+                      <div style="display: flex; flex-direction: row">
+                        <button (click)="onSubmit()" class="butt">Confirm</button>
+                        <button class="butt" (click)="loginBox = false; textBox = true">Close</button>
+                      </div>
+                  </div>
+                </form>
+                </div>
+            </div>
+            <img style="width: 100%; margin-bottom: -0.5%;" src="assets/tablet.jpg">
+            <div class="opis">
+              <h2>
+                Secure employment, verified people. Register your company on our site and expand your business</h2>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+          <h2 class="link_title">Product</h2>
+          <h4 class="link_subtitle">Our plan</h4>
+          <h4 class="link_subtitle">Free trial</h4>
+        </div>
+        <div>
+          <h2 class="link_title">About us</h2>
+          <h4 class="link_subtitle">Request demo</h4>
+          <h4 class="link_subtitle">FAQs</h4>
+        </div>
+        <div>
+          <h2 class="link_title">Support</h2>
+          <h4 class="link_subtitle">Services</h4>
+          <h4 class="link_subtitle">Contact us</h4>
+        </div>
+        <div>
+          <h2 class="link_title">Brand police</h2>
+          <h4 class="link_subtitle">Reviews</h4>
+          <h4 class="link_subtitle">Safety</h4>
+        </div>
+    </footer>
+    <p style="background-color: #d0d5cf; padding: 6px; text-align: center;">Copyright 2022. &#xae;</p>
+</body>
+</html>

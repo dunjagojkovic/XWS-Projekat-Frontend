@@ -19,6 +19,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
 
 import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -28,6 +29,16 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { PasswordResComponent } from './password-res/password-res.component';
 import { UserActivateComponent } from './user-activate/user-activate.component';
 import { SuccessfullActivationComponent } from './successfull-activation/successfull-activation.component';
+import { UserPostsComponent } from './profile/user-posts/user-posts/user-posts.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PostReviewComponent } from './posts/post-review/post-review.component';
+import { PublishPostComponent } from './profile/publish-post/publish-post/publish-post.component';
+import { PublicProfileComponent } from './homepage/public-profile/public-profile.component';
+import { JobOfferComponent } from './profile/job-offer/job-offer.component';
+import { JobOffersComponent } from './offers/job-offers/job-offers.component';
+import { SearchProfilesComponent } from './profiles/search-profiles/search-profiles.component';
+import { ViewProfileComponent } from './profiles/view-profile/view-profile.component';
+import { ViewRequestsComponent } from './profiles/view-requests/view-requests.component';
 
 
 
@@ -42,7 +53,16 @@ import { SuccessfullActivationComponent } from './successfull-activation/success
     NotFoundComponent,
     PasswordResComponent,
     UserActivateComponent,
-    SuccessfullActivationComponent
+    SuccessfullActivationComponent,
+    UserPostsComponent,
+    PostReviewComponent,
+    PublishPostComponent,
+    PublicProfileComponent,
+    JobOfferComponent,
+    JobOffersComponent,
+    SearchProfilesComponent,
+    ViewProfileComponent,
+    ViewRequestsComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +78,9 @@ import { SuccessfullActivationComponent } from './successfull-activation/success
     MatSnackBarModule,
     MatDatepickerModule,
     MatSlideToggleModule,
-    MatCardModule
+    MatCardModule,
+    MatListModule,
+    NgbModule
 
   ],
   providers: [ApiService, AuthGuard, {

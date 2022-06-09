@@ -11,6 +11,13 @@
         <mat-toolbar>
             <h1><span>S</span>tylinkt</h1>
             <span class="example-spacer"></span>
+            <button [routerLink]="['/userPosts']" style="float: none; cursor: pointer;"><a>My posts</a></button>
+            <button [routerLink]="['/publishPost']" style="float: none; cursor: pointer;"><a>Publish</a></button>
+            <button [routerLink]="['/followingPosts']" style="float: none; cursor: pointer;"><a>Following</a></button>
+            <button [routerLink]="['/createJobOffer']" style="float: none; cursor: pointer;"><a>Create offer</a></button>
+            <button [routerLink]="['/jobOffers']" style="float: none; cursor: pointer;"><a>Job offers</a></button>
+            <button [routerLink]="['/searchProfiles']" style="float: none; cursor: pointer;"><a>Search</a></button>
+            <button *ngIf="!user.isPublic" [routerLink]="['/viewRequests']" style="float: none; cursor: pointer;"><a>Requests</a></button>
             <button (click)="logout()" style="cursor: pointer;"><a>Logout</a></button>
         </mat-toolbar>
     </header>
@@ -19,13 +26,9 @@
         <form [formGroup]="form" (ngSubmit)="savePersonalInfo()">
         <section class="personalInfo">
             <mat-card class="headCard">
-                <h2>Personal informations</h2>
+                <h2 style="font-weight: bold;">Personal informations</h2>
             </mat-card>
             <mat-card class="card1">
-                <div class="imgSec">
-                    <img src="assets/coworkers.jpg">
-                    <input type="file">
-                </div>
                 <div class="infoSec">
                    <mat-form-field class="input-box" appearance="outline">
                         <mat-label>Name</mat-label>
@@ -47,7 +50,7 @@
                         <mat-label>Email</mat-label>
                         <input matInput placeholder="" value="{{user.email}}" formControlName="email">
                     </mat-form-field>
-                    <mat-form-field class="input-box" appearance="outline" style="margin-left: 2%; margin-top: 3%;">
+                    <mat-form-field class="input-box" appearance="outline">
                         <mat-label>Username</mat-label>
                         <input matInput placeholder="" value="{{user.username}}" formControlName="username" >
                     </mat-form-field>
@@ -60,70 +63,70 @@
                         </select>
                       </mat-form-field>
                 </div>
-                <button class="save">Save</button>
+                <button class="save" style="top: 85%;">Save</button>
             </mat-card>
         </section>
 
         <section class="educationInfo">
             <mat-card class="headCard">
-                <h2>Education and Work experience</h2>
+                <h2 style="font-weight: bold;">Work informations</h2>
             </mat-card>
             <mat-card class="card2">
                 <div>
                     <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>Education</mat-label>
-                        <textarea rows="12" matInput value="{{user.education}}" formControlName="education"></textarea>
+                        <textarea rows="10" matInput value="{{user.education}}" formControlName="education"></textarea>
                       </mat-form-field>
                       <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>Work experience</mat-label>
-                        <textarea rows="12" matInput value="{{user.workExperience}}" formControlName="workExperience"></textarea>
+                        <textarea rows="10" matInput value="{{user.workExperience}}" formControlName="workExperience"></textarea>
                       </mat-form-field>
                 </div>
-                <button class="save">Save</button>
-            </mat-card>
-        </section>
-
-        <section class="biographyInfo">
-            <mat-card class="headCard">
-                <h2>My biography</h2>
-            </mat-card>
-            <mat-card class="card3">
                 <div>
                     <mat-form-field class="example-full-widthh" appearance="outline">
                         <mat-label>Biography</mat-label>
-                        <textarea rows="12" matInput value="{{user.biography}}" formControlName="biography"></textarea>
+                        <textarea rows="10" matInput value="{{user.biography}}" formControlName="biography"></textarea>
                       </mat-form-field>
                 </div>
-                <button class="save">Save</button>
+                <div style="margin-bottom: 4%;">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Hobby</mat-label>
+                        <textarea rows="6" matInput value="{{user.hobby}}" formControlName="hobby"></textarea>
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Interests</mat-label>
+                        <textarea rows="6" matInput value="{{user.interest}}" formControlName="interest"></textarea>
+                      </mat-form-field>
+                </div>
+                <button class="save" style="top: 94%;">Save</button>
             </mat-card>
         </section>
-
         </form>
         
         <form [formGroup]="formPassword" (ngSubmit)="saveNewPassword()">
         <section class="securityInfo">
             <mat-card class="headCard">
-                <h2>Security informations</h2>
+                <h2 style="font-weight: bold;">Security informations</h2>
             </mat-card>
             <mat-card class="card4">
                 <div>
                     <div class="pass">
-                        <mat-form-field class="input-box" appearance="outline">
+                        <mat-form-field class="inputbox" appearance="outline">
                             <mat-label>Old password</mat-label>
                             <input matInput placeholder="" formControlName="oldPassword">
                         </mat-form-field>
-                        <mat-form-field class="input-box" appearance="outline">
+                        <mat-form-field class="inputbox" appearance="outline">
                             <mat-label>New password</mat-label>
                             <input matInput placeholder="" formControlName="newPassword">
                         </mat-form-field>
-                        <mat-form-field class="input-box" appearance="outline">
+                        <mat-form-field class="inputbox" appearance="outline">
                             <mat-label>Password repeat</mat-label>
                             <input matInput placeholder="" formControlName="passwordRepeat">
                         </mat-form-field>
                     </div>
                     
                 </div>  
-                <button class="save" style="top: 76%;">Save</button>              
+                <button class="save" style="top: 82%;">Save</button>              
             </mat-card>
         </section>
     </form>

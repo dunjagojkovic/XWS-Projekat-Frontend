@@ -1,0 +1,20 @@
+<div class="row">
+    <div *ngFor='let offer of offers' class="card"
+        style="width: 27rem; margin-left: 4.1rem; margin-top: 3rem; border: 1; border-color: #83C3B4;">
+        <div class="card-body">
+            <p class="card-text mt-2" style="font-size: 20px;">Position: <span style="color: #287271;"><b> {{offer.position}}</b></span></p>
+            <p class="card-text mt-2" style="font-size: 20px;">Responsibilities: {{offer.dailyActivities}}</p>
+            <p class="card-text mt-2" style="font-size: 20px;">Requirements: {{offer.precondition}}</p>
+            <p class="card-text mt-2" style="font-size: 20px;">Description: {{offer.description}}</p>
+                
+            <button (click)="publishOffer(offer)" *ngIf="!isPublished(offer)"
+            style="color: #F29040; margin-top: 1.5rem;" 
+            class="btn btn-outline-secondary">Publish</button>
+                
+                          
+        </div>
+    </div>
+
+    
+</div>
+

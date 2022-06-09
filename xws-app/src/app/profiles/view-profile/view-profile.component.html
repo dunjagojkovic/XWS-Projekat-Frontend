@@ -1,0 +1,119 @@
+<div>
+    <section class="userInfo">
+    <mat-card class="headCard">
+        <h2 style="font-weight: bold;"> {{user.name}} {{user.surname}} </h2>
+    </mat-card>
+    <mat-card class="card1">
+
+        <div>
+            <label for="username" style="color: #287271;"><b>Username:</b></label>
+            <input style="border-color: #83C3B4; width: 47.3rem;"  type="text" value="{{user.username}}" id="username" class="form-control" disabled>
+
+            <label for="email" style="color: #287271;"><b>E-mail:</b></label>
+            <input value="{{user.email}}" style="border-color: #83C3B4; width: 47.3rem;" id="email" class="form-control" disabled>
+
+            <label for="phone" style="color: #287271;"><b>Phone:</b></label>
+            <input value="{{user.phoneNumber}}" style="border-color: #83C3B4; width: 47.3rem;" id="phone" class="form-control" disabled>
+
+            <label for="dateOfBirth" style="color: #287271;"><b>Date of birth:</b></label>
+            <input value="{{user.birthDate}}" style="border-color: #83C3B4; width: 47.3rem;" id="dateOfBirth" class="form-control" disabled>
+        
+            <label for="gender" style="color: #287271;"><b>Gender:</b></label>
+            <input value="{{user.gender}}" style="border-color: #83C3B4; width: 47.3rem;" id="gender" class="form-control" disabled>
+        
+            <label for="biography" style="color: #287271;"><b>Biography:</b></label>
+            <textarea value="{{user.biography}}" style="border-color: #83C3B4; width: 47.3rem;" id="biography" class="form-control"
+                rows="3" disabled></textarea>
+
+            <label for="education" style="color: #287271;"><b>Education: </b></label>
+            <textarea value="{{user.education}}" style="border-color: #83C3B4; width: 47.3rem;" id="education" class="form-control"
+                rows="3" disabled></textarea>
+
+            <label for="workExperience" style="color: #287271;"><b>Work experience:</b></label>
+            <textarea value="{{user.workExperience}}" style="border-color: #83C3B4; width: 47.3rem;" id="workExperience" class="form-control"
+                rows="3" disabled></textarea>
+        </div>
+
+
+    </mat-card>
+</section>
+
+<div class="row mt-4">
+    <div *ngFor='let post of posts' class="card"
+        style="width: 26rem; margin-left: 4.6rem; margin-top: 3rem; border: 1; border-color: #83C3B4;">
+        <div *ngIf="postId != post.id && postLikeId != post.id && postDislikeId != post.id">
+            <img class="card-img-top p-2" src="{{post.image}}" alt="Card image cap">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-2"><button style="color: #F29040; margin-top: -1.5rem;"
+                            class="btn btn-outline-secondary" (click)="likes(post.id)">Likes</button></div>
+                    <div class="col-6"><button style="color: #F29040; margin-top: -1.5rem;"
+                            class="btn btn-outline-secondary" (click)="dislikes(post.id)">Dislikes</button></div>
+                    <div class="col-4"><button (click)="comments(post.id)"
+                            style="color: #F29040; margin-left: 0.6rem; margin-top: -1.5rem;"
+                            class="btn btn-outline-secondary">Comments</button></div>
+                </div>
+                <!--<h2 class="card-title">{{post.Id}}</h2>-->
+                <p class="card-text mt-2" style="font-size: 20px;">{{post.description}}</p>
+                <a style="color: #264653;" class="btn btn-outline-secondary" href="{{post.link}}" target="_blank">Show
+                    link</a>
+            </div>
+        </div>
+        <div *ngIf="postId == post.id && backPost != post.id">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-10">
+                    </div>
+                    <div class="col-2">
+                        <button style="color: #F29040;" (click)="back(post.id)"
+                            class="btn btn-outline-secondary mb-2"><i class="bi bi-arrow-left"></i></button>
+                    </div>
+                </div>
+                <p class="card-text" style="font-size: 20px;">{{post.description}}</p>
+                <h2 class="card-title" style="margin-left: 129px;"><b>Comments</b></h2>
+                <div *ngFor="let comment of commentList">
+                    <label class="form-control mb-1">{{comment.user}}: {{comment.content}}</label>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="postLikeId == post.id && likeBack != post.id">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-10">
+                    </div>
+                    <div class="col-2">
+                        <button style="color: #F29040;" (click)="backLike(post.id)"
+                            class="btn btn-outline-secondary mb-2"><i class="bi bi-arrow-left"></i></button>
+                    </div>
+                </div>
+                <p class="card-text" style="font-size: 20px;">{{post.description}}</p>
+                <h2 class="card-title" style="margin-left: 152px;"><b>Likes</b></h2>
+                <div *ngFor="let like of likeList">
+                    <label class="form-control mb-1">{{like}}</label>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="postDislikeId == post.id && dislikeBack != post.id">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-10">
+                    </div>
+                    <div class="col-2">
+                        <button style="color: #F29040;" (click)="backDislike(post.id)"
+                            class="btn btn-outline-secondary mb-2"><i class="bi bi-arrow-left"></i></button>
+                    </div>
+                </div>
+                <p class="card-text" style="font-size: 20px;">{{post.description}}</p>
+                <h2 class="card-title" style="margin-left: 142px;"><b>Dislikes</b></h2>
+                <div *ngFor="let dislike of dislikeList">
+                    <label class="form-control mb-1">{{dislike}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</div>
