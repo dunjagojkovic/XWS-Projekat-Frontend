@@ -32,6 +32,7 @@ import { JobSurveyComponent } from './job-survey/job-survey.component';
 import { SurveysComponent } from './surveys/surveys.component';
 import { ExistingOffersComponent } from './existing-offers/existing-offers.component';
 import { EditCompanyInfoComponent } from './edit-company-info/edit-company-info.component';
+import { ApprovedCompaniesComponent } from './approved-companies/approved-companies.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { EditCompanyInfoComponent } from './edit-company-info/edit-company-info.
     JobSurveyComponent,
     SurveysComponent,
     ExistingOffersComponent,
-    EditCompanyInfoComponent
+    EditCompanyInfoComponent,
+    ApprovedCompaniesComponent
   ],
   imports: [
     AppRoutingModule,
