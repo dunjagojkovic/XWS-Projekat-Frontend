@@ -47,12 +47,12 @@ export class ApiService {
 
   sendEmailCode(data: any) {
     console.log("in send email")
-    return this.http.post(this.baseURL + "/api/users/loginCode", data )
+    return this.http.post(this.baseURL + "/api/users/loginCode", data, {responseType:'text'})
   }
 
   resetPass( data: any) {
     console.log("in reset")
-    return this.http.post(this.baseURL + "/api/users/forgottenpassword", data )
+    return this.http.post(this.baseURL + "/api/users/forgottenpassword", data, {responseType:'text'} )
   }
 
   newPass(data: any){
