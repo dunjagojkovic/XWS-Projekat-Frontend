@@ -32,6 +32,9 @@ import { JobSurveyComponent } from './job-survey/job-survey.component';
 import { SurveysComponent } from './surveys/surveys.component';
 import { ExistingOffersComponent } from './existing-offers/existing-offers.component';
 import { EditCompanyInfoComponent } from './edit-company-info/edit-company-info.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { SuccessfulActivationComponent } from './successful-activation/successful-activation.component';
+import { UserActivateComponent } from './user-activate/user-activate.component';
 
 
 @NgModule({
@@ -47,7 +50,10 @@ import { EditCompanyInfoComponent } from './edit-company-info/edit-company-info.
     JobSurveyComponent,
     SurveysComponent,
     ExistingOffersComponent,
-    EditCompanyInfoComponent
+    EditCompanyInfoComponent,
+    PasswordResetComponent,
+    SuccessfulActivationComponent,
+    UserActivateComponent
   ],
   imports: [
     AppRoutingModule,

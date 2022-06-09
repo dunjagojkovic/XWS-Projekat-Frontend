@@ -11,7 +11,9 @@ import { SurveysComponent } from './surveys/surveys.component';
 import { JobSurveyComponent } from './job-survey/job-survey.component';
 import { ExistingOffersComponent } from './existing-offers/existing-offers.component';
 import { EditCompanyInfoComponent } from './edit-company-info/edit-company-info.component';
-
+import {UserActivateComponent} from "./user-activate/user-activate.component";
+import {PasswordResetComponent} from "./password-reset/password-reset.component";
+import {SuccessfulActivationComponent} from "./successful-activation/successful-activation.component";
 
 
 const routes: Routes = [
@@ -25,8 +27,10 @@ const routes: Routes = [
   { path: 'surveys', component: SurveysComponent},
   { path: 'jobSurvey', component: JobSurveyComponent},
   { path: 'publishJobOffer', component: ExistingOffersComponent},
-  { path: 'editCompanyInfo', component: EditCompanyInfoComponent}
-
+  { path: 'editCompanyInfo', component: EditCompanyInfoComponent},
+  { path: 'activation/:code', component: UserActivateComponent},
+  {path: 'reset/:code', component: PasswordResetComponent},
+  {path: 'successfullactivation', component: SuccessfulActivationComponent},
 ];
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { FormBuilder, Validators} from '@angular/forms';
@@ -11,6 +11,9 @@ import { MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+  password: any;
+  username: any;
+  code: any;
 
   constructor(
     private router: Router,
@@ -20,18 +23,22 @@ export class HomepageComponent implements OnInit {
     ) {
       this.form = this.formBuilder.group({
         username: ['', Validators.required],
-        password: ['', Validators.required]
+        password: new FormControl(),
+        code: new FormControl()
       })
      }
 
   loginBox : boolean = false;
   textBox : boolean = true;
+  codeLogin : boolean = false;
+  passwordLogin : boolean = true;
   hide = true;
   form: FormGroup;
-  user: any = {} as any
+  user: any = {} as any;
 
 
   ngOnInit(): void {
+
   }
 
 
@@ -39,10 +46,12 @@ export class HomepageComponent implements OnInit {
     if(this.form.valid){
       const username = this.form.get('username')?.value;
       const password = this.form.get('password')?.value;
+      const code = this.form.get('code')?.value;
 
       let data = {
         username: username,
-        password: password
+        password: password,
+        code: code
       }
 
       this.service.login(data).subscribe((any: any) => {
@@ -63,7 +72,7 @@ export class HomepageComponent implements OnInit {
           let userKey = {
             key: localStorage.getItem('key'),
             username: this.user.username
-            
+
           }
           this.service.addKey(userKey);
         }, error => {
@@ -71,5 +80,42 @@ export class HomepageComponent implements OnInit {
       })
     }
   }
+
+  TryCodeLogin(){
+    const username = this.form.get('username')?.value
+    console.log(username)
+
+    let data = {
+      username: username
+    }
+    this.codeLogin = true;
+    this.passwordLogin = false;
+    this.password = '';
+
+
+    this.service.sendEmailCode(data).subscribe((any: any) => {
+      this._snackBar.open('We sent a code to your email!', 'Close', {duration: 2000});
+      console.log(any);
+    }, error => {
+      console.log(error)
+      this._snackBar.open('Something is wrong!', 'Close', {duration: 2000})})
+  }
+
+  resetPass() {
+    const username = this.form.get('username')?.value
+    console.log(username)
+    let data = {
+      username: username
+    }
+    this.service.resetPass(data).subscribe((any: any) => {
+      this._snackBar.open('Check your email!', 'Close', {duration: 2000});
+      console.log(any);
+    }, error => {
+      console.log(error)
+      this._snackBar.open('Something is wrong!', 'Close', {duration: 2000})})
+  }
+
+
+
 
 }
