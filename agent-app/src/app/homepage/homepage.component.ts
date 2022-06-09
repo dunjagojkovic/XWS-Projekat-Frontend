@@ -90,12 +90,14 @@ export class HomepageComponent implements OnInit {
     }
     this.codeLogin = true;
     this.passwordLogin = false;
-    this.password = '';
+    this.password=null;
+    this.form.get('password')?.setValue('');
 
 
     this.service.sendEmailCode(data).subscribe((any: any) => {
       this._snackBar.open('We sent a code to your email!', 'Close', {duration: 2000});
       console.log(any);
+      this.password=null;
     }, error => {
       console.log(error)
       this._snackBar.open('Something is wrong!', 'Close', {duration: 2000})})

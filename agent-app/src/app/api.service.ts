@@ -23,6 +23,8 @@ export class ApiService {
   }
 
   login(data: any) {
+    console.log("in login")
+    console.log(data)
     return this.http.post(this.baseURL + "/api/users/login", data);
   }
 

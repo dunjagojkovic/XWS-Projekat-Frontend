@@ -21,6 +21,7 @@ export class PasswordResetComponent implements OnInit {
   ) {
     this.form = this.formBuilder.group({
       password: new FormControl(),
+      password_repeat: new FormControl()
     })
   }
 
@@ -30,8 +31,11 @@ export class PasswordResetComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.form.valid && this.password_repeat.equals(this.password)) {
-      const password = this.form.get('password')?.value;
+    const password = this.form.get('password')?.value;
+    const password_repeat = this.form.get('password_repeat')?.value;
+
+    console.log(password, password_repeat)
+    if (this.form.valid && password_repeat===password) {
       let url = window.location.href
       var code = url.split('/')[4]
 
@@ -49,7 +53,7 @@ export class PasswordResetComponent implements OnInit {
       });
 
     }
-    else if (!this.password.equalsthis.password_reset){
+    else if (password!=password_repeat){
       alert("Repeat your password correctly!")
     }
 

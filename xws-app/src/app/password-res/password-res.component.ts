@@ -20,6 +20,7 @@ export class PasswordResComponent implements OnInit {
   ) {
     this.form = this.formBuilder.group({
       password: new FormControl(),
+      password_repeat: new FormControl()
     })
   }
 
@@ -31,21 +32,27 @@ export class PasswordResComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       const password = this.form.get('password')?.value;
-      let url = window.location.href
-      var code = url.split('/')[4]
+      const password_repeat = this.form.get('password_repeat')?.value;
+      if(password === password_repeat) {
+        let url = window.location.href
+        var code = url.split('/')[4]
 
 
-      let data = {
-        newPassword: password,
-        code: code
+        let data = {
+          newPassword: password,
+          code: code
+        }
+        this.service.newPass(data).subscribe((any: any) => {
+          console.log("Success data", any)
+          this._snackBar.open("Success!", 'Close', {duration: 2000})
+          this.router.navigate([''])
+        }, error => {
+          this._snackBar.open("Error", 'Close', {duration: 2000})
+        });
       }
-      this.service.newPass(data).subscribe((any: any) => {
-        console.log("Success data", any)
-        this._snackBar.open("Success!", 'Close', {duration: 2000})
-        this.router.navigate([''])
-      }, error => {
-        this._snackBar.open("Error", 'Close', {duration: 2000})
-      });
+      else{
+        alert("Repeat your password correctly!")
+      }
 
     }
 
