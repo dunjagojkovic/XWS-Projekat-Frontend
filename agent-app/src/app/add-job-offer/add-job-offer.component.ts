@@ -64,6 +64,7 @@ export class AddJobOfferComponent implements OnInit {
     this.api.addJobOffer(data).subscribe((response: any) => {
       console.log(response)
   });
+    this.router.navigate(['/companies']);
 
   }
 

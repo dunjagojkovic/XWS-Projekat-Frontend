@@ -14,6 +14,7 @@ import { EditCompanyInfoComponent } from './edit-company-info/edit-company-info.
 import {UserActivateComponent} from "./user-activate/user-activate.component";
 import {PasswordResetComponent} from "./password-reset/password-reset.component";
 import {SuccessfulActivationComponent} from "./successful-activation/successful-activation.component";
+import { ApprovedCompaniesComponent } from './approved-companies/approved-companies.component';
 
 
 const routes: Routes = [
@@ -25,12 +26,14 @@ const routes: Routes = [
   { path: 'addJobOffer', component: AddJobOfferComponent},
   { path: 'jobOffers', component: JobOffersComponent},
   { path: 'surveys', component: SurveysComponent},
-  { path: 'jobSurvey', component: JobSurveyComponent},
+  { path: 'companySurvey', component: JobSurveyComponent},
   { path: 'publishJobOffer', component: ExistingOffersComponent},
   { path: 'editCompanyInfo', component: EditCompanyInfoComponent},
   { path: 'activation/:code', component: UserActivateComponent},
-  {path: 'reset/:code', component: PasswordResetComponent},
-  {path: 'successfullactivation', component: SuccessfulActivationComponent},
+  { path: 'reset/:code', component: PasswordResetComponent},
+  { path: 'successfullactivation', component: SuccessfulActivationComponent},
+  { path: 'companies', component: ApprovedCompaniesComponent}
+
 ];
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ApiService } from '../api.service';
 })
 export class JobOffersComponent implements OnInit {
 
-  constructor(public service: ApiService, public router: Router) { }
+  constructor(public service: ApiService, public router: Router, public activatedRoute: ActivatedRoute) { }
 
   public offers: any[]
   public commentList: any[]
@@ -17,59 +17,42 @@ export class JobOffersComponent implements OnInit {
   user: any = {} as any
   offerId = ""
   backOffer = ""
-  salaryBack = ""
-  offerSalaryId = ""
-  comment = ""
   amount = ""
+  id = ""
 
   ngOnInit(): void {
 
-    this.service.current().subscribe((response: any) => {
-      this.user = response;
-      this.service.getJobOffers().subscribe((response: any) => {
-        this.offers = response;
-      })
 
-    });
+    this.activatedRoute.queryParams
+    .subscribe(params => {
+      this.id = params['id'];
+      console.log(this.id);
+      this.service.current().subscribe((response: any) => {
+        this.user = response;
+        this.service.getJobOffers(this.id).subscribe((response: any) => {
+          this.offers = response;
+        })
+  
+      });
+    }
+  );
 
 
-  }
-
-  comments(id: string) {
-    this.service.getOfferComments(id).subscribe((response: any) => {
-      this.commentList = response;
-    })
-    this.offerId = id
-    this.backOffer = ""
   }
 
   salaries(id: string){
 
     this.service.getOfferSalaries(id).subscribe((response: any) => {
-      
       this.salaryList = response;
     })
-    this.offerSalaryId = id
-    this.salaryBack = "";
+    this.offerId = id
+    this.backOffer = "";
   
   }
 
   back(id: string) {
     this.backOffer = id;
     this.offerId = "";
-  }
-
-  publishComment(id: string) {
-    let comment = {
-      jobOfferId: id,
-      username: this.user.username,
-      content: this.comment
-    }
-    this.service.commentOffer(comment)
-    this.comment = "";
-    this.backOffer = id;
-    this.offerId = "";
-
   }
 
   addSalary(id: string){
@@ -82,24 +65,13 @@ export class JobOffersComponent implements OnInit {
 
     this.service.addSalary(salary)
     this.amount = "";
-    this.salaryBack = id
-    this.offerSalaryId = ""
+    this.backOffer = id;
+    this.offerId = "";
 
   }
 
-  backSalary(id: string) {
-    this.salaryBack = id
-    this.offerSalaryId = ""
-  }
+  
 
-  survey(id: string){
-
-    this.router.navigate(['/jobSurvey'] , { queryParams: { id: id } } );
-
-  }
-
-  surveys(id: string){
-    this.router.navigate(['/surveys'] , { queryParams: { id: id } } );
-  }
+  
 
 }
