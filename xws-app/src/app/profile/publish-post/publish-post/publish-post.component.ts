@@ -68,8 +68,10 @@ export class PublishPostComponent implements OnInit {
     }
 
 
-    this.service.publishPost(post)
-    this.router.navigate(['/userPosts']);
+    this.service.publishPost(post).subscribe((response: any) => {
+      this.router.navigate(['/userPosts']);
+    })
+   
   }
 
 }
