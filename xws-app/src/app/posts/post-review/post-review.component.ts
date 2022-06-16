@@ -61,39 +61,50 @@ export class PostReviewComponent implements OnInit {
   }
 
   like(id: string) {
-
-    let users: string[] = ["dejan"]
-    let following = {
-      users: users
-    }
     let data = {
       idPost: id,
       username: this.user.username
     }
-    this.service.likePost(data)
-    this.service.followingPosts(following).subscribe((response: any) => {
-      this.userPost = response
-      this.posts = this.userPost.posts
-      
-    })
 
+    this.service.likePost(data).subscribe((response: any) => {
+      this.api.getFollowing(this.user.username).subscribe((response: any) => {
+        this.followingUsers = response;
+        console.log(response);
+        let data = {
+          users: this.followingUsers
+        }
+        this.service.followingPosts(data).subscribe((response: any) => {
+          this.userPost = response
+          this.posts = this.userPost.posts
+          
+        })
+      })
+    })
+    
   }
 
   dislike(id: string) {
-    let users: string[] = ["dejan"]
-    let following = {
-      users: users
-    }
+     
     let data = {
       idPost: id,
       username: this.user.username
     }
-    this.service.dislikePost(data)
-    this.service.followingPosts(following).subscribe((response: any) => {
-      this.userPost = response
-      this.posts = this.userPost.posts
-      
+    
+    this.service.dislikePost(data).subscribe((response: any) => {
+      this.api.getFollowing(this.user.username).subscribe((response: any) => {
+        this.followingUsers = response;
+        console.log(response);
+        let data = {
+          users: this.followingUsers
+        }
+        this.service.followingPosts(data).subscribe((response: any) => {
+          this.userPost = response
+          this.posts = this.userPost.posts
+          
+        })
+      })
     })
+    
 
   }
 

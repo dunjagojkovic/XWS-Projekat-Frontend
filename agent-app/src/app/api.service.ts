@@ -108,7 +108,7 @@ export class ApiService {
 
   getExistingJobOffers(user:any) {
 
-    return this.http.post(this.baseURL2 + "/owner/jobs", JSON.stringify(user));
+    return this.http.post(this.baseURL2 + "/owner/jobs", JSON.stringify(user), this.getAuthoHeader());
 
   }
 
@@ -123,7 +123,7 @@ export class ApiService {
 
 
   addKey(userKey:any) {
-    this.http.post(this.baseURL2 + "/jobs/key", JSON.stringify(userKey)).subscribe(result => {
+    this.http.post(this.baseURL2 + "/jobs/key", JSON.stringify(userKey), this.getAuthoHeader()).subscribe(result => {
       console.log(result)
     });
 
