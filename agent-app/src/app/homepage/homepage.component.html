@@ -37,8 +37,7 @@
                         <mat-label>Enter a code we sent to your email</mat-label>
                         <input matInput [type]="hide ? 'code' : 'text'" formControlName="code">
                       </mat-form-field>
-                      <p>Don't have account, <button style="cursor: pointer;" [routerLink]="['/registration']"><a>Sign up</a></button></p>
-                      <br>
+                    
                       <p>Forgot password? <button style="cursor: pointer;" (click)="resetPass()"><a>Reset</a></button></p>
                       <div style="display: flex; flex-direction: row">
                         <button (click)="onSubmit()" class="butt">Confirm</button>
