@@ -74,4 +74,9 @@ export class PublishPostComponent implements OnInit {
    
   }
 
+  logout() {
+    this.user = localStorage.clear();
+    this.router.navigate(['/']);
+  }
+
 }

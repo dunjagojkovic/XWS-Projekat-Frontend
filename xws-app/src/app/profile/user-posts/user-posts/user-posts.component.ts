@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { PostServiceService } from 'src/app/service/post-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-posts',
@@ -27,7 +28,8 @@ export class UserPostsComponent implements OnInit {
   userComment: any = {} as any
   userLike: any = {} as any
   userDislike: any = {} as any
-  constructor(public service: PostServiceService, public api: ApiService) { }
+  constructor(public service: PostServiceService, public api: ApiService,     private router: Router,
+    ) { }
 
   ngOnInit(): void {
 
@@ -84,6 +86,11 @@ export class UserPostsComponent implements OnInit {
   backDislike(id: string) {
     this.dislikeBack = id
     this.postDislikeId = ""
+  }
+
+  logout() {
+    this.user = localStorage.clear();
+    this.router.navigate(['/']);
   }
 
 
