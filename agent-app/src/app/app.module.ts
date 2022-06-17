@@ -36,6 +36,7 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { SuccessfulActivationComponent } from './successful-activation/successful-activation.component';
 import { UserActivateComponent } from './user-activate/user-activate.component';
 import { ApprovedCompaniesComponent } from './approved-companies/approved-companies.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { ApprovedCompaniesComponent } from './approved-companies/approved-compan
     PasswordResetComponent,
     SuccessfulActivationComponent,
     UserActivateComponent,
-    ApprovedCompaniesComponent
+    ApprovedCompaniesComponent,
+    NotFoundComponent
   ],
   imports: [
     AppRoutingModule,
