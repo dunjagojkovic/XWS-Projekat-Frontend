@@ -14,6 +14,13 @@ export class RegistrationComponent implements OnInit {
   form: FormGroup;  
   hide = true;
 
+  password = new FormControl('', Validators.compose([
+    Validators.required,
+    Validators.minLength(8),
+    Validators.maxLength(30),
+    Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[a-zA-Z0-9@$!%*?&]+$')
+  ]));
+
   constructor(
     private formBuilder : FormBuilder,
     private router: Router,
@@ -25,7 +32,7 @@ export class RegistrationComponent implements OnInit {
       surname: ['', Validators.compose([Validators.required, Validators.pattern('[a-zčćžšđA-ZČĆŽŠĐ]*')])],
       email: ['', Validators.email],
       username: ['', Validators.required ],
-      password: ['', Validators.required],
+      password: this.password,
       passwordRepeat: ['', Validators.required],
       phoneNumber: ['', Validators.compose([Validators.required, Validators.minLength(10)])],
       gender: ['', Validators.required],

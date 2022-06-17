@@ -57,7 +57,7 @@ export class ApiService {
   }
 
   getApprovedCompanies() {
-    return this.http.get(this.baseURL + "/api/companies/approvedCompanies", this.getAuthoHeader());
+    return this.http.get(this.baseURL + "/api/companies/allApprovedCompanies", this.getAuthoHeader());
   }
 
   addJobOffer(data: any) {
