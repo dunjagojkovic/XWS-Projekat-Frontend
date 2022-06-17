@@ -114,6 +114,7 @@ export class UserSettingsComponent implements OnInit {
 
     this.api.changePassword(data).subscribe((response: any) => {
       console.log(response);
+      this._snackBar.open('You have successfully changed your password.', 'Close', {duration: 2000});
     });
   }
 
