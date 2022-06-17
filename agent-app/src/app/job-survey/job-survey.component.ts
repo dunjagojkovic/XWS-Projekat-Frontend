@@ -35,7 +35,7 @@ export class JobSurveyComponent implements OnInit {
   submit(){
     
     let survey = {
-      jobOfferId: this.id,
+      companyId: this.id,
       workEnvironment: this.workEnvironment,
       opportunities: this.opportunities,
       benefits: this.benefits,
@@ -47,7 +47,7 @@ export class JobSurveyComponent implements OnInit {
     }
 
     this.service.addSurvey(survey);
-    this.router.navigate(['/jobOffers']);
+    this.router.navigate(['/companies']);
   }
 
 }

@@ -33,7 +33,7 @@ export class ExistingOffersComponent implements OnInit {
           this.offers = this.ownerJobs.offers;
           console.log(response);
           console.log(this.offers);
-          this.service.getJobOffers().subscribe((response: any) => {
+          this.service.getJobOffers(this.id).subscribe((response: any) => {
             this.allOffers = response;
           })
         })
@@ -58,7 +58,7 @@ export class ExistingOffersComponent implements OnInit {
       console.log(response)
     });
 
-    this.router.navigate(['/jobOffers']);
+    this.router.navigate(['/companies']);
 
   }
 

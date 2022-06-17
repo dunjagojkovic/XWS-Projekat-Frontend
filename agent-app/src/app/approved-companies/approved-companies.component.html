@@ -1,0 +1,57 @@
+<div class="row">
+    <div *ngFor='let company of companies' class="card"
+        style="width: 27rem; margin-left: 4.1rem; margin-top: 3rem; border: 1; border-width: 2px; border-color: #83C3B4;">
+        <div *ngIf="companyId != company.id">
+        <div class="card-body">
+            <h1 class="card-title">{{company.name}}</h1>
+            <p class="card-text mt-2" style="font-size: 20px;"><span style="color: #287271;"><b>{{company.state}}, {{company.city}}, {{company.address}}</b></span></p>
+            <p class="card-text mt-2" style="font-size: 20px;">{{company.description}}</p>
+            <p class="card-text mt-2" style="font-size: 20px;">Company owner: <span style="color: #287271;"><b>{{company.owner.name}} {{company.owner.surname}}</b></span></p>
+                <div class="row">
+                    <div class="col-9">
+                        <button (click)="comments(company.id)"  style="color: #F29040; margin-top: 1.5rem;"
+                        class="btn btn-outline-secondary"><b>Comment</b></button>
+                        <button *ngIf = "company.owner.username != user.username" (click) = "survey(company.id)"  style="color: #F29040; margin-top: 1.5rem;"
+                        class="btn btn-outline-secondary"><b>Survey</b></button>
+                        <button  (click) = "offers(company.id)"  style="color: #F29040; margin-top: 1.5rem;"
+                        class="btn btn-outline-secondary"><b>Offers</b></button>
+                    </div>
+                    <div class="col-3">
+                        <button (click) = "surveys(company.id)"
+                        style="color: #F29040; margin-top: 1.5rem;" 
+                        class="btn btn-outline-secondary"><b>Surveys</b></button>
+                    </div>
+                </div>             
+        </div>
+        </div>
+        <div *ngIf="companyId == company.id && backCompany != company.id">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-10">
+                    </div>
+                    <div class="col-2">
+                        <button style="color: #F29040;" (click)="back(company.id)"
+                            class="btn btn-outline-secondary mb-2"><i class="bi bi-arrow-left"></i></button>
+                    </div>
+                </div>
+                <h1 class="card-title">{{company.name}}</h1>
+                <p class="card-text" style="font-size: 20px;">{{company.description}}</p>
+                <h2 class="card-title" style="margin-left: 129px;"><b>Comments</b></h2>
+                <div *ngFor="let comment of commentList">
+                    <label class="form-control mb-1">{{comment.username}}: {{comment.content}}</label>
+                </div>
+                <div *ngIf = "company.owner.username != user.username " class="form-group mt-4">
+                    <label style="color: #F29040;" for="textA"><b>Enter your comment here</b></label>
+                    <textarea [(ngModel)]="comment" class="form-control" rows="1" id="textA"></textarea>
+                </div>
+                <div *ngIf = "company.owner.username != user.username " class="col-md-12 text-center">
+                    <button (click)="publishComment(company.id)" type="button" style="color: #F29040;"
+                        class="btn btn-outline-secondary mt-3"><b>Publish</b></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+

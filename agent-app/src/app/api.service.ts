@@ -56,29 +56,33 @@ export class ApiService {
     return this.http.get(this.baseURL + "/api/companies/myCompanies", this.getAuthoHeader());
   }
 
+  getApprovedCompanies() {
+    return this.http.get(this.baseURL + "/api/companies/approvedCompanies", this.getAuthoHeader());
+  }
+
   addJobOffer(data: any) {
     return this.http.post(this.baseURL + "/api/jobs/addOffer", data, this.getAuthoHeader());
   }
 
-  getJobOffers() {
-    return this.http.get(this.baseURL + "/api/jobs/offers", this.getAuthoHeader());
+  getJobOffers(id: string) {
+    return this.http.get(this.baseURL + "/api/jobs/offers/" + id, this.getAuthoHeader());
   }
 
-  getOfferComments(id: string) {
-    return this.http.get(this.baseURL + "/api/jobs/comments/" + id, this.getAuthoHeader());
+  getCompanyComments(id: string) {
+    return this.http.get(this.baseURL + "/api/companies/comments/" + id, this.getAuthoHeader());
   }
 
   getOfferSalaries(id: string) {
     return this.http.get(this.baseURL + "/api/jobs/salaries/" + id, this.getAuthoHeader());
   }
 
-  getOfferSurveys(id: string) {
-    return this.http.get(this.baseURL + "/api/jobs/surveys/" + id, this.getAuthoHeader());
+  getCompanySurveys(id: string) {
+    return this.http.get(this.baseURL + "/api/companies/surveys/" + id, this.getAuthoHeader());
   }
 
-  commentOffer(comment: any) {
+  commentCompany(comment: any) {
 
-    this.http.post(this.baseURL + "/api/jobs/comment", comment, this.getAuthoHeader())
+    this.http.post(this.baseURL + "/api/companies/comment", comment, this.getAuthoHeader())
       .subscribe(result => {
         console.log(result)
       });
@@ -95,7 +99,7 @@ export class ApiService {
 
   addSurvey(survey: any) {
 
-    this.http.post(this.baseURL + "/api/jobs/survey", survey, this.getAuthoHeader())
+    this.http.post(this.baseURL + "/api/companies/survey", survey, this.getAuthoHeader())
       .subscribe(result => {
         console.log(result)
       });
@@ -104,7 +108,7 @@ export class ApiService {
 
   getExistingJobOffers(user:any) {
 
-    return this.http.post(this.baseURL2 + "/owner/jobs", JSON.stringify(user));
+    return this.http.post(this.baseURL2 + "/owner/jobs", JSON.stringify(user), this.getAuthoHeader());
 
   }
 
@@ -119,7 +123,7 @@ export class ApiService {
 
 
   addKey(userKey:any) {
-    this.http.post(this.baseURL2 + "/jobs/key", JSON.stringify(userKey)).subscribe(result => {
+    this.http.post(this.baseURL2 + "/jobs/key", JSON.stringify(userKey), this.getAuthoHeader()).subscribe(result => {
       console.log(result)
     });
 
