@@ -20,17 +20,17 @@ import { ViewRequestsComponent } from './profiles/view-requests/view-requests.co
 const routes: Routes = [
   { path: '', component: HomepageComponent},
   { path: 'registration', component: RegistrationComponent},
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
-  { path: 'userSettings', component: UserSettingsComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  { path: 'userSettings', component: UserSettingsComponent, canActivate: [AuthGuard]},
   { path: 'notFound', component: NotFoundComponent},
-  { path: 'userPosts', component: UserPostsComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
-  { path: 'publishPost', component: PublishPostComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
-  { path: 'followingPosts', component: PostReviewComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
-  { path: 'createJobOffer', component: JobOfferComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
-  { path: 'jobOffers', component: JobOffersComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
-  { path: 'searchProfiles', component: SearchProfilesComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
-  { path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
-  { path: 'viewRequests', component: ViewRequestsComponent, canActivate: [AuthGuard],  data: {role: 'User'}},
+  { path: 'userPosts', component: UserPostsComponent, canActivate: [AuthGuard]},
+  { path: 'publishPost', component: PublishPostComponent, canActivate: [AuthGuard]},
+  { path: 'followingPosts', component: PostReviewComponent, canActivate: [AuthGuard]},
+  { path: 'createJobOffer', component: JobOfferComponent, canActivate: [AuthGuard]},
+  { path: 'jobOffers', component: JobOffersComponent, canActivate: [AuthGuard]},
+  { path: 'searchProfiles', component: SearchProfilesComponent, canActivate: [AuthGuard]},
+  { path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGuard]},
+  { path: 'viewRequests', component: ViewRequestsComponent, canActivate: [AuthGuard]},
   { path: 'publicProfile', component: PublicProfileComponent}
 ];
 
