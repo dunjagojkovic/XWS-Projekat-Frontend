@@ -117,7 +117,8 @@ export class UserSettingsComponent implements OnInit {
 
     let data = {
       newPassword: newPassword,
-      oldPassword: oldPassword
+      oldPassword: oldPassword,
+      username: this.user.username
     }
 
     this.api.changePassword(data).subscribe((response: any) => {

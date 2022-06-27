@@ -42,7 +42,7 @@ export class ApiService {
   }
 
   changePassword(data: any){
-    return this.http.post(this.baseURL + "/changePassword", data, this.getAuthoHeader());
+    return this.http.post(this.baseURL + "/editPassword", data, this.getAuthoHeader());
   }
 
   getPublicProfile() {
