@@ -122,6 +122,7 @@ export class UserSettingsComponent implements OnInit {
 
     this.api.changePassword(data).subscribe((response: any) => {
       console.log(response);
+      location.reload()
     });
   }
 
