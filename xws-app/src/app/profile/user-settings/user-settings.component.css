@@ -124,6 +124,11 @@ section {
     margin-right: 3%;
 }
 
+.work {
+    display: flex;
+    flex-direction: column;
+}
+
 .example-full-width {
     margin-top: 2%;
     width: 28vw;

@@ -46,11 +46,11 @@ export class ApiService {
   }
 
   getPublicProfile() {
-    return this.http.get(this.baseURL + "/api/users/public");
+    return this.http.get(this.baseURL + "/publicUsers");
   }
 
-  filterUsers(data: any) {
-    return this.http.post(this.baseURL + "/api/users/filterUsers", data);
+  filterUsers(searchTerm: any) {
+    return this.http.get(this.baseURL + "/filterUsers/" + searchTerm);
   }
 
   getUserProfiles() {

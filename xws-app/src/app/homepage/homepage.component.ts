@@ -33,23 +33,24 @@ export class HomepageComponent implements OnInit {
   form: FormGroup;
   form1: FormGroup;
   publicUsers : any;
+  publicUser: any = {} as any
+  users: any = {} as any
 
 
   ngOnInit(): void {
     this.service.getPublicProfile().subscribe((response:any) => {
-      this.publicUsers = response;
+      this.publicUser = response;
+      this.publicUsers = this.publicUser.users
       console.log(this.publicUsers);
   });
   }
 
   onSearch() {
-    const searchTerm = this.form1.get('searchTerm')?.value;
-    let data = {
-      searchTerm: searchTerm   
-    }
-    this.service.filterUsers(data).subscribe((response: any) => {
+    let searchTerm = this.form1.get('searchTerm')?.value;
+    this.service.filterUsers(searchTerm).subscribe((response: any) => {
       console.log(response);
-      this.publicUsers = response;
+      this.users = response;
+      this.publicUsers = this.users.users;
     });
   }
 

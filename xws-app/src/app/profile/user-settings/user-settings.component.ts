@@ -16,6 +16,7 @@ export class UserSettingsComponent implements OnInit {
   form: FormGroup;
   formPassword: FormGroup;
   user: any = {} as any;
+  description = ""
     
   constructor(
     private formBuilder : FormBuilder,
@@ -69,15 +70,12 @@ export class UserSettingsComponent implements OnInit {
     let gender = this.form.get('gender')?.value;
     console.log(gender)
     let education = this.form.get('education')?.value;
-    //let workExperience = this.form.get('workExperience')?.value;
+    let workExperience = this.form.get('workExperience')?.value;
+    console.log(workExperience)
     let biography = this.form.get('biography')?.value;
     let interest = this.form.get('interest')?.value;
     let hobby = this.form.get('hobby')?.value;
 
-    let work = {
-      description: "Opis opis"
-    }
-   
     let data = {
 
       name: name,
@@ -89,7 +87,8 @@ export class UserSettingsComponent implements OnInit {
       birthDate: birthDate,
       biography: biography,
       workExperience: {
-        description: "Opis opis"
+        id: "4534534573467gdfdgfdgf3",
+        description: workExperience
       },
       education: education,
       hobby: hobby,

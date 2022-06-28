@@ -44,6 +44,7 @@ export class PublicProfileComponent implements OnInit {
   userComment: any = {} as any
   userLike: any = {} as any
   userDislike: any = {} as any
+  userPublic: any = {} as any
 
 
   constructor(
@@ -80,7 +81,8 @@ export class PublicProfileComponent implements OnInit {
     });
 
     this.api.getPublicProfile().subscribe((response:any) => {
-      this.publicUsers = response;
+      this.userPublic = response;
+      this.publicUsers = this.userPublic.users
       for(var i in this.publicUsers){
         if(this.publicUsers[i].username == this.username){
             this.name = this.publicUsers[i].name;
