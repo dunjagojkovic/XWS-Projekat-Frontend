@@ -33,23 +33,24 @@ export class HomepageComponent implements OnInit {
   form: FormGroup;
   form1: FormGroup;
   publicUsers : any;
+  publicUser: any = {} as any
+  users: any = {} as any
 
 
   ngOnInit(): void {
     this.service.getPublicProfile().subscribe((response:any) => {
-      this.publicUsers = response;
+      this.publicUser = response;
+      this.publicUsers = this.publicUser.users
       console.log(this.publicUsers);
   });
   }
 
   onSearch() {
-    const searchTerm = this.form1.get('searchTerm')?.value;
-    let data = {
-      searchTerm: searchTerm   
-    }
-    this.service.filterUsers(data).subscribe((response: any) => {
+    let searchTerm = this.form1.get('searchTerm')?.value;
+    this.service.filterUsers(searchTerm).subscribe((response: any) => {
       console.log(response);
-      this.publicUsers = response;
+      this.users = response;
+      this.publicUsers = this.users.users;
     });
   }
 
@@ -64,15 +65,16 @@ export class HomepageComponent implements OnInit {
       }
 
       this.service.login(data).subscribe((any: any) => {
-        console.log(data);
+        console.log(any);
         localStorage.setItem('token', any.token);
 
-        this.service.current().subscribe((user: any) => {
+        this.service.currentUser(username).subscribe((user: any) => {
           localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('username', user.username)
           console.log(user);
-          if(user.type == "User"){
-            this.router.navigate(['/userSettings']);
-          }
+          
+          this.router.navigate(['/userSettings']);
+          
         }, error => {
           this._snackBar.open('Incorrect credentials! Please try again.', 'Close', {duration: 2000})});
       })

@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class ApiService {
 
 
-  baseURL = "http://localhost:8080";
+  baseURL = "http://localhost:8000";
 
   constructor(private http: HttpClient) { }
 
@@ -22,31 +22,35 @@ export class ApiService {
   }  
 
   login(data: any) {
-    return this.http.post(this.baseURL + "/api/users/login", data);
+    return this.http.post(this.baseURL + "/login", data);
   }
 
   registerUser(data: any) {
-    return this.http.post(this.baseURL + "/api/users/register", data);
+    return this.http.post(this.baseURL + "/register", data);
   }
 
   current() {
     return this.http.get(this.baseURL + "/api/users/current", this.getAuthoHeader());
   }
 
-  editInfo(id: number, data: any) {
-    return this.http.put(this.baseURL + "/api/users/", data, this.getAuthoHeader());
+  currentUser(username: any) {
+    return this.http.get(this.baseURL + "/current/" + username, this.getAuthoHeader());
+  }
+
+  editInfo( data: any) {
+    return this.http.put(this.baseURL + "/edit", JSON.stringify(data), this.getAuthoHeader());
   }
 
   changePassword(data: any){
-    return this.http.post(this.baseURL + "/api/users/changePassword", data, this.getAuthoHeader());
+    return this.http.post(this.baseURL + "/editPassword", data, this.getAuthoHeader());
   }
 
   getPublicProfile() {
-    return this.http.get(this.baseURL + "/api/users/public");
+    return this.http.get(this.baseURL + "/publicUsers");
   }
 
-  filterUsers(data: any) {
-    return this.http.post(this.baseURL + "/api/users/filterUsers", data);
+  filterUsers(searchTerm: any) {
+    return this.http.get(this.baseURL + "/filterUsers/" + searchTerm);
   }
 
   getUserProfiles() {

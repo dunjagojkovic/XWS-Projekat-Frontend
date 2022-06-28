@@ -16,6 +16,7 @@ export class UserSettingsComponent implements OnInit {
   form: FormGroup;
   formPassword: FormGroup;
   user: any = {} as any;
+  description = ""
     
   constructor(
     private formBuilder : FormBuilder,
@@ -51,46 +52,52 @@ export class UserSettingsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-      this.api.current().subscribe((response:any) => {
+      var user =  localStorage.getItem('username');
+      console.log(user)
+      this.api.currentUser(user).subscribe((response:any) => {
         this.user = response;     
         console.log(response)
     });
     }
   savePersonalInfo() {
 
-    const name = this.form.get('name')?.value;
-    const surname = this.form.get('surname')?.value;
-    const email = this.form.get('email')?.value;
-    const phoneNumber = this.form.get('phoneNumber')?.value;
-    const birthDate = this.form.get('birthDate')?.value;
-    const password = this.form.get('password')?.value;
-    const username = this.form.get('username')?.value;
-    const id = this.form.get('id')?.value;
-    const gender = this.form.get('gender')?.value;
-    const education = this.form.get('education')?.value;
-    const workExperience = this.form.get('workExperience')?.value;
-    const biography = this.form.get('biography')?.value;
-    const interest = this.form.get('interest')?.value;
-    const hobby = this.form.get('hobby')?.value;
-
+    let name = this.form.get('name')?.value;
+    let surname = this.form.get('surname')?.value;
+    let email = this.form.get('email')?.value;
+    let phoneNumber = this.form.get('phoneNumber')?.value;
+    let birthDate = this.form.get('birthDate')?.value;
+    let username = this.form.get('username')?.value;
+    let gender = this.form.get('gender')?.value;
+    console.log(gender)
+    let education = this.form.get('education')?.value;
+    let workExperience = this.form.get('workExperience')?.value;
+    console.log(workExperience)
+    let biography = this.form.get('biography')?.value;
+    let interest = this.form.get('interest')?.value;
+    let hobby = this.form.get('hobby')?.value;
 
     let data = {
 
       name: name,
       surname: surname,
       email: email,
-      username: username,
-      birthDate: birthDate,
-      gender : gender,
-      education: education,
-      workExperience: workExperience,
-      biography: biography,     
+      username: this.user.username,
       phoneNumber: phoneNumber,
+      gender : gender,
+      birthDate: birthDate,
+      biography: biography,
+      workExperience: {
+        id: "4534534573467gdfdgfdgf3",
+        description: workExperience
+      },
+      education: education,
+      hobby: hobby,
       interest: interest,
-      hobby: hobby
+      
+    
     }
 
-    this.api.editInfo(id, data).subscribe((response: any) => {
+    this.api.editInfo(data).subscribe((response: any) => {
       console.log(response);
       location.reload();
     });
@@ -98,9 +105,9 @@ export class UserSettingsComponent implements OnInit {
 
   saveNewPassword() {
 
-    const newPassword = this.formPassword.get('newPassword')?.value;
-    const oldPassword = this.formPassword.get('oldPassword')?.value;
-    const passwordRepeat = this.formPassword.get('passwordRepeat')?.value;
+    let newPassword = this.formPassword.get('newPassword')?.value;
+    let oldPassword = this.formPassword.get('oldPassword')?.value;
+    let passwordRepeat = this.formPassword.get('passwordRepeat')?.value;
 
     if(passwordRepeat != newPassword) {
       alert('Passwords do not match')
@@ -109,11 +116,13 @@ export class UserSettingsComponent implements OnInit {
 
     let data = {
       newPassword: newPassword,
-      oldPassword: oldPassword
+      oldPassword: oldPassword,
+      username: this.user.username
     }
 
     this.api.changePassword(data).subscribe((response: any) => {
       console.log(response);
+      location.reload()
     });
   }
 
