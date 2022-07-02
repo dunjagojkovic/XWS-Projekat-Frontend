@@ -62,8 +62,8 @@ export class ApiService {
   }
 
 
-  getUser(username: string) {
-    return this.http.get(this.baseURL + "/api/users/user/" + username, this.getAuthoHeader());
+  getUser(id: any) {
+    return this.http.get(this.baseURL + "/user/" + id, this.getAuthoHeader());
   }
 
 }

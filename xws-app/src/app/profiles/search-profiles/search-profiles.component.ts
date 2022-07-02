@@ -108,9 +108,9 @@ export class SearchProfilesComponent implements OnInit {
     });
   }
 
-  viewProfile(username : string) {
+  viewProfile(id : any, username: string) {
 
-      this.router.navigate(['/viewProfile'] , { queryParams: { username: username } } );
+      this.router.navigate(['/viewProfile'] , { queryParams: { id: id, username: username } } );
   }
 
 

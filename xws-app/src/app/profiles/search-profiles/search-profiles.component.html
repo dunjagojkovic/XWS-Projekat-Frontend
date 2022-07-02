@@ -27,7 +27,7 @@
                         <div class="col-6">
                             <button *ngIf="user.isPublic" 
                             style="color: #F29040; margin-left: 3.4rem; margin-top: 1.5rem;" 
-                            class="btn btn-outline-secondary" (click)="viewProfile(user.username)">Show profile</button>
+                            class="btn btn-outline-secondary" (click)="viewProfile(user.id, user.username)">Show profile</button>
                         </div>
                     </div>
                     

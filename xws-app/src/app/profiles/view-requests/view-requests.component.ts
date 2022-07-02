@@ -13,7 +13,10 @@ export class ViewRequestsComponent implements OnInit {
 
   public users: any[]
   public requests: any[]
+  public requestedUsers: any[]
   userAccount: any = {} as any
+  request: any = {} as any;
+  user: any = {} as any;
 
   constructor(public service : ApiService, public router : Router, public followService: FollowService) {
 
@@ -27,7 +30,19 @@ export class ViewRequestsComponent implements OnInit {
       this.service.getUserProfiles().subscribe((response: any) => {
         this.users = response;
           this.followService.getRequests(this.userAccount.id).subscribe((response: any) => {
-            this.requests = response;
+            this.request = response;
+            this.requests = this.request.followerRequests;
+              console.log(response)
+              console.log("pre fora",this.requests)
+              this.copyRequest(this.requests);
+            /*for(let i of this.requests){
+              this.service.getUser(i.id).subscribe((response: any) => {
+                this.requestedUsers.push(response);
+                console.log("for",response)
+              })
+
+            }*/
+
           })
       })
     });
@@ -92,6 +107,18 @@ export class ViewRequestsComponent implements OnInit {
   viewProfile(username : string) {
 
       this.router.navigate(['/viewProfile'] , { queryParams: { username: username } } );
+  }
+
+  copyRequest(list: any[]){
+    for(let i of list){
+      this.service.getUser(i.id).subscribe((response: any) => {
+        this.user = response;
+        this.requestedUsers.push(this.user);
+        console.log("pre fora",this.user)
+
+      })
+    }
+
   }
 
 
