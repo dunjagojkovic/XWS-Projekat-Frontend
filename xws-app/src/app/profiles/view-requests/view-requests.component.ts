@@ -20,7 +20,8 @@ export class ViewRequestsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.service.current().subscribe((response: any) => {
+    var user =  localStorage.getItem('username');
+    this.service.currentUser(user).subscribe((response: any) => {
       this.userAccount = response;
       this.service.getUserProfiles().subscribe((response: any) => {
         this.users = response;
@@ -52,7 +53,8 @@ export class ViewRequestsComponent implements OnInit {
 
     this.service.accept(data).subscribe((response: any) => { 
       console.log(response);
-      this.service.current().subscribe((response: any) => {
+      var user =  localStorage.getItem('username');
+      this.service.currentUser(user).subscribe((response: any) => {
         this.userAccount = response;
         this.service.getUserProfiles().subscribe((response: any) => {
           this.users = response;
@@ -72,8 +74,9 @@ export class ViewRequestsComponent implements OnInit {
     }
 
     this.service.deny(data).subscribe((response: any) => { 
+      var user =  localStorage.getItem('username');
       console.log(response);
-      this.service.current().subscribe((response: any) => {
+      this.service.currentUser(user).subscribe((response: any) => {
         this.userAccount = response;
         this.service.getUserProfiles().subscribe((response: any) => {
           this.users = response;

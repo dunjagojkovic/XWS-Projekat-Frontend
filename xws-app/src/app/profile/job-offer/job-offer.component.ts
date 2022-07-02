@@ -20,8 +20,8 @@ export class JobOfferComponent implements OnInit {
   constructor(public api: ApiService, public service: JobOfferService, public router: Router) { }
 
   ngOnInit(): void {
-
-    this.api.current().subscribe((response: any) => {
+    var user =  localStorage.getItem('username');
+    this.api.currentUser(user).subscribe((response: any) => {
       this.user = response;
     });
   }

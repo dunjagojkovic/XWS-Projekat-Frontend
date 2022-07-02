@@ -31,7 +31,8 @@ export class UserPostsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.api.current().subscribe((response: any) => {
+    var user =  localStorage.getItem('username');
+    this.api.currentUser(user).subscribe((response: any) => {
       this.user = response;
       this.service.userPosts(this.user.username).subscribe((response: any) => {
         this.userPosts = response;

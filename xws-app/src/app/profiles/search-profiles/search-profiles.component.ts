@@ -21,8 +21,8 @@ export class SearchProfilesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.service.current().subscribe((response: any) => {
+    var user =  localStorage.getItem('username');
+    this.service.currentUser(user).subscribe((response: any) => {
       this.userAccount = response;
       this.service.getUserProfiles().subscribe((response: any) => {
         this.users = response;

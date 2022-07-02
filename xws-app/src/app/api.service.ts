@@ -29,9 +29,6 @@ export class ApiService {
     return this.http.post(this.baseURL + "/register", data);
   }
 
-  current() {
-    return this.http.get(this.baseURL + "/api/users/current", this.getAuthoHeader());
-  }
 
   currentUser(username: any) {
     return this.http.get(this.baseURL + "/current/" + username, this.getAuthoHeader());
