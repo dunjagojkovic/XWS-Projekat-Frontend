@@ -17,11 +17,11 @@
                     <span style="color: #287271;"><b> {{user.username}} </b></span></p>
                     <div class="row">
                         <div class="col-6">
-                            <button *ngIf="!isFollowed(user.username) && !isRequested(user.username)" style="color: #F29040; margin-top: 1.5rem;"
-                            class="btn btn-outline-secondary" (click)="follow(user.username)">Follow</button>
-                            <button *ngIf="isFollowed(user.username)" style="color: #F29040; margin-top: 1.5rem;"
+                            <button *ngIf="!isFollowed(user.id) && !isRequested(user.id)" style="color: #F29040; margin-top: 1.5rem;"
+                            class="btn btn-outline-secondary" (click)="follow(user.id)">Follow</button>
+                            <button *ngIf="isFollowed(user.id)" style="color: #F29040; margin-top: 1.5rem;"
                             class="btn btn-outline-secondary" disabled>Following</button>
-                            <button *ngIf="isRequested(user.username)" style="color: #F29040; margin-top: 1.5rem;"
+                            <button *ngIf="isRequested(user.id)" style="color: #F29040; margin-top: 1.5rem;"
                             class="btn btn-outline-secondary" disabled>Requested</button>
                         </div>
                         <div class="col-6">

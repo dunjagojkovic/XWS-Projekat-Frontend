@@ -10,12 +10,15 @@ import { FollowService } from 'src/app/service/follow.service';
 })
 export class SearchProfilesComponent implements OnInit {
 
-  public user = '';
+  public user='';
   public users: any[]
   public following: any[]
   public requested: any[]
   userAccount: any = {} as any;
   userProfile: any = {} as any;
+  userFollows: any = {} as any;
+  userRequested: any = {} as any;
+
 
   constructor(public followService : FollowService, public router : Router, public service: ApiService) {
 
@@ -27,11 +30,20 @@ export class SearchProfilesComponent implements OnInit {
     this.service.currentUser(user).subscribe((response: any) => {
       this.userAccount = response;
       this.service.getUserProfiles().subscribe((response: any) => {
-        this.users = response;
+        this.userProfile = response;
+        this.users = this.userProfile.users;
+        console.log("users",response)
+
         this.followService.follows(this.userAccount.id).subscribe((response: any) => {
-          this.following = response;
+          this.userFollows = response;
+          this.following = this.userFollows.follows;
+          console.log("follows", response)
+
           this.followService.getRequested(this.userAccount.id).subscribe((response: any) => {
-            this.requested = response;
+            this.userRequested = response;
+            this.requested = this.userRequested.followRequests;
+            console.log(response)
+
           })
         })
       })
@@ -47,8 +59,7 @@ export class SearchProfilesComponent implements OnInit {
   isFollowed(u : string) {
 
     for(let user of this.following){
-
-      if(user == u){
+      if(user.id == u){
         return true;
       }
     }
@@ -61,7 +72,7 @@ export class SearchProfilesComponent implements OnInit {
 
     for(let user of this.requested){
 
-      if(user == u){
+      if(user.id == u){
         return true;
       }
     }
@@ -72,19 +83,26 @@ export class SearchProfilesComponent implements OnInit {
 
   follow(user: string) {
     let data = {
-      follower : this.userAccount.username,
-      following : user
+      followerId : this.userAccount.id,
+      followedId : user
+      
     }
+    console.log("following", user)
+
+    console.log("userAcc",this.userAccount)
     
-    this.service.follow(data).subscribe((response: any) => {
+    this.followService.follow(data).subscribe((response: any) => {
       console.log(response);
       this.service.getUserProfiles().subscribe((response: any) => {
-        this.users = response;
+        this.userProfile = response;
+        this.users = this.userProfile.users;
         this.followService.follows(this.userAccount.id).subscribe((response: any) => {
-          this.following = response;
+          this.userFollows = response;
+          this.following = this.userFollows.follows;
           this.followService.getRequested(this.userAccount.id).subscribe((response: any) => {
-            this.requested = response;
-          })
+            this.userRequested = response;
+            this.requested = this.userRequested.followRequests;
+           })
         })
       })
     });

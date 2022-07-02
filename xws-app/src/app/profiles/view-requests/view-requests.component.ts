@@ -2,6 +2,7 @@ import { RepositionScrollStrategy } from '@angular/cdk/overlay';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { FollowService } from 'src/app/service/follow.service';
 
 @Component({
   selector: 'app-view-requests',
@@ -14,7 +15,7 @@ export class ViewRequestsComponent implements OnInit {
   public requests: any[]
   userAccount: any = {} as any
 
-  constructor(public service : ApiService, public router : Router) {
+  constructor(public service : ApiService, public router : Router, public followService: FollowService) {
 
   }
 
@@ -25,7 +26,7 @@ export class ViewRequestsComponent implements OnInit {
       this.userAccount = response;
       this.service.getUserProfiles().subscribe((response: any) => {
         this.users = response;
-          this.service.getRequests(this.userAccount.username).subscribe((response: any) => {
+          this.followService.getRequests(this.userAccount.id).subscribe((response: any) => {
             this.requests = response;
           })
       })
@@ -51,14 +52,14 @@ export class ViewRequestsComponent implements OnInit {
       following: this.userAccount.username
     }
 
-    this.service.accept(data).subscribe((response: any) => { 
+    this.followService.accept(data).subscribe((response: any) => { 
       console.log(response);
       var user =  localStorage.getItem('username');
       this.service.currentUser(user).subscribe((response: any) => {
         this.userAccount = response;
         this.service.getUserProfiles().subscribe((response: any) => {
           this.users = response;
-            this.service.getRequests(this.userAccount.username).subscribe((response: any) => {
+            this.followService.getRequests(this.userAccount.id).subscribe((response: any) => {
               this.requests = response;
             })
         })
@@ -73,14 +74,14 @@ export class ViewRequestsComponent implements OnInit {
       following: this.userAccount.username
     }
 
-    this.service.deny(data).subscribe((response: any) => { 
+    this.followService.deny(data).subscribe((response: any) => { 
       var user =  localStorage.getItem('username');
       console.log(response);
       this.service.currentUser(user).subscribe((response: any) => {
         this.userAccount = response;
         this.service.getUserProfiles().subscribe((response: any) => {
           this.users = response;
-            this.service.getRequests(this.userAccount.username).subscribe((response: any) => {
+            this.followService.getRequests(this.userAccount.id).subscribe((response: any) => {
               this.requests = response;
             })
         })

@@ -29,29 +29,28 @@ export class FollowService {
     return this.http.get(this.baseURL + "/followRequests/" + id, this.getAuthoHeader());
   }
 
-  /*
-
-  getFollowing(username: string) {
-    return this.http.get(this.baseURL + "/api/follow/following/" + username, this.getAuthoHeader());
-  }
-
-  getRequested(username: string) {
-    return this.http.get(this.baseURL + "/api/follow/requested/" + username, this.getAuthoHeader());
-  }
-
   follow(data: any){
-    return this.http.post(this.baseURL + "/api/follow/follower", data, this.getAuthoHeader());
-  }
-
-  getRequests(username: string) {
-    return this.http.get(this.baseURL + "/api/follow/requests/" + username, this.getAuthoHeader());
+    return this.http.put(this.baseURL + "/follow", data, this.getAuthoHeader());
   }
 
   accept(data: any){
-    return this.http.post(this.baseURL + "/api/follow/accept", data, this.getAuthoHeader());
+    return this.http.put(this.baseURL + "/acceptFollow", data, this.getAuthoHeader());
   }
 
   deny(data: any){
-    return this.http.post(this.baseURL + "/api/follow/deny", data, this.getAuthoHeader());
-  }*/
+    return this.http.put(this.baseURL + "/followRequest", data, this.getAuthoHeader());
+  }
+
+  getRequests(id: any) {
+    return this.http.get(this.baseURL + "/followerRequests/" + id, this.getAuthoHeader());
+  }
+
+
+  /*
+
+  NE ZNAM STA JE OVO
+   getFollowing(username: string) {
+    return this.http.get(this.baseURL + "/api/follow/following/" + username, this.getAuthoHeader());
+  }
+*/
 }
