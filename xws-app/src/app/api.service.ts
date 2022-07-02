@@ -45,6 +45,10 @@ export class ApiService {
     return this.http.post(this.baseURL + "/editPassword", data, this.getAuthoHeader());
   }
 
+  changePrivacy(data: any){
+    return this.http.post(this.baseURL + "/editPrivacy", data, this.getAuthoHeader());
+  }
+
   getPublicProfile() {
     return this.http.get(this.baseURL + "/publicUsers");
   }

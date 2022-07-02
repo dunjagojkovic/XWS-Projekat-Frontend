@@ -22,7 +22,11 @@
         </mat-toolbar>
     </header>
     <main>
-        <mat-slide-toggle>Private profile</mat-slide-toggle>
+        <form [formGroup]="formPrivacy" (ngSubmit)="ChangePrivacy()">
+            <mat-slide-toggle color="warn" [(ngModel)]="user.isPublic" formControlName="isPublic">Private profile</mat-slide-toggle>
+            <button mat-raised-button type="submit">Save Settings</button>
+
+        </form>
         <form [formGroup]="form" (ngSubmit)="savePersonalInfo()">
         <section class="personalInfo">
             <mat-card class="headCard">

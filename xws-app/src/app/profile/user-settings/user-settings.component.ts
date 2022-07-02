@@ -15,8 +15,12 @@ export class UserSettingsComponent implements OnInit {
  
   form: FormGroup;
   formPassword: FormGroup;
+  formPrivacy: FormGroup;
   user: any = {} as any;
   description = ""
+  privacy: any = {} as any;
+  isChecked = false; //po defaultu kad se registruje korisnik ide na public=true
+
     
   constructor(
     private formBuilder : FormBuilder,
@@ -48,6 +52,10 @@ export class UserSettingsComponent implements OnInit {
         newPassword: [''],
         passwordRepeat: ['']
 
+      });
+
+      this.formPrivacy = this.formBuilder.group({
+        isPublic: '',
       });
     }
 
@@ -121,6 +129,21 @@ export class UserSettingsComponent implements OnInit {
     }
 
     this.api.changePassword(data).subscribe((response: any) => {
+      console.log(response);
+      location.reload()
+    });
+  }
+
+  ChangePrivacy() {
+
+    let isPublic = this.formPrivacy.get('isPublic')?.value;
+
+    let data = {
+      isPublic: isPublic,
+      username: this.user.username
+    }
+
+    this.api.changePrivacy(data).subscribe((response: any) => {
       console.log(response);
       location.reload()
     });
