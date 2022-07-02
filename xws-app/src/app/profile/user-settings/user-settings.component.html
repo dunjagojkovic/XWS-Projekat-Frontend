@@ -23,8 +23,8 @@
     </header>
     <main>
         <form [formGroup]="formPrivacy" (ngSubmit)="ChangePrivacy()">
-            <mat-slide-toggle color="warn" [(ngModel)]="user.isPublic" formControlName="isPublic">Private profile</mat-slide-toggle>
-            <button mat-raised-button type="submit">Save Settings</button>
+            <mat-slide-toggle color="warn" [(ngModel)]="user.isPublic" formControlName="isPublic">Profile privacy {{user.isPublic}}</mat-slide-toggle>
+            <button mat-raised-button type="submit">Save</button>
 
         </form>
         <form [formGroup]="form" (ngSubmit)="savePersonalInfo()">

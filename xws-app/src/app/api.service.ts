@@ -29,7 +29,6 @@ export class ApiService {
     return this.http.post(this.baseURL + "/register", data);
   }
 
-
   currentUser(username: any) {
     return this.http.get(this.baseURL + "/current/" + username, this.getAuthoHeader());
   }
@@ -55,16 +54,13 @@ export class ApiService {
   }
 
   getUserProfiles() {
-    return this.http.get(this.baseURL + "/api/users/users", this.getAuthoHeader());
+    return this.http.get(this.baseURL + "/users", this.getAuthoHeader());
   }
 
   getFollowing(username: string) {
     return this.http.get(this.baseURL + "/api/follow/following/" + username, this.getAuthoHeader());
   }
 
-  getRequested(username: string) {
-    return this.http.get(this.baseURL + "/api/follow/requested/" + username, this.getAuthoHeader());
-  }
 
   follow(data: any){
     return this.http.post(this.baseURL + "/api/follow/follower", data, this.getAuthoHeader());

@@ -19,7 +19,6 @@ export class UserSettingsComponent implements OnInit {
   user: any = {} as any;
   description = ""
   privacy: any = {} as any;
-  isChecked = false; //po defaultu kad se registruje korisnik ide na public=true
 
     
   constructor(
@@ -76,10 +75,8 @@ export class UserSettingsComponent implements OnInit {
     let birthDate = this.form.get('birthDate')?.value;
     let username = this.form.get('username')?.value;
     let gender = this.form.get('gender')?.value;
-    console.log(gender)
     let education = this.form.get('education')?.value;
     let workExperience = this.form.get('workExperience')?.value;
-    console.log(workExperience)
     let biography = this.form.get('biography')?.value;
     let interest = this.form.get('interest')?.value;
     let hobby = this.form.get('hobby')?.value;

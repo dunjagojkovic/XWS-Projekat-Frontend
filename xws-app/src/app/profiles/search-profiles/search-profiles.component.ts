@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { FollowService } from 'src/app/service/follow.service';
 
 @Component({
   selector: 'app-search-profiles',
@@ -13,9 +14,10 @@ export class SearchProfilesComponent implements OnInit {
   public users: any[]
   public following: any[]
   public requested: any[]
-  userAccount: any = {} as any
+  userAccount: any = {} as any;
+  userProfile: any = {} as any;
 
-  constructor(public service : ApiService, public router : Router) {
+  constructor(public followService : FollowService, public router : Router, public service: ApiService) {
 
 
   }
@@ -26,9 +28,9 @@ export class SearchProfilesComponent implements OnInit {
       this.userAccount = response;
       this.service.getUserProfiles().subscribe((response: any) => {
         this.users = response;
-        this.service.getFollowing(this.userAccount.username).subscribe((response: any) => {
+        this.followService.follows(this.userAccount.id).subscribe((response: any) => {
           this.following = response;
-          this.service.getRequested(this.userAccount.username).subscribe((response: any) => {
+          this.followService.getRequested(this.userAccount.id).subscribe((response: any) => {
             this.requested = response;
           })
         })
@@ -78,9 +80,9 @@ export class SearchProfilesComponent implements OnInit {
       console.log(response);
       this.service.getUserProfiles().subscribe((response: any) => {
         this.users = response;
-        this.service.getFollowing(this.userAccount.username).subscribe((response: any) => {
+        this.followService.follows(this.userAccount.id).subscribe((response: any) => {
           this.following = response;
-          this.service.getRequested(this.userAccount.username).subscribe((response: any) => {
+          this.followService.getRequested(this.userAccount.id).subscribe((response: any) => {
             this.requested = response;
           })
         })
