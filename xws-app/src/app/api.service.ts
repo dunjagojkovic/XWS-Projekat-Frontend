@@ -57,6 +57,10 @@ export class ApiService {
     return this.http.get(this.baseURL + "/users", this.getAuthoHeader());
   }
 
+  getUsersById(data: any) {
+    return this.http.post(this.baseURL + "/usersById", data, this.getAuthoHeader());
+  }
+
   getFollowing(username: string) {
     return this.http.get(this.baseURL + "/api/follow/following/" + username, this.getAuthoHeader());
   }
