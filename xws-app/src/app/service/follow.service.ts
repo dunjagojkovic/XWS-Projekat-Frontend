@@ -45,6 +45,10 @@ export class FollowService {
     return this.http.get(this.baseURL + "/followerRequests/" + id, this.getAuthoHeader());
   }
 
+  getRecommended(id: any) {
+    return this.http.get(this.baseURL + "/recommended/" + id, this.getAuthoHeader());
+  }
+
 
   /*
 
