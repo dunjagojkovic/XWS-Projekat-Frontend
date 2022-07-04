@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { FollowService } from 'src/app/service/follow.service';
 
+
 @Component({
   selector: 'app-search-profiles',
   templateUrl: './search-profiles.component.html',
@@ -119,6 +120,8 @@ export class SearchProfilesComponent implements OnInit {
     this.current = localStorage.clear();
     this.router.navigate(['/']);
   }
+
+
 
 
 }

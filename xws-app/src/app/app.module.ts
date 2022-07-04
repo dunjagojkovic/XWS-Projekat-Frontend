@@ -35,6 +35,9 @@ import { SearchProfilesComponent } from './profiles/search-profiles/search-profi
 import { ViewProfileComponent } from './profiles/view-profile/view-profile.component';
 import { ViewRequestsComponent } from './profiles/view-requests/view-requests.component';
 import { SuggestedProfilesComponent } from './suggested-profiles/suggested-profiles.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { SendMessageComponent } from './send-message/send-message.component';
+
 
 
 
@@ -56,7 +59,8 @@ import { SuggestedProfilesComponent } from './suggested-profiles/suggested-profi
     SearchProfilesComponent,
     ViewProfileComponent,
     ViewRequestsComponent,
-    SuggestedProfilesComponent
+    SuggestedProfilesComponent,
+    SendMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +78,8 @@ import { SuggestedProfilesComponent } from './suggested-profiles/suggested-profi
     MatSlideToggleModule,
     MatCardModule,
     MatListModule,
-    NgbModule
+    NgbModule,
+    MatDialogModule
 
   ],
   providers: [ApiService, AuthGuard,],

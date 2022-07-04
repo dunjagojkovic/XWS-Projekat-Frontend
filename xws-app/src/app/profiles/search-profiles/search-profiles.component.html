@@ -34,16 +34,18 @@
 </div>
 
 
-<div>
+<div style="width:800px; margin:0 auto;">
     <div *ngFor='let user of users' style="width: 26rem; margin-left: 4.6rem; margin-top: 3rem; border: 1; border-color: #287271;">
         <mat-card class="example-card">
             <div style="display: flex; flex-direction:row">
                 <mat-card-subtitle class="row" style="font-weight: bold; font-size:20px;">{{user.name}} {{user.surname}}</mat-card-subtitle>
                 <div style="display: flex; flex-direction:row" >
                     <button style="background-color: #83C3B4; color:white; padding: 4px 0px 10px 0px !important;width: 40px; height: 40px;cursor: pointer; text-align: center; border-radius: 30px; border: 3px solid #83C3B4; font-weight: bold; margin-left: 11rem;" class="btn btn-outline-secondary" ><mat-icon>block</mat-icon></button>
-                    <button *ngIf="isFollowed(user.id)"style="background-color: #83C3B4; color:white; padding: 4px 0px 10px 0px !important;width: 40px; height: 40px;cursor: pointer; text-align: center; border-radius: 30px; border: 3px solid #83C3B4; font-weight: bold; margin-left: 0.5rem;" class="btn btn-outline-secondary" ><mat-icon> chat</mat-icon></button>
+                    <button *ngIf="isFollowed(user.id)"style="background-color: #83C3B4; color:white; padding: 4px 0px 10px 0px !important;width: 40px; height: 40px;cursor: pointer; text-align: center; border-radius: 30px; border: 3px solid #83C3B4; font-weight: bold; margin-left: 0.5rem;" class="btn btn-outline-secondary" routerLink="/sendMessage" [queryParams]="{recieverId: user.id}"><mat-icon> chat</mat-icon></button>
                 </div>
             </div>
+
+
           
             <mat-card-title style="font-weight: bold; font-size:20px;"> {{user.username}}</mat-card-title>
            

@@ -16,6 +16,7 @@ import { SearchProfilesComponent } from './profiles/search-profiles/search-profi
 import { ViewProfileComponent } from './profiles/view-profile/view-profile.component';
 import { ViewRequestsComponent } from './profiles/view-requests/view-requests.component';
 import { SuggestedProfilesComponent } from './suggested-profiles/suggested-profiles.component';
+import { SendMessageComponent } from './send-message/send-message.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,8 @@ const routes: Routes = [
   { path: 'viewRequests', component: ViewRequestsComponent, canActivate: [AuthGuard]},
   { path: 'publicProfile', component: PublicProfileComponent},
   { path: 'suggestedProfiles', component: SuggestedProfilesComponent, canActivate: [AuthGuard]},
+  { path: 'sendMessage', component: SendMessageComponent, canActivate: [AuthGuard]},
+
 
 ];
 
