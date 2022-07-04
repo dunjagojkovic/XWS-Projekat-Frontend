@@ -37,6 +37,8 @@ import { ViewRequestsComponent } from './profiles/view-requests/view-requests.co
 import { SuggestedProfilesComponent } from './suggested-profiles/suggested-profiles.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { SendMessageComponent } from './send-message/send-message.component';
+import { MessageHistoryComponent } from './message-history/message-history.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -60,7 +62,9 @@ import { SendMessageComponent } from './send-message/send-message.component';
     ViewProfileComponent,
     ViewRequestsComponent,
     SuggestedProfilesComponent,
-    SendMessageComponent
+    SendMessageComponent,
+    MessageHistoryComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

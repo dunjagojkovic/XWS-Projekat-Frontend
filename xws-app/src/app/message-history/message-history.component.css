@@ -1,0 +1,239 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+mat-toolbar {
+    padding: 20px;
+    background-color: #e5e9e4;
+    height: 10vh;
+}
+
+mat-toolbar h1,span {
+    font-size: 42px;
+    margin-left: 2%;
+    color: #2A9D8F;
+    font-weight: bold;
+    font-family: 'Sansita Swashed', cursive;
+}
+
+h1 span {
+    font-size: 52px;
+    color: #287271;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+mat-toolbar>button {
+    border: none;
+    padding: 20px;
+    width: 100px;
+    background-color: #e5e9e4;
+    color: #287271;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #F29040;
+}
+
+main {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+mat-slide-toggle {
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+section {
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 3%;
+}
+
+.headCard {
+    background-color: #83C3B4;
+    font-weight: bolder;
+    color: #f6f8f5;
+    width: 40%;
+    padding: 10px;
+    padding-left: 20px;
+    margin-bottom: 2%;
+}
+
+.save {
+    position: absolute;
+    left: 88%;
+    top: 90%;
+    background-color: #83C3B4;
+    width: 6vw;
+    text-align: center;
+    height: 4vh;
+    color: white;
+    border: none;
+    border-radius: 10%;
+    font-weight: bold;
+}
+
+/* First-Card */
+.personalInfo .card1 {
+    margin-top: 1%;
+    padding: 20px;
+    width: 100%;
+    background-color: #f6f8f5;
+    display: flex;
+}
+
+.infoSec {
+    margin-top: 4%;
+    width: 100%;
+}
+
+.input-box {
+    width: 25vw;
+    color: #287271;
+    align-items: center;
+    height: 5vh;
+    margin-right: 5%;
+    margin-bottom: 4%;
+    border-radius: 15px;
+    font-weight: bold;
+  }
+
+ /* Second-card */
+ .educationInfo .card2 {
+    margin-top: 1%;
+    padding: 20px;
+    width: 100%;
+    background-color: #f6f8f5;
+    display: flex;
+    flex-direction: column;
+}
+
+.card2 div{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.work {
+    display: flex;
+    flex-direction: column;
+}
+
+.example-full-width {
+    margin-top: 2%;
+    width: 28vw;
+    margin-bottom: 0%;
+}
+
+.example-full-widthh {
+    margin-top: 2%;
+    width: 60vw;
+    margin-bottom: 0%;
+}
+
+/*Third-card */
+.securityInfo .card4 {
+    margin-top: 1%;
+    padding: 20px;
+    width: 100%;
+    height: 36vh;
+    background-color: #f6f8f5;
+}
+
+.card4>div{
+    margin-left: 3%;
+    margin-right: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.card4 .pass {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputbox {
+    width: 25vw;
+    color: #287271;
+    align-items: center;
+    height: 5vh;
+    margin-right: 5%;
+    margin-bottom: 10%;
+    border-radius: 15px;
+    font-weight: bold;
+  }
+
+/* Optional */
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    font-weight: bold;
+    color: #2A9D8F!important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    font-weight: bold;
+    background-color: #e5e9e4;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: #2A9D8F!important;
+  font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    background-color: #e5e9e4;
+    display: flex;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    align-items: right;
+    text-align: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-left:20px !important;
+    padding-right:20px !important;
+    padding-top:5px !important;
+    padding-bottom:5px !important;
+}
+
+footer-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-links{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.link_title {
+    color: #264653;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.link_subtitle {
+    font-weight: bold;
+}
+
+.footer-info{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+

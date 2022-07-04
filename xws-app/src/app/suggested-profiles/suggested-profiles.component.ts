@@ -22,6 +22,9 @@ export class SuggestedProfilesComponent implements OnInit {
   userRequested: any = {} as any;
   current: any = {} as any;
   userRecommendation: any = {} as any;
+  request: any = {} as any;
+  rec: any = {} as any;
+  public requestedUsers: any[]
 
 
 
@@ -34,17 +37,34 @@ export class SuggestedProfilesComponent implements OnInit {
     this.service.currentUser(localStorage.getItem('username')).subscribe((response: any) => {
       this.userAccount = response;
       console.log(this.userAccount);
-      this.service.getUserProfiles().subscribe((response: any) => {
-        this.userProfile = response;
-        this.users = this.userProfile.users;
-        console.log("users",response);
 
       this.followService.getRecommended(this.userAccount.id).subscribe((response: any) => {
         this.userRecommendation = response;
         this.recommendations = this.userRecommendation.listId;
         console.log("recommendations",response)
 
-      })
+        let data = {
+          userById: this.recommendations
+        }
+        this.service.getUsersById(data).subscribe((response: any) => {
+          this.rec = response;
+          this.requestedUsers = this.rec.users;
+          console.log(this.requestedUsers)
+        })
+
+        this.followService.follows(this.userAccount.id).subscribe((response: any) => {
+          this.userFollows = response;
+          this.following = this.userFollows.follows;
+          console.log("follows", response)
+        })
+        this.followService.getRequested(this.userAccount.id).subscribe((response: any) => {
+          this.userRequested = response;
+          this.requested = this.userRequested.followRequests;
+          console.log(response)
+
+        })
+
+      
       })
     });
 

@@ -58,7 +58,7 @@ export class SendMessageComponent implements OnInit {
 
       this.messageService.sendMessage(data).subscribe((response: any) => {
         console.log(response)
-        //location.reload();
+        location.reload();
     });
 
   }

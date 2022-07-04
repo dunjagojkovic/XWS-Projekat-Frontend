@@ -17,7 +17,8 @@ import { ViewProfileComponent } from './profiles/view-profile/view-profile.compo
 import { ViewRequestsComponent } from './profiles/view-requests/view-requests.component';
 import { SuggestedProfilesComponent } from './suggested-profiles/suggested-profiles.component';
 import { SendMessageComponent } from './send-message/send-message.component';
-
+import { MessageHistoryComponent } from './message-history/message-history.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -36,6 +37,10 @@ const routes: Routes = [
   { path: 'publicProfile', component: PublicProfileComponent},
   { path: 'suggestedProfiles', component: SuggestedProfilesComponent, canActivate: [AuthGuard]},
   { path: 'sendMessage', component: SendMessageComponent, canActivate: [AuthGuard]},
+  { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
+  { path: 'messageHistory', component: MessageHistoryComponent, canActivate: [AuthGuard]},
+
+
 
 
 ];
