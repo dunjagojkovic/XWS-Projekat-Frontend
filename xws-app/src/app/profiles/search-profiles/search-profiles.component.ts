@@ -18,6 +18,8 @@ export class SearchProfilesComponent implements OnInit {
   userProfile: any = {} as any;
   userFollows: any = {} as any;
   userRequested: any = {} as any;
+  current: any = {} as any;
+
 
 
   constructor(public followService : FollowService, public router : Router, public service: ApiService) {
@@ -111,6 +113,11 @@ export class SearchProfilesComponent implements OnInit {
   viewProfile(id : any, username: string) {
 
       this.router.navigate(['/viewProfile'] , { queryParams: { id: id, username: username } } );
+  }
+
+  logout() {
+    this.current = localStorage.clear();
+    this.router.navigate(['/']);
   }
 
 

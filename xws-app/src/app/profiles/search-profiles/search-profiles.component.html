@@ -1,3 +1,24 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<mat-toolbar>
+    <h1><span>S</span>tylinkt</h1>
+    <span class="example-spacer"></span>
+    <button [routerLink]="['/userPosts']" style="float: none; cursor: pointer;"><a>My posts</a></button>
+    <button [routerLink]="['/publishPost']" style="float: none; cursor: pointer;"><a>Publish</a></button>
+    <button [routerLink]="['/followingPosts']" style="float: none; cursor: pointer;"><a>Following</a></button>
+    <button [routerLink]="['/createJobOffer']" style="float: none; cursor: pointer;"><a>Create offer</a></button>
+    <button [routerLink]="['/jobOffers']" style="float: none; cursor: pointer;"><a>Job offers</a></button>
+    <button [routerLink]="['/searchProfiles']" style="float: none; cursor: pointer;"><a>Search</a></button>
+    <button *ngIf="!current.isPublic" [routerLink]="['/viewRequests']" style="float: none; cursor: pointer;"><a>Requests</a></button>
+    <button (click)="logout()" style="cursor: pointer;"><a>Logout</a></button>
+</mat-toolbar>
+
+
 <div>
     <div class="input-group">
         <div class="form-outline" style="margin-left: 1200px; margin-top: 30px;">
@@ -8,30 +29,42 @@
         </button>
     </div>
 
-    <div class="row">
-        <div *ngFor='let user of users' class="card"
-            style="width: 26rem; margin-left: 4.6rem; margin-top: 3rem; border: 1; border-color: #83C3B4;">
-            <div class="card-body">
-                <p class="card-text mt-2" style="font-size: 20px;"><span style="color: #287271;"><b>{{user.name}} {{user.surname}}</b></span></p>
-                <p class="card-text mt-2" style="font-size: 20px;">username:
-                    <span style="color: #287271;"><b> {{user.username}} </b></span></p>
-                    <div class="row">
-                        <div class="col-6">
-                            <button *ngIf="!isFollowed(user.id) && !isRequested(user.id)" style="color: #F29040; margin-top: 1.5rem;"
-                            class="btn btn-outline-secondary" (click)="follow(user.id)">Follow</button>
-                            <button *ngIf="isFollowed(user.id)" style="color: #F29040; margin-top: 1.5rem;"
-                            class="btn btn-outline-secondary" disabled>Following</button>
-                            <button *ngIf="isRequested(user.id)" style="color: #F29040; margin-top: 1.5rem;"
-                            class="btn btn-outline-secondary" disabled>Requested</button>
-                        </div>
-                        <div class="col-6">
-                            <button *ngIf="user.isPublic" 
-                            style="color: #F29040; margin-left: 3.4rem; margin-top: 1.5rem;" 
-                            class="btn btn-outline-secondary" (click)="viewProfile(user.id, user.username)">Show profile</button>
-                        </div>
-                    </div>
-                    
+    
+</div>
+
+
+<div>
+    <div *ngFor='let user of users' style="width: 26rem; margin-left: 4.6rem; margin-top: 3rem; border: 1; border-color: #287271;">
+        <mat-card class="example-card">
+            <div style="display: flex; flex-direction:row">
+                <mat-card-subtitle class="row" style="font-weight: bold; font-size:20px;">{{user.name}} {{user.surname}}</mat-card-subtitle>
+                <div style="display: flex; flex-direction:row" >
+                    <button style="background-color: #83C3B4; color:white; padding: 4px 0px 10px 0px !important;width: 40px; height: 40px;cursor: pointer; text-align: center; border-radius: 30px; border: 3px solid #83C3B4; font-weight: bold; margin-left: 11rem;" class="btn btn-outline-secondary" ><mat-icon>block</mat-icon></button>
+                    <button *ngIf="isFollowed(user.id)"style="background-color: #83C3B4; color:white; padding: 4px 0px 10px 0px !important;width: 40px; height: 40px;cursor: pointer; text-align: center; border-radius: 30px; border: 3px solid #83C3B4; font-weight: bold; margin-left: 0.5rem;" class="btn btn-outline-secondary" ><mat-icon> chat</mat-icon></button>
+                </div>
             </div>
-        </div>
+          
+            <mat-card-title style="font-weight: bold; font-size:20px;"> {{user.username}}</mat-card-title>
+           
+            <mat-card-content>
+              <p> {{user.biography}}</p>
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+            <mat-card-actions>
+                <div class="row">
+                    <div class="col-6">
+                        <button *ngIf="!isFollowed(user.id) && !isRequested(user.id)" style="background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold; margin-top: 0.5rem; margin-left: 1.0rem; margin-bottom: 1.0rem;"class="btn btn-outline-secondary" (click)="follow(user.id)">Follow</button>
+                        <button *ngIf="isFollowed(user.id)" style="background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold; margin-top: 0.5rem; margin-left: 1.0rem; margin-bottom: 1.0rem;" class="btn btn-outline-secondary" disabled>Following</button>
+                        <button *ngIf="isRequested(user.id)" style="background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold; margin-top: 0.5rem; margin-left: 1.0rem; margin-bottom: 1.0rem;" class="btn btn-outline-secondary" disabled>Requested</button>
+                    </div>
+                    <div class="col-6">
+                        <button *ngIf="user.isPublic" style="background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold; margin-left: 3.4rem; margin-top: 0.5rem; margin-right: 0.5rem; margin-bottom: 1.0rem;" class="btn btn-outline-secondary" (click)="viewProfile(user.id, user.username)">Show profile</button>
+                    </div>
+                </div>
+            </mat-card-actions>
+            <mat-card-footer>
+            </mat-card-footer>
+          </mat-card>
     </div>
+   
 </div>

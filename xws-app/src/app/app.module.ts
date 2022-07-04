@@ -34,6 +34,7 @@ import { JobOffersComponent } from './offers/job-offers/job-offers.component';
 import { SearchProfilesComponent } from './profiles/search-profiles/search-profiles.component';
 import { ViewProfileComponent } from './profiles/view-profile/view-profile.component';
 import { ViewRequestsComponent } from './profiles/view-requests/view-requests.component';
+import { SuggestedProfilesComponent } from './suggested-profiles/suggested-profiles.component';
 
 
 
@@ -54,7 +55,8 @@ import { ViewRequestsComponent } from './profiles/view-requests/view-requests.co
     JobOffersComponent,
     SearchProfilesComponent,
     ViewProfileComponent,
-    ViewRequestsComponent
+    ViewRequestsComponent,
+    SuggestedProfilesComponent
   ],
   imports: [
     BrowserModule,
