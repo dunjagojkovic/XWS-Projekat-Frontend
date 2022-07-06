@@ -16,7 +16,7 @@ export class SendMessageComponent implements OnInit {
   userAccount: any = {} as any;
   form: FormGroup;
   recieverId: any;
-  time: any;
+  time = new Date();
   status: any;
 
 
@@ -52,13 +52,13 @@ export class SendMessageComponent implements OnInit {
         text: text,
         sender: this.userAccount.id,
         receiver: this.recieverId,
-        time: this.time,
-        status: "send",
+        time: new Date(),
+        status: "sent",
       }
 
       this.messageService.sendMessage(data).subscribe((response: any) => {
         console.log(response)
-        location.reload();
+        //location.reload();
     });
 
   }

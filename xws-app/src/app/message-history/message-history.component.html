@@ -16,6 +16,12 @@
     <button [routerLink]="['/createJobOffer']" style="float: none; cursor: pointer;"><a>Create offer</a></button>
     <button [routerLink]="['/jobOffers']" style="float: none; cursor: pointer;"><a>Job offers</a></button>
     <button [routerLink]="['/searchProfiles']" style="float: none; cursor: pointer;"><a>Search</a></button>
-    <button *ngIf="!current.isPublic" [routerLink]="['/viewRequests']" style="float: none; cursor: pointer;"><a>Requests</a></button>
+    <button *ngIf="!userAccount.isPublic" [routerLink]="['/viewRequests']" style="float: none; cursor: pointer;"><a>Requests</a></button>
     <button (click)="logout()" style="cursor: pointer;"><a>Logout</a></button>
 </mat-toolbar>
+
+<mat-selection-list #shoes [multiple]="false">
+    <mat-list-option style="font-weight: bold; max-width:250px;" *ngFor='let user of requestedUsers' [value]="user" routerLink="/chat" [queryParams]="{sender: user.id}">
+      {{user.username}}
+    </mat-list-option>
+  </mat-selection-list>
