@@ -1,1 +1,22 @@
-<p>chat works!</p>
+<div class="row">
+    <div class="col-6">
+    <div class="part2">
+        <h2><i>Chats</i></h2>
+        <ul *ngFor="let u of users">
+            <li (click)="openMessages(u.id)"><i>{{u.name}} {{u.surname}}</i></li>
+
+        </ul>
+    </div>
+    </div>
+    <div *ngIf="messages != null" class="col-6">
+        <div class="part2">
+        <div *ngFor="let m of messages">
+            <div class="row">
+                <label [ngStyle] = "isMyMessage(m.sender)? {'text-align': 'right', 'color' : '#287271'} : {'text-align': 'left', 'color' : '#F29040'}" class="form-control mb-1" >{{m.text}}</label>
+            </div>
+        </div>
+        <textarea rows="4" cols="50" class="inputText" [(ngModel)]="textMessage" > </textarea>
+        <button (click)="sendMessage()"><i>Send</i></button>
+        </div>
+    </div>
+</div>

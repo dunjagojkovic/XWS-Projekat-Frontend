@@ -23,4 +23,9 @@ export class MessageService {
   sendMessage(data: any) {
     return this.http.post(this.baseURL + "/message", data,  this.getAuthoHeader());
   }
+
+  getChats(id : string) {
+    return this.http.get(this.baseURL + "/chats/" + id,  this.getAuthoHeader());
+  }
+  
 }
