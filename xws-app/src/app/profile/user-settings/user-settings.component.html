@@ -20,6 +20,7 @@
             <button [routerLink]="['/jobOffers']" style="float: none; cursor: pointer;"><a>Job offers</a></button>
             <button [routerLink]="['/searchProfiles']" style="float: none; cursor: pointer;"><a>Search</a></button>
             <button [routerLink]="['/notifications']" style="float: none; cursor: pointer;"><a>Notifications</a></button>
+            <button [routerLink]="['/recommendations']" style="float: none; cursor: pointer;"><a>Job Recommendations</a></button>
             <button *ngIf="!user.isPublic" [routerLink]="['/viewRequests']" style="float: none; cursor: pointer;"><a>Requests</a></button>
             <button (click)="logout()" style="cursor: pointer;"><a>Logout</a></button>
         </mat-toolbar>

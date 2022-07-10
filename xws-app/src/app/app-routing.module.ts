@@ -20,6 +20,7 @@ import { SendMessageComponent } from './send-message/send-message.component';
 import { MessageHistoryComponent } from './message-history/message-history.component';
 import { ChatComponent } from './chat/chat.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { JobRecommendationsComponent } from './job-recommendations/job-recommendations.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
   { path: 'messageHistory', component: MessageHistoryComponent, canActivate: [AuthGuard]},
   { path: 'notifications', component: NotificationsComponent, canActivate: [AuthGuard]},
+  { path: 'recommendations', component: JobRecommendationsComponent, canActivate: [AuthGuard]},
 
 
 

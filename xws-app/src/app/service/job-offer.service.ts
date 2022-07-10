@@ -38,4 +38,9 @@ export class JobOfferService {
     return this.http.post(this.baseURL + "/jobs/search", JSON.stringify(jobPosition), this.getAuthoHeader());
 
   }
+
+  jobRecommendations(data:any) {
+    return this.http.post(this.baseURL + "/getById", data, this.getAuthoHeader());
+
+  }
 }

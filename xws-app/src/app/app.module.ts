@@ -40,6 +40,7 @@ import { SendMessageComponent } from './send-message/send-message.component';
 import { MessageHistoryComponent } from './message-history/message-history.component';
 import { ChatComponent } from './chat/chat.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { JobRecommendationsComponent } from './job-recommendations/job-recommendations.component';
 
 
 
@@ -66,7 +67,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
     SendMessageComponent,
     MessageHistoryComponent,
     ChatComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    JobRecommendationsComponent
   ],
   imports: [
     BrowserModule,
