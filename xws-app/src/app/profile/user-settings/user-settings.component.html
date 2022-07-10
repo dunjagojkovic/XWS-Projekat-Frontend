@@ -26,9 +26,16 @@
         </mat-toolbar>
     </header>
     <main>
-        <form [formGroup]="formPrivacy" (ngSubmit)="ChangePrivacy()">
+        <form [formGroup]="formPrivacy" (ngSubmit)="ChangePrivacy()" style="display: flex; flex-direction: column;">
             <mat-slide-toggle color="warn" [(ngModel)]="user.isPublic" formControlName="isPublic">Profile privacy {{user.isPublic}}</mat-slide-toggle>
-            <button mat-raised-button type="submit">Save</button>
+            <button style="width: 120px; background-color: #83C3B4;
+            width: 6vw;
+            text-align: center;
+            height: 4vh;
+            color: white;
+            border: none;
+            border-radius: 10%;
+            font-weight: bold;" type="submit">Save</button>
 
         </form>
         <form [formGroup]="form" (ngSubmit)="savePersonalInfo()">
@@ -89,13 +96,16 @@
                         <mat-label>Work experience</mat-label>
                         <textarea rows="10" matInput value="{{user.workExperience}}" formControlName="workExperience"></textarea>
                       </mat-form-field>-->
-                      <mat-list class="work" *ngFor = "let work of user.workExperiences" role="list">
-                        <mat-list-item role="listitem">{{work.description}}</mat-list-item>
-                      </mat-list>
-                      <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Work experience</mat-label>
-                        <textarea rows="5" matInput  formControlName="workExperience"></textarea>
-                      </mat-form-field>
+                      <div style ="display: flex; flex-direction:column;">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Work experience</mat-label>
+                            <textarea rows="2" matInput  formControlName="workExperience"></textarea>
+                          </mat-form-field>
+                          <mat-list class="work" *ngFor = "let work of user.workExperiences" role="list">
+                            <mat-list-item role="listitem">{{work.description}}</mat-list-item>
+                          </mat-list>
+                      </div>
+                      
                 </div>
                 <div>
                     <mat-form-field class="example-full-widthh" appearance="outline">
