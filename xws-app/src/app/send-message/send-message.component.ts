@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/api.service';
 import { MessageService } from '../service/message.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
+import { NotificationService } from '../service/notification.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class SendMessageComponent implements OnInit {
   status: any;
 
 
-  constructor(public router : Router, public route: ActivatedRoute, public service: ApiService, public messageService: MessageService, private formBuilder : FormBuilder,
+  constructor(public notificationService: NotificationService, public router : Router, public route: ActivatedRoute, public service: ApiService, public messageService: MessageService, private formBuilder : FormBuilder,
     ) { 
       this.form = this.formBuilder.group({
         text: ['', Validators.required]     
@@ -56,9 +57,20 @@ export class SendMessageComponent implements OnInit {
         status: "sent",
       }
 
+      
+    let notification = {
+      text: this.userAccount.name + " vam je poslao/la poruku.",
+      time: new Date(),
+      userId: this.recieverId,
+      read: false
+    }
+
       this.messageService.sendMessage(data).subscribe((response: any) => {
         console.log(response)
-        //location.reload();
+        this.notificationService.createNotification(notification).subscribe((response: any) => {
+          console.log(response)
+        })
+        location.reload();
     });
 
   }

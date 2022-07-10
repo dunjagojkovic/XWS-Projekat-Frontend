@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { FollowService } from 'src/app/service/follow.service';
+import { NotificationService } from 'src/app/service/notification.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class SearchProfilesComponent implements OnInit {
 
 
 
-  constructor(public followService : FollowService, public router : Router, public service: ApiService) {
+  constructor(public notificationService: NotificationService, public followService : FollowService, public router : Router, public service: ApiService) {
 
 
   }
@@ -91,12 +92,23 @@ export class SearchProfilesComponent implements OnInit {
       followedId : user
       
     }
+
+    let notification = {
+      text: this.userAccount.name + " vas je zapratio/la.",
+      time: new Date(),
+      userId: user,
+      read: false
+    }
+
     console.log("following", user)
 
     console.log("userAcc",this.userAccount)
     
     this.followService.follow(data).subscribe((response: any) => {
       console.log(response);
+      this.notificationService.createNotification(notification).subscribe((response: any) => {
+        console.log(response)
+      })
       this.service.getUserProfiles().subscribe((response: any) => {
         this.userProfile = response;
         this.users = this.userProfile.users;

@@ -27,4 +27,12 @@ export class NotificationService {
   markAsRead(data: any){
     return this.http.put(this.baseURL + "/notificationStatus", data,  this.getAuthoHeader());
   }
+
+  createNotifications(data: any){
+    return this.http.post(this.baseURL + "/notifications", data,  this.getAuthoHeader());
+  }
+
+  createNotification(data: any){
+    return this.http.post(this.baseURL + "/notification", data,  this.getAuthoHeader());
+  }
 }
