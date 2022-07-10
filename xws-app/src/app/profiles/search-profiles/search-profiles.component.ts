@@ -32,6 +32,7 @@ export class SearchProfilesComponent implements OnInit {
     var user =  localStorage.getItem('username');
     this.service.currentUser(user).subscribe((response: any) => {
       this.userAccount = response;
+      console.log("logged user", this.userAccount);
       this.service.getUserProfiles().subscribe((response: any) => {
         this.userProfile = response;
         this.users = this.userProfile.users;
@@ -121,7 +122,96 @@ export class SearchProfilesComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  block(id : string)  {
+    let data = {
+      blockedId: id,
+      blockerId: this.userAccount.id,
+      status: "block"
+    }
 
+    this.service.blockUser(data).subscribe((response : any) => {
+      console.log(response);
+
+      var user =  localStorage.getItem('username');
+      this.service.currentUser(user).subscribe((response: any) => {
+      this.userAccount = response;
+      console.log("logged user", this.userAccount);
+      this.service.getUserProfiles().subscribe((response: any) => {
+        this.userProfile = response;
+        this.users = this.userProfile.users;
+        console.log("users",response)
+
+        this.followService.follows(this.userAccount.id).subscribe((response: any) => {
+          this.userFollows = response;
+          this.following = this.userFollows.follows;
+          console.log("follows", response)
+
+          this.followService.getRequested(this.userAccount.id).subscribe((response: any) => {
+            this.userRequested = response;
+            this.requested = this.userRequested.followRequests;
+            console.log(response)
+
+          })
+        })
+      })
+    });
+
+    })
+
+  }
+
+  isBlocked(user : any) {
+    for(let b of user.blockedUsers) {
+      if(b.blockedId == this.userAccount.id) {
+        return true;
+      }
+    }
+
+    for(let bu of this.userAccount.blockedUsers) {
+      if(bu.blockedId == user.id) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  unblock(id : string) {
+    let data = {
+      blockedId: id,
+      blockerId: this.userAccount.id,
+      status: "unblock"
+    }
+
+    this.service.unblockUser(data).subscribe((response : any) => {
+      console.log("unblock", response);
+      var user =  localStorage.getItem('username');
+      this.service.currentUser(user).subscribe((response: any) => {
+      this.userAccount = response;
+      console.log("logged user", this.userAccount);
+      this.service.getUserProfiles().subscribe((response: any) => {
+        this.userProfile = response;
+        this.users = this.userProfile.users;
+        console.log("users",response)
+
+        this.followService.follows(this.userAccount.id).subscribe((response: any) => {
+          this.userFollows = response;
+          this.following = this.userFollows.follows;
+          console.log("follows", response)
+
+          this.followService.getRequested(this.userAccount.id).subscribe((response: any) => {
+            this.userRequested = response;
+            this.requested = this.userRequested.followRequests;
+            console.log(response)
+
+          })
+        })
+      })
+    });
+
+    })
+  }
+  
 
 
 }

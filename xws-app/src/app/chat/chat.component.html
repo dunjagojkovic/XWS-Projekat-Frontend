@@ -11,7 +11,7 @@
     <div *ngIf="messages != null" class="col-6">
         <div class="part2">
         <div *ngFor="let m of messages">
-            <div class="row">
+            <div class="row" *ngIf="m.status != 'Canceled'">
                 <label [ngStyle] = "isMyMessage(m.sender)? {'text-align': 'right', 'color' : '#287271'} : {'text-align': 'left', 'color' : '#F29040'}" class="form-control mb-1" >{{m.text}}</label>
             </div>
         </div>
