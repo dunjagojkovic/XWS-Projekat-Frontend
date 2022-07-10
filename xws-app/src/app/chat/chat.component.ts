@@ -1,0 +1,80 @@
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
+import { MessageService } from '../service/message.service';
+
+@Component({
+  selector: 'app-chat',
+  templateUrl: './chat.component.html',
+  styleUrls: ['./chat.component.css']
+})
+export class ChatComponent implements OnInit {
+
+  constructor(public service : ApiService, public messageService : MessageService) { }
+
+  userAccount: any = {} as any
+  chat: any = {} as any
+  chats: any[]
+  idList: any[]
+  usersById: any = {} as any
+  users: any[]
+  messages: any[]
+  textMessage: string
+  reciever: string
+
+  ngOnInit(): void {
+    var user =  localStorage.getItem('username');
+    this.service.currentUser(user).subscribe((response: any) => {
+      this.userAccount = response;
+      console.log(this.userAccount);
+      this.messageService.getChats(this.userAccount.id).subscribe((response: any) => {
+        this.chat = response;
+        this.chats = this.chat.chats 
+        console.log("chats", this.chats);
+        let data = {
+          userById: this.chat.list
+        }
+        this.service.getUserUsernamesById(data).subscribe((response: any) => {
+          this.usersById = response;
+          
+          this.users = this.usersById.users;
+          console.log("users", this.users)
+        })
+      })
+    })
+  }
+
+  openMessages(recieverId : string) {
+    for(let c of this.chats) {
+      if((c.firstUser == recieverId && c.secondUser == this.userAccount.id) || (c.secondUser == recieverId && c.firstUser == this.userAccount.id)) {
+        this.messages = c.messages
+        this.reciever = recieverId
+        console.log(this.messages)
+      }
+    }
+  } 
+
+  isMyMessage(user: string){
+    if(user == this.userAccount.id){
+      return true;
+    }
+    return false;
+  }
+
+  sendMessage() {
+    console.log(this.textMessage);
+
+    let data = {
+      text: this.textMessage,
+      sender: this.userAccount.id,
+      receiver: this.reciever,
+      time: new Date(),
+      status: "sent",
+    }
+
+    this.messageService.sendMessage(data).subscribe((response: any) => {
+      console.log(response)
+      location.reload();
+  });
+  }
+
+}

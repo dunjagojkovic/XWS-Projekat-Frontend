@@ -29,10 +29,6 @@ export class ApiService {
     return this.http.post(this.baseURL + "/register", data);
   }
 
-  current() {
-    return this.http.get(this.baseURL + "/api/users/current", this.getAuthoHeader());
-  }
-
   currentUser(username: any) {
     return this.http.get(this.baseURL + "/current/" + username, this.getAuthoHeader());
   }
@@ -45,6 +41,10 @@ export class ApiService {
     return this.http.post(this.baseURL + "/editPassword", data, this.getAuthoHeader());
   }
 
+  changePrivacy(data: any){
+    return this.http.post(this.baseURL + "/editPrivacy", data, this.getAuthoHeader());
+  }
+
   getPublicProfile() {
     return this.http.get(this.baseURL + "/publicUsers");
   }
@@ -54,34 +54,24 @@ export class ApiService {
   }
 
   getUserProfiles() {
-    return this.http.get(this.baseURL + "/api/users/users", this.getAuthoHeader());
+    return this.http.get(this.baseURL + "/users", this.getAuthoHeader());
+  }
+
+  getUsersById(data: any) {
+    return this.http.post(this.baseURL + "/usersById", data, this.getAuthoHeader());
+  }
+
+  getUserUsernamesById(data: any) {
+    return this.http.post(this.baseURL + "/userUsernamesById", data, this.getAuthoHeader());
   }
 
   getFollowing(username: string) {
     return this.http.get(this.baseURL + "/api/follow/following/" + username, this.getAuthoHeader());
   }
 
-  getRequested(username: string) {
-    return this.http.get(this.baseURL + "/api/follow/requested/" + username, this.getAuthoHeader());
+
+  getUser(id: any) {
+    return this.http.get(this.baseURL + "/user/" + id, this.getAuthoHeader());
   }
 
-  follow(data: any){
-    return this.http.post(this.baseURL + "/api/follow/follower", data, this.getAuthoHeader());
-  }
-
-  getUser(username: string) {
-    return this.http.get(this.baseURL + "/api/users/user/" + username, this.getAuthoHeader());
-  }
-
-  getRequests(username: string) {
-    return this.http.get(this.baseURL + "/api/follow/requests/" + username, this.getAuthoHeader());
-  }
-
-  accept(data: any){
-    return this.http.post(this.baseURL + "/api/follow/accept", data, this.getAuthoHeader());
-  }
-
-  deny(data: any){
-    return this.http.post(this.baseURL + "/api/follow/deny", data, this.getAuthoHeader());
-  }
 }

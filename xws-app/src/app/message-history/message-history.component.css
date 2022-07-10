@@ -237,15 +237,3 @@ footer-row{
     flex-wrap: wrap;
 }
 
-.example-card {
-    max-width: 600px;
-    height: 175px;
-  }
-
-  
-.save {
-    position: absolute;
-    left: 5%;
-    top: 75%;
-    background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold;
-}

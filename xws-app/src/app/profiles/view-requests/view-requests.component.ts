@@ -2,6 +2,7 @@ import { RepositionScrollStrategy } from '@angular/cdk/overlay';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { FollowService } from 'src/app/service/follow.service';
 
 @Component({
   selector: 'app-view-requests',
@@ -12,20 +13,41 @@ export class ViewRequestsComponent implements OnInit {
 
   public users: any[]
   public requests: any[]
+  public requestedUsers: any[]
   userAccount: any = {} as any
+  request: any = {} as any;
+  user: any = {} as any;
+  userProfile: any = {} as any;
+  userRequest: any = {} as any
 
-  constructor(public service : ApiService, public router : Router) {
+  constructor(public service : ApiService, public router : Router, public followService: FollowService) {
 
   }
 
   ngOnInit(): void {
 
-    this.service.current().subscribe((response: any) => {
+    var user =  localStorage.getItem('username');
+    this.service.currentUser(user).subscribe((response: any) => {
       this.userAccount = response;
       this.service.getUserProfiles().subscribe((response: any) => {
-        this.users = response;
-          this.service.getRequests(this.userAccount.username).subscribe((response: any) => {
-            this.requests = response;
+        this.userProfile = response;
+        this.users = this.userProfile.users;
+          this.followService.getRequests(this.userAccount.id).subscribe((response: any) => {
+            this.request = response;
+            this.requests = this.request.followerRequests;
+              console.log(response)
+              console.log("pre fora",this.requests)
+              let data = {
+                userById: this.requests
+              }
+              this.service.getUsersById(data).subscribe((response: any) => {
+                this.userRequest = response;
+                this.requestedUsers = this.userRequest.users;
+                console.log(this.requestedUsers)
+              })
+             
+           
+
           })
       })
     });
@@ -44,20 +66,23 @@ export class ViewRequestsComponent implements OnInit {
 
   }
 
-  accept(username : string) {
+  accept(id : string) {
     let data = {
-      follower: username,
-      following: this.userAccount.username
+      followerId: id,
+      followedId: this.userAccount.id
     }
 
-    this.service.accept(data).subscribe((response: any) => { 
+    this.followService.accept(data).subscribe((response: any) => { 
       console.log(response);
-      this.service.current().subscribe((response: any) => {
+      var user =  localStorage.getItem('username');
+      this.service.currentUser(user).subscribe((response: any) => {
         this.userAccount = response;
         this.service.getUserProfiles().subscribe((response: any) => {
-          this.users = response;
-            this.service.getRequests(this.userAccount.username).subscribe((response: any) => {
-              this.requests = response;
+          this.userProfile = response;
+        this.users = this.userProfile.users;
+            this.followService.getRequests(this.userAccount.id).subscribe((response: any) => {
+              this.request = response;
+            this.requests = this.request.followerRequests;
             })
         })
       });
@@ -65,19 +90,20 @@ export class ViewRequestsComponent implements OnInit {
 
   }
 
-  deny(username : string) {
+  deny(id : string) {
     let data = {
-      follower: username,
-      following: this.userAccount.username
+      followerId: id,
+      followedId: this.userAccount.id
     }
 
-    this.service.deny(data).subscribe((response: any) => { 
+    this.followService.deny(data).subscribe((response: any) => { 
+      var user =  localStorage.getItem('username');
       console.log(response);
-      this.service.current().subscribe((response: any) => {
+      this.service.currentUser(user).subscribe((response: any) => {
         this.userAccount = response;
         this.service.getUserProfiles().subscribe((response: any) => {
           this.users = response;
-            this.service.getRequests(this.userAccount.username).subscribe((response: any) => {
+            this.followService.getRequests(this.userAccount.id).subscribe((response: any) => {
               this.requests = response;
             })
         })
@@ -85,10 +111,12 @@ export class ViewRequestsComponent implements OnInit {
     });
   }
 
-  viewProfile(username : string) {
+  viewProfile(id: string, username : string) {
 
-      this.router.navigate(['/viewProfile'] , { queryParams: { username: username } } );
+      this.router.navigate(['/viewProfile'] , { queryParams: { username: username, id: id } } );
   }
+
+  
 
 
 }

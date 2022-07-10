@@ -34,6 +34,12 @@ import { JobOffersComponent } from './offers/job-offers/job-offers.component';
 import { SearchProfilesComponent } from './profiles/search-profiles/search-profiles.component';
 import { ViewProfileComponent } from './profiles/view-profile/view-profile.component';
 import { ViewRequestsComponent } from './profiles/view-requests/view-requests.component';
+import { SuggestedProfilesComponent } from './suggested-profiles/suggested-profiles.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { SendMessageComponent } from './send-message/send-message.component';
+import { MessageHistoryComponent } from './message-history/message-history.component';
+import { ChatComponent } from './chat/chat.component';
+
 
 
 
@@ -54,7 +60,11 @@ import { ViewRequestsComponent } from './profiles/view-requests/view-requests.co
     JobOffersComponent,
     SearchProfilesComponent,
     ViewProfileComponent,
-    ViewRequestsComponent
+    ViewRequestsComponent,
+    SuggestedProfilesComponent,
+    SendMessageComponent,
+    MessageHistoryComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +82,8 @@ import { ViewRequestsComponent } from './profiles/view-requests/view-requests.co
     MatSlideToggleModule,
     MatCardModule,
     MatListModule,
-    NgbModule
+    NgbModule,
+    MatDialogModule
 
   ],
   providers: [ApiService, AuthGuard,],

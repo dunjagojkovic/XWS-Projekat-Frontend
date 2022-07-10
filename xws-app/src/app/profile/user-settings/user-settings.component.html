@@ -11,9 +11,11 @@
         <mat-toolbar>
             <h1><span>S</span>tylinkt</h1>
             <span class="example-spacer"></span>
+            <button [routerLink]="['/chat']" style="float: none; cursor: pointer;"><a>Chat</a></button>
             <button [routerLink]="['/userPosts']" style="float: none; cursor: pointer;"><a>My posts</a></button>
             <button [routerLink]="['/publishPost']" style="float: none; cursor: pointer;"><a>Publish</a></button>
             <button [routerLink]="['/followingPosts']" style="float: none; cursor: pointer;"><a>Following</a></button>
+            <button [routerLink]="['/suggestedProfiles']" style="float: none; cursor: pointer;"><a>Suggested</a></button>
             <button [routerLink]="['/createJobOffer']" style="float: none; cursor: pointer;"><a>Create offer</a></button>
             <button [routerLink]="['/jobOffers']" style="float: none; cursor: pointer;"><a>Job offers</a></button>
             <button [routerLink]="['/searchProfiles']" style="float: none; cursor: pointer;"><a>Search</a></button>
@@ -22,7 +24,11 @@
         </mat-toolbar>
     </header>
     <main>
-        <mat-slide-toggle>Private profile</mat-slide-toggle>
+        <form [formGroup]="formPrivacy" (ngSubmit)="ChangePrivacy()">
+            <mat-slide-toggle color="warn" [(ngModel)]="user.isPublic" formControlName="isPublic">Profile privacy {{user.isPublic}}</mat-slide-toggle>
+            <button mat-raised-button type="submit">Save</button>
+
+        </form>
         <form [formGroup]="form" (ngSubmit)="savePersonalInfo()">
         <section class="personalInfo">
             <mat-card class="headCard">

@@ -15,7 +15,10 @@ import { JobOffersComponent } from './offers/job-offers/job-offers.component';
 import { SearchProfilesComponent } from './profiles/search-profiles/search-profiles.component';
 import { ViewProfileComponent } from './profiles/view-profile/view-profile.component';
 import { ViewRequestsComponent } from './profiles/view-requests/view-requests.component';
-
+import { SuggestedProfilesComponent } from './suggested-profiles/suggested-profiles.component';
+import { SendMessageComponent } from './send-message/send-message.component';
+import { MessageHistoryComponent } from './message-history/message-history.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -31,7 +34,15 @@ const routes: Routes = [
   { path: 'searchProfiles', component: SearchProfilesComponent, canActivate: [AuthGuard]},
   { path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGuard]},
   { path: 'viewRequests', component: ViewRequestsComponent, canActivate: [AuthGuard]},
-  { path: 'publicProfile', component: PublicProfileComponent}
+  { path: 'publicProfile', component: PublicProfileComponent},
+  { path: 'suggestedProfiles', component: SuggestedProfilesComponent, canActivate: [AuthGuard]},
+  { path: 'sendMessage', component: SendMessageComponent, canActivate: [AuthGuard]},
+  { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
+  { path: 'messageHistory', component: MessageHistoryComponent, canActivate: [AuthGuard]},
+
+
+
+
 ];
 
 @NgModule({

@@ -10,12 +10,14 @@ import { PostServiceService } from 'src/app/service/post-service.service';
 })
 export class ViewProfileComponent implements OnInit {
 
-  public username = '';
+  public id: any;
+  username: string;
   user: any = {} as any
   public posts: any[]
   public commentList: any[]
   public likeList: any[]
   public dislikeList: any[]
+
 
   postId = ""
   backPost = ""
@@ -35,11 +37,12 @@ export class ViewProfileComponent implements OnInit {
 
     this.route.queryParams
       .subscribe(params => {
-        this.username = params['username'];
-        this.service.getUser(this.username).subscribe((response: any) =>
+        this.id = params['id'];
+        this.service.getUser(this.id).subscribe((response: any) =>
           {
             this.user = response;
-            this.postService.userPosts(this.user.username).subscribe((response: any) => {
+            this.username = params['username'];
+            this.postService.userPosts(this.username).subscribe((response: any) => {
               this.userPosts = response;
               this.posts = this.userPosts.posts
             })

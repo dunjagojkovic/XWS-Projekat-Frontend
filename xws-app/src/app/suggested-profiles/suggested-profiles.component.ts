@@ -3,23 +3,28 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { FollowService } from 'src/app/service/follow.service';
 
-
 @Component({
-  selector: 'app-search-profiles',
-  templateUrl: './search-profiles.component.html',
-  styleUrls: ['./search-profiles.component.css']
+  selector: 'app-suggested-profiles',
+  templateUrl: './suggested-profiles.component.html',
+  styleUrls: ['./suggested-profiles.component.css']
 })
-export class SearchProfilesComponent implements OnInit {
+export class SuggestedProfilesComponent implements OnInit {
 
   public user='';
   public users: any[]
   public following: any[]
-  public requested: any[]
+  public requested: any[];
+  public recommendations: any[]
+
   userAccount: any = {} as any;
   userProfile: any = {} as any;
   userFollows: any = {} as any;
   userRequested: any = {} as any;
   current: any = {} as any;
+  userRecommendation: any = {} as any;
+  request: any = {} as any;
+  rec: any = {} as any;
+  public requestedUsers: any[]
 
 
 
@@ -29,26 +34,37 @@ export class SearchProfilesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    var user =  localStorage.getItem('username');
-    this.service.currentUser(user).subscribe((response: any) => {
+    this.service.currentUser(localStorage.getItem('username')).subscribe((response: any) => {
       this.userAccount = response;
-      this.service.getUserProfiles().subscribe((response: any) => {
-        this.userProfile = response;
-        this.users = this.userProfile.users;
-        console.log("users",response)
+      console.log(this.userAccount);
+
+      this.followService.getRecommended(this.userAccount.id).subscribe((response: any) => {
+        this.userRecommendation = response;
+        this.recommendations = this.userRecommendation.listId;
+        console.log("recommendations",response)
+
+        let data = {
+          userById: this.recommendations
+        }
+        this.service.getUsersById(data).subscribe((response: any) => {
+          this.rec = response;
+          this.requestedUsers = this.rec.users;
+          console.log(this.requestedUsers)
+        })
 
         this.followService.follows(this.userAccount.id).subscribe((response: any) => {
           this.userFollows = response;
           this.following = this.userFollows.follows;
           console.log("follows", response)
-
-          this.followService.getRequested(this.userAccount.id).subscribe((response: any) => {
-            this.userRequested = response;
-            this.requested = this.userRequested.followRequests;
-            console.log(response)
-
-          })
         })
+        this.followService.getRequested(this.userAccount.id).subscribe((response: any) => {
+          this.userRequested = response;
+          this.requested = this.userRequested.followRequests;
+          console.log(response)
+
+        })
+
+      
       })
     });
 
@@ -120,8 +136,6 @@ export class SearchProfilesComponent implements OnInit {
     this.current = localStorage.clear();
     this.router.navigate(['/']);
   }
-
-
 
 
 }

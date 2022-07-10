@@ -1,0 +1,27 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<mat-toolbar>
+    <h1><span>S</span>tylinkt</h1>
+    <span class="example-spacer"></span>
+    <button [routerLink]="['/messageHistory']" style="float: none; cursor: pointer;"><a>Chat</a></button>
+    <button [routerLink]="['/userPosts']" style="float: none; cursor: pointer;"><a>My posts</a></button>
+    <button [routerLink]="['/publishPost']" style="float: none; cursor: pointer;"><a>Publish</a></button>
+    <button [routerLink]="['/followingPosts']" style="float: none; cursor: pointer;"><a>Following</a></button>
+    <button [routerLink]="['/suggestedProfiles']" style="float: none; cursor: pointer;"><a>Suggested</a></button>
+    <button [routerLink]="['/createJobOffer']" style="float: none; cursor: pointer;"><a>Create offer</a></button>
+    <button [routerLink]="['/jobOffers']" style="float: none; cursor: pointer;"><a>Job offers</a></button>
+    <button [routerLink]="['/searchProfiles']" style="float: none; cursor: pointer;"><a>Search</a></button>
+    <button *ngIf="!userAccount.isPublic" [routerLink]="['/viewRequests']" style="float: none; cursor: pointer;"><a>Requests</a></button>
+    <button (click)="logout()" style="cursor: pointer;"><a>Logout</a></button>
+</mat-toolbar>
+
+<mat-selection-list #shoes [multiple]="false">
+    <mat-list-option style="font-weight: bold; max-width:250px;" *ngFor='let user of requestedUsers' [value]="user" routerLink="/chat" [queryParams]="{sender: user.id}">
+      {{user.username}}
+    </mat-list-option>
+  </mat-selection-list>

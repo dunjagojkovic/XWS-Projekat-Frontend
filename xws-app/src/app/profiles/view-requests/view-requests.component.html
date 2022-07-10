@@ -1,20 +1,20 @@
 
     <div class="row">
-        <div *ngFor='let request of requests' class="card"
+        <div *ngFor='let request of requestedUsers' class="card"
             style="width: 26rem; margin-left: 4.6rem; margin-top: 3rem; border: 1; border-color: #83C3B4;">
             <div class="card-body">
-                <p class="card-text mt-2" style="font-size: 20px;"><span style="color: #287271;"><b>{{request}} sent you a request! </b></span></p>
+                <p class="card-text mt-2" style="font-size: 20px;"><span style="color: #287271;"><b>{{request.username}} sent you a request! </b></span></p>
                   <div class="row">
                         <div class="col-6">
                             <button style="color: #F29040; margin-top: 1.5rem;"
-                            class="btn btn-outline-secondary" (click)="accept(request)">Accept</button>
+                            class="btn btn-outline-secondary" (click)="accept(request.id)">Accept</button>
                             <button style="color: #F29040; margin-top: 1.5rem; margin-left: 3px;"
-                            class="btn btn-outline-secondary" (click)="deny(request)">Deny</button>
+                            class="btn btn-outline-secondary" (click)="deny(request.id)">Deny</button>
                         </div>
                         <div class="col-6">
-                            <button *ngIf="isPublic(request)" 
+                            <button *ngIf="isPublic(request.username)" 
                             style="color: #F29040; margin-left: 3.4rem; margin-top: 1.5rem;" 
-                            class="btn btn-outline-secondary" (click)="viewProfile(request)">Show profile</button>
+                            class="btn btn-outline-secondary" (click)="viewProfile(request.id, request.username)">Show profile</button>
                         </div>
                     </div>
                     

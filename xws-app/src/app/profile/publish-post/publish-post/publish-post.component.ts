@@ -21,8 +21,8 @@ export class PublishPostComponent implements OnInit {
   constructor(public service: PostServiceService, public api: ApiService, public router: Router) { }
 
   ngOnInit(): void {
-
-    this.api.current().subscribe((response: any) => {
+    var user =  localStorage.getItem('username');
+    this.api.currentUser(user).subscribe((response: any) => {
       this.user = response;
     });
   }
