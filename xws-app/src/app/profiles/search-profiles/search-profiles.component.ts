@@ -250,7 +250,13 @@ export class SearchProfilesComponent implements OnInit {
 
     })
   }
-  
 
+  isCurrentUser(id: string){
 
+    if(this.userAccount.id == id){
+      return true
+    }
+    return false
+
+  }
 }
