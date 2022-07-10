@@ -112,6 +112,33 @@ export class SearchProfilesComponent implements OnInit {
     });
   }
 
+  unfollow(user: string) {
+    let data = {
+      followerId : this.userAccount.id,
+      followedId : user
+      
+    }
+    console.log("unfollowing", user)
+
+    console.log("userAcc",this.userAccount)
+    
+    this.followService.unfollow(data).subscribe((response: any) => {
+      console.log(response);
+      this.service.getUserProfiles().subscribe((response: any) => {
+        this.userProfile = response;
+        this.users = this.userProfile.users;
+        this.followService.follows(this.userAccount.id).subscribe((response: any) => {
+          this.userFollows = response;
+          this.following = this.userFollows.follows;
+          this.followService.getRequested(this.userAccount.id).subscribe((response: any) => {
+            this.userRequested = response;
+            this.requested = this.userRequested.followRequests;
+           })
+        })
+      })
+    });
+  }
+
   viewProfile(id : any, username: string) {
 
       this.router.navigate(['/viewProfile'] , { queryParams: { id: id, username: username } } );
@@ -131,7 +158,7 @@ export class SearchProfilesComponent implements OnInit {
 
     this.service.blockUser(data).subscribe((response : any) => {
       console.log(response);
-
+      this.unfollow(id);
       var user =  localStorage.getItem('username');
       this.service.currentUser(user).subscribe((response: any) => {
       this.userAccount = response;

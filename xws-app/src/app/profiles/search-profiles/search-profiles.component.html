@@ -59,7 +59,7 @@
                 <div class="row">
                     <div class="col-6">
                         <button *ngIf="!isFollowed(user.id) && !isRequested(user.id) && !isBlocked(user)" style="background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold; margin-top: 0.5rem; margin-left: 1.0rem; margin-bottom: 1.0rem;"class="btn btn-outline-secondary" (click)="follow(user.id)">Follow</button>
-                        <button *ngIf="isFollowed(user.id) && !isBlocked(user)" style="background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold; margin-top: 0.5rem; margin-left: 1.0rem; margin-bottom: 1.0rem;" class="btn btn-outline-secondary" disabled>Following</button>
+                        <button *ngIf="isFollowed(user.id) && !isBlocked(user)" style="background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold; margin-top: 0.5rem; margin-left: 1.0rem; margin-bottom: 1.0rem;" class="btn btn-outline-secondary" (click)="unfollow(user.id)">Unfollow</button>
                         <button *ngIf="isRequested(user.id) && !isBlocked(user)" style="background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold; margin-top: 0.5rem; margin-left: 1.0rem; margin-bottom: 1.0rem;" class="btn btn-outline-secondary" disabled>Requested</button>
                     </div>
                     <div class="col-6">

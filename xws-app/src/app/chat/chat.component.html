@@ -15,8 +15,8 @@
                 <label [ngStyle] = "isMyMessage(m.sender)? {'text-align': 'right', 'color' : '#287271'} : {'text-align': 'left', 'color' : '#F29040'}" class="form-control mb-1" >{{m.text}}</label>
             </div>
         </div>
-        <textarea rows="4" cols="50" class="inputText" [(ngModel)]="textMessage" > </textarea>
-        <button (click)="sendMessage()"><i>Send</i></button>
+        <textarea *ngIf="isFollowing() || isBlocked()" rows="4" cols="50" class="inputText" [(ngModel)]="textMessage" > </textarea>
+        <button *ngIf="isFollowing() || isBlocked()" (click)="sendMessage()"><i>Send</i></button>
         </div>
     </div>
 </div>
