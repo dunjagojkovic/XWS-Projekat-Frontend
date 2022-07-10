@@ -8,7 +8,7 @@
 <mat-toolbar>
     <h1><span>S</span>tylinkt</h1>
     <span class="example-spacer"></span>
-    <button [routerLink]="['/messageHistory']" style="float: none; cursor: pointer;"><a>Chat</a></button>
+    <button [routerLink]="['/chat']" style="float: none; cursor: pointer;"><a>Chat</a></button>
     <button [routerLink]="['/userPosts']" style="float: none; cursor: pointer;"><a>My posts</a></button>
     <button [routerLink]="['/publishPost']" style="float: none; cursor: pointer;"><a>Publish</a></button>
     <button [routerLink]="['/followingPosts']" style="float: none; cursor: pointer;"><a>Following</a></button>
@@ -37,6 +37,7 @@
 
 <div style="width:800px; margin:0 auto;">
     <div *ngFor='let user of users' style="width: 26rem; margin-left: 4.6rem; margin-top: 3rem; border: 1; border-color: #287271;">
+        <div *ngIf = "!isCurrentUser(user.id)">
         <mat-card class="example-card">
             <div style="display: flex; flex-direction:row">
                 <mat-card-subtitle class="row" style="font-weight: bold; font-size:20px;">{{user.name}} {{user.surname}}</mat-card-subtitle>
@@ -51,9 +52,7 @@
           
             <mat-card-title style="font-weight: bold; font-size:20px;"> {{user.username}}</mat-card-title>
            
-            <mat-card-content>
-              <p> {{user.biography}}</p>
-            </mat-card-content>
+            
             <mat-divider inset></mat-divider>
             <mat-card-actions>
                 <div class="row">
@@ -70,6 +69,7 @@
             <mat-card-footer>
             </mat-card-footer>
           </mat-card>
+    </div>
     </div>
    
 </div>

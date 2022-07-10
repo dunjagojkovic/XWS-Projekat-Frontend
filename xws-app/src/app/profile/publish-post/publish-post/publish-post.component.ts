@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { FollowService } from 'src/app/service/follow.service';
+import { NotificationService } from 'src/app/service/notification.service';
 import { PostServiceService } from 'src/app/service/post-service.service';
 
 @Component({
@@ -17,13 +19,21 @@ export class PublishPostComponent implements OnInit {
   public link = "";
   public img = "";
   user: any = {} as any
+  userFollower: any = {} as any;
+  followers: any[]
 
-  constructor(public service: PostServiceService, public api: ApiService, public router: Router) { }
+  constructor(public notificationService: NotificationService,  public service: PostServiceService, public api: ApiService, public router: Router, public followService:FollowService) { }
 
   ngOnInit(): void {
     var user =  localStorage.getItem('username');
     this.api.currentUser(user).subscribe((response: any) => {
       this.user = response;
+      this.followService.followers(this.user.id).subscribe((response: any) => {
+        this.userFollower = response;
+        this.followers = this.userFollower.followers;
+        console.log("followers", response)
+
+      })
     });
   }
 
@@ -67,8 +77,25 @@ export class PublishPostComponent implements OnInit {
       commentList: commentList
     }
 
+    var list = []
+    for (let f of this.followers){
+      let data = {
+        text: this.user.name + " je objavio/la novi POST.",
+        time: new Date(),
+        userId: f.id,
+        read: false
+      }
+      list.push(data)
+    }
 
+    console.log(list)
+    let data = {
+      notifications: list
+    }
     this.service.publishPost(post).subscribe((response: any) => {
+      this.notificationService.createNotifications(data).subscribe((response: any) => {
+        console.log(response)
+      })
       this.router.navigate(['/userPosts']);
     })
    

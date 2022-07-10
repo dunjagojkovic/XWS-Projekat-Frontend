@@ -82,4 +82,8 @@ export class ApiService {
     return this.http.post(this.baseURL + "/unblockUser", data, this.getAuthoHeader());
   }
 
+  jobRecommendations(data: any) {
+    return this.http.post(this.baseURL + "/jobRecommendations", data, this.getAuthoHeader());
+  }
+
 }

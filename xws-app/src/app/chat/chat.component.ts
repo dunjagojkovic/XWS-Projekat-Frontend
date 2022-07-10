@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { FollowService } from '../service/follow.service';
 import { MessageService } from '../service/message.service';
+import { NotificationService } from '../service/notification.service';
 
 @Component({
   selector: 'app-chat',
@@ -10,7 +11,7 @@ import { MessageService } from '../service/message.service';
 })
 export class ChatComponent implements OnInit {
 
-  constructor(public service : ApiService, public messageService : MessageService, public followService : FollowService) { }
+  constructor(public notificationService: NotificationService, public service : ApiService, public messageService : MessageService, public followService : FollowService) { }
 
   userAccount: any = {} as any
   chat: any = {} as any
@@ -85,8 +86,18 @@ export class ChatComponent implements OnInit {
       status: "sent",
     }
 
+    let notification = {
+      text: this.userAccount.name + " vam je poslao/la poruku.",
+      time: new Date(),
+      userId: this.recieverId,
+      read: false
+    }
+
     this.messageService.sendMessage(data).subscribe((response: any) => {
       console.log(response)
+      this.notificationService.createNotification(notification).subscribe((response: any) => {
+        console.log(response)
+      })
       location.reload();
     });
   }
