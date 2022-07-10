@@ -41,8 +41,9 @@
             <div style="display: flex; flex-direction:row">
                 <mat-card-subtitle class="row" style="font-weight: bold; font-size:20px;">{{user.name}} {{user.surname}}</mat-card-subtitle>
                 <div style="display: flex; flex-direction:row" >
-                    <button style="background-color: #83C3B4; color:white; padding: 4px 0px 10px 0px !important;width: 40px; height: 40px;cursor: pointer; text-align: center; border-radius: 30px; border: 3px solid #83C3B4; font-weight: bold; margin-left: 11rem;" class="btn btn-outline-secondary" ><mat-icon>block</mat-icon></button>
-                    <button *ngIf="isFollowed(user.id)"style="background-color: #83C3B4; color:white; padding: 4px 0px 10px 0px !important;width: 40px; height: 40px;cursor: pointer; text-align: center; border-radius: 30px; border: 3px solid #83C3B4; font-weight: bold; margin-left: 0.5rem;" class="btn btn-outline-secondary" routerLink="/sendMessage" [queryParams]="{recieverId: user.id}"><mat-icon> chat</mat-icon></button>
+                    <button *ngIf="!isBlocked(user)" style="background-color: #83C3B4; color:white; padding: 4px 0px 10px 0px !important;width: 40px; height: 40px;cursor: pointer; text-align: center; border-radius: 30px; border: 3px solid #83C3B4; font-weight: bold; margin-left: 11rem;" class="btn btn-outline-secondary" (click)="block(user.id)"><mat-icon>block</mat-icon></button>
+                    <button *ngIf="isBlocked(user)" style="background-color: #f29040; color:white; padding: 4px 0px 10px 0px !important;width: 40px; height: 40px;cursor: pointer; text-align: center; border-radius: 30px; border: 3px solid #f29040; font-weight: bold; margin-left: 11rem;" class="btn btn-outline-secondary" (click)="unblock(user.id)"><mat-icon>block</mat-icon></button>
+                    <button *ngIf="isFollowed(user.id) && !isBlocked(user)" style="background-color: #83C3B4; color:white; padding: 4px 0px 10px 0px !important;width: 40px; height: 40px;cursor: pointer; text-align: center; border-radius: 30px; border: 3px solid #83C3B4; font-weight: bold; margin-left: 0.5rem;" class="btn btn-outline-secondary" routerLink="/sendMessage" [queryParams]="{recieverId: user.id}"><mat-icon> chat</mat-icon></button>
                 </div>
             </div>
 
@@ -57,12 +58,12 @@
             <mat-card-actions>
                 <div class="row">
                     <div class="col-6">
-                        <button *ngIf="!isFollowed(user.id) && !isRequested(user.id)" style="background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold; margin-top: 0.5rem; margin-left: 1.0rem; margin-bottom: 1.0rem;"class="btn btn-outline-secondary" (click)="follow(user.id)">Follow</button>
-                        <button *ngIf="isFollowed(user.id)" style="background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold; margin-top: 0.5rem; margin-left: 1.0rem; margin-bottom: 1.0rem;" class="btn btn-outline-secondary" disabled>Following</button>
-                        <button *ngIf="isRequested(user.id)" style="background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold; margin-top: 0.5rem; margin-left: 1.0rem; margin-bottom: 1.0rem;" class="btn btn-outline-secondary" disabled>Requested</button>
+                        <button *ngIf="!isFollowed(user.id) && !isRequested(user.id) && !isBlocked(user)" style="background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold; margin-top: 0.5rem; margin-left: 1.0rem; margin-bottom: 1.0rem;"class="btn btn-outline-secondary" (click)="follow(user.id)">Follow</button>
+                        <button *ngIf="isFollowed(user.id) && !isBlocked(user)" style="background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold; margin-top: 0.5rem; margin-left: 1.0rem; margin-bottom: 1.0rem;" class="btn btn-outline-secondary" (click)="unfollow(user.id)">Unfollow</button>
+                        <button *ngIf="isRequested(user.id) && !isBlocked(user)" style="background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold; margin-top: 0.5rem; margin-left: 1.0rem; margin-bottom: 1.0rem;" class="btn btn-outline-secondary" disabled>Requested</button>
                     </div>
                     <div class="col-6">
-                        <button *ngIf="user.isPublic" style="background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold; margin-left: 3.4rem; margin-top: 0.5rem; margin-right: 0.5rem; margin-bottom: 1.0rem;" class="btn btn-outline-secondary" (click)="viewProfile(user.id, user.username)">Show profile</button>
+                        <button *ngIf="(user.isPublic || isFollowed(user.id)) && !isBlocked(user)" style="background-color: #83C3B4; width: 6vw; text-align: center; height: 4vh; color: white; border: none; border-radius: 10%; font-weight: bold; margin-left: 3.4rem; margin-top: 0.5rem; margin-right: 0.5rem; margin-bottom: 1.0rem;" class="btn btn-outline-secondary" (click)="viewProfile(user.id, user.username)">Show profile</button>
                     </div>
                 </div>
             </mat-card-actions>

@@ -74,4 +74,12 @@ export class ApiService {
     return this.http.get(this.baseURL + "/user/" + id, this.getAuthoHeader());
   }
 
+  blockUser(data: any) {
+    return this.http.post(this.baseURL + "/blockUser", data, this.getAuthoHeader());
+  }
+
+  unblockUser(data: any) {
+    return this.http.post(this.baseURL + "/unblockUser", data, this.getAuthoHeader());
+  }
+
 }
